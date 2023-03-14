@@ -1,4 +1,5 @@
 import React from "react";
+import {useState} from "react";
 
 export type PizzaType = {
     title: string
@@ -10,6 +11,8 @@ type PropsType = {
 }
 
 function Catalog(props: PropsType) {
+    const [pizzaCount, setPizzaCount] = useState<number>(0);
+
     return (
         <div className="pizza-block">
             <img
@@ -46,7 +49,7 @@ function Catalog(props: PropsType) {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
+                    <i>{pizzaCount}</i>
                 </div>
             </div>
         </div>
