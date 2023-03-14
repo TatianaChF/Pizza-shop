@@ -49,7 +49,12 @@ function Catalog(props: PropsType) {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>{pizzaCount}</i>
+                    <i onClick={() => {
+                        setPizzaCount(pizzaCount + 1)
+                    }
+                    }>
+                        {pizzaCount}
+                    </i>
                 </div>
             </div>
         </div>
