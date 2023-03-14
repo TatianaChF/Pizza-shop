@@ -35,7 +35,10 @@ function Catalog(props: PropsType) {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {props.price} ₽</div>
-                <div className="button button--outline button--add">
+                <button onClick={() => {
+                    setPizzaCount(pizzaCount + 1)
+                }}
+                        className="button button--outline button--add">
                     <svg
                         width="12"
                         height="12"
@@ -49,13 +52,10 @@ function Catalog(props: PropsType) {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i onClick={() => {
-                        setPizzaCount(pizzaCount + 1)
-                    }
-                    }>
+                    <i>
                         {pizzaCount}
                     </i>
-                </div>
+                </button>
             </div>
         </div>
     )
