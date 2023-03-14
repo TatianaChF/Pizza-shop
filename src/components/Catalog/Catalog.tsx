@@ -13,6 +13,10 @@ type PropsType = {
 function Catalog(props: PropsType) {
     const [pizzaCount, setPizzaCount] = useState<number>(0);
 
+    const addPizzaToCart = () => {
+        setPizzaCount(pizzaCount + 1);
+    }
+
     return (
         <div className="pizza-block">
             <img
@@ -35,9 +39,7 @@ function Catalog(props: PropsType) {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {props.price} ₽</div>
-                <button onClick={() => {
-                    setPizzaCount(pizzaCount + 1)
-                }}
+                <button onClick={addPizzaToCart}
                         className="button button--outline button--add">
                     <svg
                         width="12"
