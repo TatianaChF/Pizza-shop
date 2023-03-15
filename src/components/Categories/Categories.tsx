@@ -1,10 +1,5 @@
 import React, {useState} from "react";
 
-type CategoryType = {
-    id: number,
-    title: string
-}
-
 function Categories() {
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const categories = [
