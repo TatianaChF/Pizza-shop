@@ -1,40 +1,34 @@
 import React, {useState} from "react";
 
+type CategoryType = {
+    id: number,
+    title: string
+}
+
 function Categories() {
-    const [selectedCategory, setSelectedCategory] = useState(0);
+    const [selectedCategory, setSelectedCategory] = useState<number>(0);
+    const categories = [
+        {id: 0, title: "Все"},
+        {id: 1, title: "Мясные"},
+        {id: 2, title: "Вегетарианская"},
+        {id: 3, title: "Гриль"},
+        {id: 4, title: "Острые"},
+        {id: 5, title: "Закрытые"},
+    ]
 
     const onClickCategory = (id: number) => {
         setSelectedCategory(id);
     }
 
-
     return (
         <div className="categories">
             <ul>
-                <li onClick={() => onClickCategory(0)}
-                    className={selectedCategory === 0 ? "active" : ""}>
-                    Все
-                </li>
-                <li onClick={() => onClickCategory(1)}
-                    className={selectedCategory === 1 ? "active" : ""}>
-                    Мясные
-                </li>
-                <li onClick={() => onClickCategory(2)}
-                    className={selectedCategory === 2 ? "active" : ""}>
-                    Вегетарианская
-                </li>
-                <li onClick={() => onClickCategory(3)}
-                    className={selectedCategory === 3 ? "active" : ""}>
-                    Гриль
-                </li>
-                <li onClick={() => onClickCategory(4)}
-                    className={selectedCategory === 4 ? "active" : ""}>
-                    Острые
-                </li>
-                <li onClick={() => onClickCategory(5)}
-                    className={selectedCategory === 5 ? "active" : ""}>
-                    Закрытые
-                </li>
+                {categories.map((category) => (
+                    <li onClick={() => onClickCategory(category.id)}
+                        className={selectedCategory === category.id ? "active" : ""}>
+                        {category.title}
+                    </li>
+                ))}
             </ul>
         </div>
     )
