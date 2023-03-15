@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
 function Categories() {
+    const [selectedCategory, setSelectedCategory] = useState(0);
+
     return (
         <div className="categories">
             <ul>
