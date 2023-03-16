@@ -1,23 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Header from "./components/Header/Header";
 import './scss/app.scss';
 import Categories from "./components/Categories/Categories";
 import Sort from "./components/Sort/Sort";
-import Catalog, {PizzaType} from "./components/Catalog/Catalog";
+import Catalog from "./components/Catalog/Catalog";
+import pizzas from "./assets/pizzas.json";
 
 function App() {
-
-    let [pizza, setPizza] = useState<Array<PizzaType>>([
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" },
-        { title: "Мексиканская" }
-    ]);
 
   return (
       <div className="wrapper">
@@ -30,15 +19,13 @@ function App() {
                   </div>
                   <h2 className="content__title">Все пиццы</h2>
                   <div className="content__items">
-                      <Catalog title="Мексиканская" price={500} />
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
-                      <Catalog title="Мексиканская" price={500}/>
+                      {
+                          pizzas.map(pizza => <Catalog title={pizza.title}
+                                                       price={pizza.price}
+                                                       imagePizza={pizza.imageUrl}
+                                                       sizes={pizza.sizes}
+                                                       types={pizza.types} />)
+                      }
                   </div>
               </div>
           </div>

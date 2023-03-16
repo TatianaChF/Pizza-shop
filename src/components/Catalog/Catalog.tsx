@@ -7,12 +7,17 @@ export type PizzaType = {
 
 type PropsType = {
     title: string,
-    price: number
+    price: number,
+    imagePizza: string,
+    sizes: Array<number>,
+    types: Array<number>
 }
 
 function Catalog(props: PropsType) {
     const [pizzaCount, setPizzaCount] = useState<number>(0);
-
+    const [activeType, setActiveType] = useState<number>(0);
+    const [activeSize, setActiveSize] = useState<number>(0);
+    const typeTitle = ["тонкое", "традиционное"];
     const addPizzaToCart = () => {
         setPizzaCount(pizzaCount + 1);
     }
@@ -21,20 +26,30 @@ function Catalog(props: PropsType) {
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                src={props.imagePizza}
                 alt="Pizza"
             />
             <h4 className="pizza-block__title">{props.title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    {
+                        props.types.map(type => (
+                            <li className={activeType === type ? "active" : ""}
+                                onClick={() => setActiveType(type)}>
+                                {typeTitle[type]}
+                            </li>
+                        ))
+                    }
                 </ul>
                 <ul>
-                    <li className="active">26 см.
-                    </li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    {
+                        props.sizes.map((size, id) => (
+                            <li className={id === activeSize ? "active" : ""}
+                                onClick={() => setActiveSize(id)}>
+                                {size} см.
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
             <div className="pizza-block__bottom">
