@@ -8,12 +8,12 @@ export type PizzaType = {
 type PropsType = {
     title: string,
     price: number,
-    imagePizza: string
+    imagePizza: string,
+    sizes: Array<number>
 }
 
 function Catalog(props: PropsType) {
     const [pizzaCount, setPizzaCount] = useState<number>(0);
-
     const addPizzaToCart = () => {
         setPizzaCount(pizzaCount + 1);
     }
@@ -32,10 +32,11 @@ function Catalog(props: PropsType) {
                     <li>традиционное</li>
                 </ul>
                 <ul>
-                    <li className="active">26 см.
-                    </li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    {
+                        props.sizes.map((size) => (
+                            <li>{size} см.</li>
+                        ))
+                    }
                 </ul>
             </div>
             <div className="pizza-block__bottom">
