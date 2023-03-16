@@ -15,6 +15,8 @@ type PropsType = {
 
 function Catalog(props: PropsType) {
     const [pizzaCount, setPizzaCount] = useState<number>(0);
+    const [activeType, setActiveType] = useState<number>(0);
+    const [activeSize, setActiveSize] = useState<number>(0);
     const typeTitle = ["тонкое", "традиционное"];
     const addPizzaToCart = () => {
         setPizzaCount(pizzaCount + 1);
@@ -32,14 +34,20 @@ function Catalog(props: PropsType) {
                 <ul>
                     {
                         props.types.map(type => (
-                            <li>{typeTitle[type]}</li>
+                            <li className={activeType === type ? "active" : ""}
+                                onClick={() => setActiveType(type)}>
+                                {typeTitle[type]}
+                            </li>
                         ))
                     }
                 </ul>
                 <ul>
                     {
-                        props.sizes.map((size) => (
-                            <li>{size} см.</li>
+                        props.sizes.map((size, id) => (
+                            <li className={id === activeSize ? "active" : ""}
+                                onClick={() => setActiveSize(id)}>
+                                {size} см.
+                            </li>
                         ))
                     }
                 </ul>
