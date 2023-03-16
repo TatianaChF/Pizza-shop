@@ -9,11 +9,13 @@ type PropsType = {
     title: string,
     price: number,
     imagePizza: string,
-    sizes: Array<number>
+    sizes: Array<number>,
+    types: Array<number>
 }
 
 function Catalog(props: PropsType) {
     const [pizzaCount, setPizzaCount] = useState<number>(0);
+    const typeTitle = ["тонкое", "традиционное"];
     const addPizzaToCart = () => {
         setPizzaCount(pizzaCount + 1);
     }
@@ -28,8 +30,11 @@ function Catalog(props: PropsType) {
             <h4 className="pizza-block__title">{props.title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    {
+                        props.types.map(type => (
+                            <li>{typeTitle[type]}</li>
+                        ))
+                    }
                 </ul>
                 <ul>
                     {

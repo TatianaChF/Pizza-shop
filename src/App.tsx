@@ -23,7 +23,8 @@ function App() {
                           pizzas.map(pizza => <Catalog title={pizza.title}
                                                        price={pizza.price}
                                                        imagePizza={pizza.imageUrl}
-                                                       sizes={pizza.sizes} />)
+                                                       sizes={pizza.sizes}
+                                                       types={pizza.types} />)
                       }
                   </div>
               </div>
