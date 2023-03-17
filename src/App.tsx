@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "./components/Header/Header";
 import './scss/app.scss';
 import Categories from "./components/Categories/Categories";
@@ -7,6 +7,7 @@ import Catalog from "./components/Catalog/Catalog";
 import pizzas from "./assets/pizzas.json";
 
 function App() {
+    const [items, setItems] = useState([]);
 
   return (
       <div className="wrapper">
