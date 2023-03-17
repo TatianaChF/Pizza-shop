@@ -34,7 +34,8 @@ function Catalog(props: PropsType) {
                 <ul>
                     {
                         props.types.map(type => (
-                            <li className={activeType === type ? "active" : ""}
+                            <li key={type}
+                                className={activeType === type ? "active" : ""}
                                 onClick={() => setActiveType(type)}>
                                 {typeTitle[type]}
                             </li>
@@ -44,7 +45,8 @@ function Catalog(props: PropsType) {
                 <ul>
                     {
                         props.sizes.map((size, id) => (
-                            <li className={id === activeSize ? "active" : ""}
+                            <li key={size}
+                                className={id === activeSize ? "active" : ""}
                                 onClick={() => setActiveSize(id)}>
                                 {size} см.
                             </li>

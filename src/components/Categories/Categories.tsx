@@ -19,7 +19,8 @@ function Categories() {
         <div className="categories">
             <ul>
                 {categories.map((category) => (
-                    <li onClick={() => onClickCategory(category.id)}
+                    <li key={category.title}
+                        onClick={() => onClickCategory(category.id)}
                         className={selectedCategory === category.id ? "active" : ""}>
                         {category.title}
                     </li>
