@@ -1,15 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "./components/Header/Header";
 import './scss/app.scss';
 import Categories from "./components/Categories/Categories";
 import Sort from "./components/Sort/Sort";
 import Catalog from "./components/Catalog/Catalog";
-import pizzas from "./assets/pizzas.json";
+
+type itemsData = {
+    title: string,
+    price: number,
+    imageUrl: string,
+    sizes: Array<number>,
+    types: Array<number>
+}
 
 function App() {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<Array<itemsData>>([]);
 
-  return (
+    useEffect(() => {
+        fetch("https://64145f1f9172235b8692eea8.mockapi.io/items")
+            .then((res) => {
+                return res.json();
+            })
+            .then((arr) => {
+                setItems(arr);
+            });
+    }, []);
+
+  // @ts-ignore
+    return (
       <div className="wrapper">
           <Header />
           <div className="content">
@@ -21,7 +39,7 @@ function App() {
                   <h2 className="content__title">Все пиццы</h2>
                   <div className="content__items">
                       {
-                          pizzas.map(pizza => <Catalog key={pizza.title}
+                          items.map(pizza => <Catalog key={pizza.title}
                                                        title={pizza.title}
                                                        price={pizza.price}
                                                        imagePizza={pizza.imageUrl}
