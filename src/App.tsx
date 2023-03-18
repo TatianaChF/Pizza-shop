@@ -4,6 +4,7 @@ import './scss/app.scss';
 import Categories from "./components/Categories/Categories";
 import Sort from "./components/Sort/Sort";
 import Catalog from "./components/Catalog/Catalog";
+import Placeholder from "./components/Placeholder/Placeholder";
 
 type itemsData = {
     title: string,
@@ -15,6 +16,7 @@ type itemsData = {
 
 function App() {
     const [items, setItems] = useState<Array<itemsData>>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
         fetch("https://64145f1f9172235b8692eea8.mockapi.io/items")
