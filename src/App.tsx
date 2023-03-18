@@ -26,7 +26,6 @@ function App() {
             });
     }, []);
 
-  // @ts-ignore
     return (
       <div className="wrapper">
           <Header />
