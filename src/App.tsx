@@ -16,7 +16,7 @@ type itemsData = {
 
 function App() {
     const [items, setItems] = useState<Array<itemsData>>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         fetch("https://64145f1f9172235b8692eea8.mockapi.io/items")
@@ -40,12 +40,13 @@ function App() {
                   <h2 className="content__title">Все пиццы</h2>
                   <div className="content__items">
                       {
-                          items.map(pizza => <Catalog key={pizza.title}
-                                                       title={pizza.title}
-                                                       price={pizza.price}
-                                                       imagePizza={pizza.imageUrl}
-                                                       sizes={pizza.sizes}
-                                                       types={pizza.types} />)
+                          isLoading ? [...new Array(6)].map((_, index) => <Placeholder key={index} />)
+                              : items.map(pizza => <Catalog key={pizza.title}
+                                                            title={pizza.title}
+                                                            price={pizza.price}
+                                                            imagePizza={pizza.imageUrl}
+                                                            sizes={pizza.sizes}
+                                                            types={pizza.types} />)
                       }
                   </div>
               </div>
