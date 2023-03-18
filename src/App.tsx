@@ -25,6 +25,7 @@ function App() {
             })
             .then((arr) => {
                 setItems(arr);
+                setIsLoading(false);
             });
     }, []);
 
