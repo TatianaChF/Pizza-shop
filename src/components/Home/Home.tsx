@@ -34,7 +34,7 @@ function Home() {
         <>
             <div className="content__top">
                 <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
-                <Sort />
+                <Sort sorting={sorting} onChangeSorting={(id) => setSorting(id)} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
