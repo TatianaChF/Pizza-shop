@@ -32,7 +32,7 @@ function Home() {
     return (
         <>
             <div className="content__top">
-                <Categories />
+                <Categories categoryId={categoryId} />
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
