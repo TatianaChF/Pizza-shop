@@ -7,7 +7,11 @@ type PropsType = {
 
 function Sort(props: PropsType) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const list = ["популярности", "цене", "алфавиту"];
+    const list = [
+        { name: "популярности", sort: "rating" },
+        { name: "цене", sort: "price" },
+        { name: "алфавиту", sort: "title" }
+    ];
     const sortTitle = list[props.sorting];
 
     const chooseListItem = (id: number) => {
