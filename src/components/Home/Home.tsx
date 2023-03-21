@@ -15,6 +15,8 @@ type itemsData = {
 function Home() {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [categoryId, setCategoryId] = useState<number>(0);
+    const [sorting, setSorting] = useState<number>(0);
 
     useEffect(() => {
         fetch("https://64145f1f9172235b8692eea8.mockapi.io/items")
