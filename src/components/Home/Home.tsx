@@ -32,7 +32,7 @@ function Home() {
     return (
         <>
             <div className="content__top">
-                <Categories categoryId={categoryId} />
+                <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
