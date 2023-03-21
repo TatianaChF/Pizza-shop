@@ -19,7 +19,8 @@ function Home() {
     const [sorting, setSorting] = useState<number>(0);
 
     useEffect(() => {
-        fetch("https://64145f1f9172235b8692eea8.mockapi.io/items")
+        setIsLoading(true);
+        fetch("https://64145f1f9172235b8692eea8.mockapi.io/items?category=" + categoryId)
             .then((res) => {
                 return res.json();
             })
@@ -27,7 +28,7 @@ function Home() {
                 setItems(arr);
                 setIsLoading(false);
             });
-    }, []);
+    }, [categoryId]);
 
     return (
         <>
