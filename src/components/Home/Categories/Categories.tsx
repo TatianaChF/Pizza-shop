@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 
 type PropsType = {
-    categoryId: number
+    categoryId: number,
+    onClickCategory: (id: number) => void
 }
 
 function Categories(props: PropsType) {
@@ -15,17 +16,13 @@ function Categories(props: PropsType) {
         {id: 5, title: "Закрытые"},
     ]
 
-    const onClickCategory = (id: number) => {
-        setSelectedCategory(id);
-    }
-
     return (
         <div className="categories">
             <ul>
                 {categories.map((category) => (
                     <li key={category.title}
-                        onClick={() => onClickCategory(category.id)}
-                        className={selectedCategory === category.id ? "active" : ""}>
+                        onClick={() => props.onClickCategory(category.id)}
+                        className={props.categoryId === category.id ? "active" : ""}>
                         {category.title}
                     </li>
                 ))}
