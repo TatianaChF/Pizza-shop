@@ -28,7 +28,7 @@ function Home() {
                 setItems(arr);
                 setIsLoading(false);
             });
-    }, [categoryId]);
+    }, [categoryId, sorting]);
 
     return (
         <>
