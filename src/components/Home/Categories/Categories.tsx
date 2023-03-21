@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 
-function Categories() {
+type PropsType = {
+    categoryId: number
+}
+
+function Categories(props: PropsType) {
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const categories = [
         {id: 0, title: "Все"},
