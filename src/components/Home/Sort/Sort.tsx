@@ -1,6 +1,11 @@
 import React, {useState} from "react";
 
-function Sort() {
+type PropsType = {
+    sorting: number,
+    onChangeSorting: (id: number) => void
+}
+
+function Sort(props: PropsType) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [activeList, setActiveList] = useState<number>(0);
     const list = ["популярности", "цене", "алфавиту"];
