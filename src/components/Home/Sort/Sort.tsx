@@ -7,12 +7,11 @@ type PropsType = {
 
 function Sort(props: PropsType) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [activeList, setActiveList] = useState<number>(0);
     const list = ["популярности", "цене", "алфавиту"];
-    const sortTitle = list[activeList];
+    const sortTitle = list[props.sorting];
 
     const chooseListItem = (id: number) => {
-        setActiveList(id);
+        props.onChangeSorting(id);
         setIsOpen(false);
     }
 
@@ -40,7 +39,7 @@ function Sort(props: PropsType) {
                         {
                             list.map((value, id) => (
                                 <li key={value} onClick={() => chooseListItem(id)}
-                                    className={activeList === id ? "active" : ""}>
+                                    className={props.sorting === id ? "active" : ""}>
                                     {value}
                                 </li>
                                 ))
