@@ -2,7 +2,7 @@ import Categories from "./Categories/Categories";
 import Sort from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useEffect, useState} from "react";
+import React, {SetStateAction, useEffect, useState} from "react";
 
 type itemsData = {
     title: string,
@@ -12,15 +12,25 @@ type itemsData = {
     types: Array<number>
 }
 
+export interface SortType {
+    sort: string,
+    name: string
+}
+
 function Home() {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [categoryId, setCategoryId] = useState<number>(0);
-    const [sorting, setSorting] = useState<number>(0);
+    const [sorting, setSorting] = useState<SortType>({
+        sort: "rating",
+        name: "популярности"
+    });
 
     useEffect(() => {
         setIsLoading(true);
-        fetch("https://64145f1f9172235b8692eea8.mockapi.io/items?category=" + categoryId)
+        fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?category=${
+            categoryId > 0 ? categoryId : ""
+        }&sortBy=${sorting.sort}&order=desc`)
             .then((res) => {
                 return res.json();
             })
@@ -34,7 +44,7 @@ function Home() {
         <>
             <div className="content__top">
                 <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
-                <Sort sorting={sorting} onChangeSorting={(id) => setSorting(id)} />
+                <Sort sorting={sorting} onChangeSorting={(value) => setSorting(value)} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
