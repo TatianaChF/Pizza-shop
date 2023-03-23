@@ -1,8 +1,9 @@
 import React, {useState} from "react";
+import {SortType} from "../Home";
 
 type PropsType = {
-    sorting: number,
-    onChangeSorting: (id: number) => void
+    sorting: SortType,
+    onChangeSorting: (value: SortType) => void
 }
 
 function Sort(props: PropsType) {
@@ -12,10 +13,9 @@ function Sort(props: PropsType) {
         { name: "цене", sort: "price" },
         { name: "алфавиту", sort: "title" }
     ];
-    const sortTitle = list[props.sorting];
 
-    const chooseListItem = (id: number) => {
-        props.onChangeSorting(id);
+    const chooseListItem = (value: SortType) => {
+        props.onChangeSorting(value);
         setIsOpen(false);
     }
 
@@ -35,16 +35,16 @@ function Sort(props: PropsType) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setIsOpen(!isOpen)}>{sortTitle}</span>
+                <span onClick={() => setIsOpen(!isOpen)}>{props.sorting.name}</span>
             </div>
             {isOpen && (
                 <div className="sort__popup">
                     <ul>
                         {
                             list.map((value, id) => (
-                                <li key={value} onClick={() => chooseListItem(id)}
-                                    className={props.sorting === id ? "active" : ""}>
-                                    {value}
+                                <li key={value.name} onClick={() => chooseListItem(value)}
+                                    className={value.sort === props.sorting.sort ? "active" : ""}>
+                                    {value.name}
                                 </li>
                                 ))
                         }
