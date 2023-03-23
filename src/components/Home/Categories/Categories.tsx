@@ -6,7 +6,6 @@ type PropsType = {
 }
 
 function Categories(props: PropsType) {
-    const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const categories = [
         {id: 0, title: "Все"},
         {id: 1, title: "Мясные"},
