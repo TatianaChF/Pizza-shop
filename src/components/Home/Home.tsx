@@ -23,14 +23,14 @@ function Home() {
     const [categoryId, setCategoryId] = useState<number>(0);
     const [sorting, setSorting] = useState<SortType>({
         sort: "rating",
-        name: "популярности"
+        name: "популярности (по возрастанию)"
     });
 
     useEffect(() => {
         setIsLoading(true);
         fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?category=${
             categoryId > 0 ? categoryId : ""
-        }&sortBy=${sorting.sort}&order=desc`)
+        }&sortBy=${sorting.sort.replace("-", "")}&order=${sorting.sort.includes("-") ? "asc" : "desc"}`)
             .then((res) => {
                 return res.json();
             })
