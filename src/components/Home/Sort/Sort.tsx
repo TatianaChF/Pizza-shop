@@ -9,9 +9,12 @@ type PropsType = {
 function Sort(props: PropsType) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const list = [
-        { name: "популярности", sort: "rating" },
-        { name: "цене", sort: "price" },
-        { name: "алфавиту", sort: "title" }
+        { name: "популярности (по возрастанию)", sort: "rating" },
+        { name: "популярности (по убыванию)", sort: "-rating" },
+        { name: "цене (по возрастанию)", sort: "price" },
+        { name: "цене (по убыванию)", sort: "-price" },
+        { name: "алфавиту (по возрастанию)", sort: "title" },
+        { name: "алфавиту (по убыванию)", sort: "-title" }
     ];
 
     const chooseListItem = (value: SortType) => {
