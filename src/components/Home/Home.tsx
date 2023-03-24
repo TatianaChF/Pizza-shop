@@ -2,7 +2,7 @@ import Categories from "./Categories/Categories";
 import Sort from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {SetStateAction, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 type itemsData = {
     title: string,

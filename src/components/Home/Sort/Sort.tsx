@@ -44,7 +44,7 @@ function Sort(props: PropsType) {
                 <div className="sort__popup">
                     <ul>
                         {
-                            list.map((value, id) => (
+                            list.map((value) => (
                                 <li key={value.name} onClick={() => chooseListItem(value)}
                                     className={value.sort === props.sorting.sort ? "active" : ""}>
                                     {value.name}
