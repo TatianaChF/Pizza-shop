@@ -1,7 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 
-function Categories() {
-    const [selectedCategory, setSelectedCategory] = useState<number>(0);
+type PropsType = {
+    categoryId: number,
+    onClickCategory: (id: number) => void
+}
+
+function Categories(props: PropsType) {
     const categories = [
         {id: 0, title: "Все"},
         {id: 1, title: "Мясные"},
@@ -11,17 +15,13 @@ function Categories() {
         {id: 5, title: "Закрытые"},
     ]
 
-    const onClickCategory = (id: number) => {
-        setSelectedCategory(id);
-    }
-
     return (
         <div className="categories">
             <ul>
                 {categories.map((category) => (
                     <li key={category.title}
-                        onClick={() => onClickCategory(category.id)}
-                        className={selectedCategory === category.id ? "active" : ""}>
+                        onClick={() => props.onClickCategory(category.id)}
+                        className={props.categoryId === category.id ? "active" : ""}>
                         {category.title}
                     </li>
                 ))}

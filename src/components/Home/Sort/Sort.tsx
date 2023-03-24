@@ -1,13 +1,24 @@
 import React, {useState} from "react";
+import {SortType} from "../Home";
 
-function Sort() {
+type PropsType = {
+    sorting: SortType,
+    onChangeSorting: (value: SortType) => void
+}
+
+function Sort(props: PropsType) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [activeList, setActiveList] = useState<number>(0);
-    const list = ["популярности", "цене", "алфавиту"];
-    const sortTitle = list[activeList];
+    const list = [
+        { name: "популярности (по возрастанию)", sort: "rating" },
+        { name: "популярности (по убыванию)", sort: "-rating" },
+        { name: "цене (по возрастанию)", sort: "price" },
+        { name: "цене (по убыванию)", sort: "-price" },
+        { name: "алфавиту (по возрастанию)", sort: "title" },
+        { name: "алфавиту (по убыванию)", sort: "-title" }
+    ];
 
-    const chooseListItem = (id: number) => {
-        setActiveList(id);
+    const chooseListItem = (value: SortType) => {
+        props.onChangeSorting(value);
         setIsOpen(false);
     }
 
@@ -27,16 +38,16 @@ function Sort() {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setIsOpen(!isOpen)}>{sortTitle}</span>
+                <span onClick={() => setIsOpen(!isOpen)}>{props.sorting.name}</span>
             </div>
             {isOpen && (
                 <div className="sort__popup">
                     <ul>
                         {
-                            list.map((value, id) => (
-                                <li key={value} onClick={() => chooseListItem(id)}
-                                    className={activeList === id ? "active" : ""}>
-                                    {value}
+                            list.map((value) => (
+                                <li key={value.name} onClick={() => chooseListItem(value)}
+                                    className={value.sort === props.sorting.sort ? "active" : ""}>
+                                    {value.name}
                                 </li>
                                 ))
                         }

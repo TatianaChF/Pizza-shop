@@ -12,12 +12,25 @@ type itemsData = {
     types: Array<number>
 }
 
+export interface SortType {
+    sort: string,
+    name: string
+}
+
 function Home() {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [categoryId, setCategoryId] = useState<number>(0);
+    const [sorting, setSorting] = useState<SortType>({
+        sort: "rating",
+        name: "популярности (по возрастанию)"
+    });
 
     useEffect(() => {
-        fetch("https://64145f1f9172235b8692eea8.mockapi.io/items")
+        setIsLoading(true);
+        fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?category=${
+            categoryId > 0 ? categoryId : ""
+        }&sortBy=${sorting.sort.replace("-", "")}&order=${sorting.sort.includes("-") ? "asc" : "desc"}`)
             .then((res) => {
                 return res.json();
             })
@@ -25,13 +38,13 @@ function Home() {
                 setItems(arr);
                 setIsLoading(false);
             });
-    }, []);
+    }, [categoryId, sorting]);
 
     return (
         <>
             <div className="content__top">
-                <Categories />
-                <Sort />
+                <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
+                <Sort sorting={sorting} onChangeSorting={(value) => setSorting(value)} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">

@@ -1,5 +1,4 @@
 import logo from "../../assets/img/pizza-logo.svg";
-import style from "./Header.module.scss";
 import React from "react";
 import {Link} from "react-router-dom";
 function Header() {
