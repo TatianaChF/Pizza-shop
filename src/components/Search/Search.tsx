@@ -2,7 +2,7 @@ import style from "./Search.module.scss";
 function Search() {
     return (
         <div>
-            <input placeholder="Найти пиццу..." />
+            <input className={style.root} placeholder="Найти пиццу..." />
         </div>
     )
 }
