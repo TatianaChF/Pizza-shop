@@ -41,7 +41,7 @@ function Home() {
     }, [categoryId, sorting]);
 
     return (
-        <>
+        <div className="container">
             <div className="content__top">
                 <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
                 <Sort sorting={sorting} onChangeSorting={(value) => setSorting(value)} />
@@ -58,7 +58,7 @@ function Home() {
                                                       types={pizza.types} />)
                 }
             </div>
-        </>
+        </div>
     )
 }
 
