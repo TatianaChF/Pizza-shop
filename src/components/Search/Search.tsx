@@ -3,7 +3,7 @@ import searchIcon from "../../assets/img/search.svg";
 function Search() {
     return (
         <div className={style.root} >
-            <img src={searchIcon} />
+            <img src={searchIcon} className={style.icon} />
             <input className={style.input} placeholder="Найти пиццу..." />
         </div>
     )
