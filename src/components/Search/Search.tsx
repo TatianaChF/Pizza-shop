@@ -1,6 +1,7 @@
 import style from "./Search.module.scss";
 import searchIcon from "../../assets/img/search.svg";
-function Search() {
+import {PropsTypeSearch} from "../Header/Header";
+function Search( props: PropsTypeSearch ) {
     return (
         <div className={style.root} >
             <img src={searchIcon} className={style.icon} />
