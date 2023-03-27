@@ -6,13 +6,15 @@ import closeIcon from "../../assets/img/close.svg";
 function Search( props: PropsTypeSearch ) {
     return (
         <div className={style.root} >
-            <img src={searchIcon} className={style.icon} />
+            <img src={searchIcon} className={style.icon} alt="search" />
             <input
                 value={props.searchValue}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => props.setSearchValue(event.target.value) }
                 className={style.input}
                 placeholder="Найти пиццу..." />
-            <img className={style.clearIcon} src={closeIcon} alt="close" />
+            {props.searchValue && (
+                <img className={style.clearIcon} src={closeIcon} alt="close" />
+            )}
         </div>
     )
 }
