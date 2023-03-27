@@ -2,7 +2,13 @@ import logo from "../../assets/img/pizza-logo.svg";
 import React from "react";
 import {Link} from "react-router-dom";
 import Search from "../Search/Search";
-function Header() {
+
+type PropsType = {
+    searchValue: string,
+    setSearchValue: (value: string) => void
+}
+
+function Header( props: PropsType ) {
     return (
         <div className="header">
             <div className="container">
