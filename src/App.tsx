@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import Header from "./components/Header/Header";
 import './scss/app.scss';
 import Home from "./components/Home/Home";
