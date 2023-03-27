@@ -3,6 +3,7 @@ import Sort from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
 import React, {useEffect, useState} from "react";
+import {PropsTypeSearch} from "../Header/Header";
 
 type itemsData = {
     title: string,
@@ -17,7 +18,7 @@ export interface SortType {
     name: string
 }
 
-function Home() {
+function Home(props: PropsTypeSearch) {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [categoryId, setCategoryId] = useState<number>(0);
