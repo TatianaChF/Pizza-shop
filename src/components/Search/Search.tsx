@@ -13,7 +13,7 @@ function Search( props: PropsTypeSearch ) {
                 className={style.input}
                 placeholder="Найти пиццу..." />
             {props.searchValue && (
-                <img className={style.clearIcon} src={closeIcon} alt="close" />
+                <img onClick={() => props.setSearchValue("")} className={style.clearIcon} src={closeIcon} alt="close" />
             )}
         </div>
     )
