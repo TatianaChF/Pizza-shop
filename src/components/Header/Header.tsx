@@ -3,12 +3,12 @@ import React from "react";
 import {Link} from "react-router-dom";
 import Search from "../Search/Search";
 
-type PropsType = {
+export type PropsTypeSearch = {
     searchValue: string,
     setSearchValue: (value: string) => void
 }
 
-function Header( props: PropsType ) {
+function Header( props: PropsTypeSearch ) {
     return (
         <div className="header">
             <div className="container">
