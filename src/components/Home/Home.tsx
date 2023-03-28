@@ -23,6 +23,7 @@ function Home(props: PropsTypeSearch) {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [categoryId, setCategoryId] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [sorting, setSorting] = useState<SortType>({
         sort: "rating",
         name: "популярности (по возрастанию)"
@@ -30,7 +31,7 @@ function Home(props: PropsTypeSearch) {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?category=${
+        fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${currentPage}&limit=4&category=${
             categoryId > 0 ? categoryId : ""
         }&sortBy=${sorting.sort.replace("-", "")}&order=${sorting.sort.includes("-") ? "asc" : "desc"}`)
             .then((res) => {
@@ -41,7 +42,7 @@ function Home(props: PropsTypeSearch) {
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, [categoryId, sorting]);
+    }, [categoryId, sorting, currentPage]);
 
     const pizzas = items.filter( obj => {
         if (obj.title.toLowerCase().includes(props.searchValue.toLowerCase())) {
@@ -69,7 +70,7 @@ function Home(props: PropsTypeSearch) {
                     isLoading ? skeleton : pizzas
                 }
             </div>
-            <Pagination />
+            <Pagination onChangePage={(number: number) => setCurrentPage(number)} />
         </div>
     )
 }
