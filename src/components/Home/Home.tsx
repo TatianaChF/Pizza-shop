@@ -4,6 +4,7 @@ import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
 import React, {useEffect, useState} from "react";
 import {PropsTypeSearch} from "../Header/Header";
+import ReactPaginate from 'react-paginate';
 
 type itemsData = {
     title: string,
@@ -68,6 +69,14 @@ function Home(props: PropsTypeSearch) {
                     isLoading ? skeleton : pizzas
                 }
             </div>
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel=">"
+                previousLabel="<"
+                onPageChange={event => console.log(event)}
+                pageRangeDisplayed={8}
+                pageCount={3}
+            />
         </div>
     )
 }
