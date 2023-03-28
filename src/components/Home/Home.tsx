@@ -42,6 +42,20 @@ function Home(props: PropsTypeSearch) {
         window.scrollTo(0, 0);
     }, [categoryId, sorting]);
 
+    const pizzas = items.filter( obj => {
+        if (obj.title.toLowerCase().includes(props.searchValue.toLowerCase())) {
+            return true;
+        }
+        
+        return false;
+    }).map(pizza => <Catalog key={pizza.title}
+                                               title={pizza.title}
+                                               price={pizza.price}
+                                               imagePizza={pizza.imageUrl}
+                                               sizes={pizza.sizes}
+                                               types={pizza.types} />);
+    const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
+
     return (
         <div className="container">
             <div className="content__top">
@@ -51,13 +65,7 @@ function Home(props: PropsTypeSearch) {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    isLoading ? [...new Array(6)].map((_, index) => <Placeholder key={index} />)
-                        : items.map(pizza => <Catalog key={pizza.title}
-                                                      title={pizza.title}
-                                                      price={pizza.price}
-                                                      imagePizza={pizza.imageUrl}
-                                                      sizes={pizza.sizes}
-                                                      types={pizza.types} />)
+                    isLoading ? skeleton : pizzas
                 }
             </div>
         </div>
