@@ -3,6 +3,7 @@ import Sort from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
 import React, {useEffect, useState} from "react";
+import {PropsTypeSearch} from "../Header/Header";
 
 type itemsData = {
     title: string,
@@ -17,7 +18,7 @@ export interface SortType {
     name: string
 }
 
-function Home() {
+function Home(props: PropsTypeSearch) {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [categoryId, setCategoryId] = useState<number>(0);
@@ -41,6 +42,20 @@ function Home() {
         window.scrollTo(0, 0);
     }, [categoryId, sorting]);
 
+    const pizzas = items.filter( obj => {
+        if (obj.title.toLowerCase().includes(props.searchValue.toLowerCase())) {
+            return true;
+        }
+        
+        return false;
+    }).map(pizza => <Catalog key={pizza.title}
+                                               title={pizza.title}
+                                               price={pizza.price}
+                                               imagePizza={pizza.imageUrl}
+                                               sizes={pizza.sizes}
+                                               types={pizza.types} />);
+    const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
+
     return (
         <div className="container">
             <div className="content__top">
@@ -50,13 +65,7 @@ function Home() {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    isLoading ? [...new Array(6)].map((_, index) => <Placeholder key={index} />)
-                        : items.map(pizza => <Catalog key={pizza.title}
-                                                      title={pizza.title}
-                                                      price={pizza.price}
-                                                      imagePizza={pizza.imageUrl}
-                                                      sizes={pizza.sizes}
-                                                      types={pizza.types} />)
+                    isLoading ? skeleton : pizzas
                 }
             </div>
         </div>
