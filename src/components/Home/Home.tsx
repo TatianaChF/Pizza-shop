@@ -2,9 +2,9 @@ import Categories from "./Categories/Categories";
 import Sort from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useEffect, useState} from "react";
-import {PropsTypeSearch} from "../Header/Header";
+import React, {useContext, useEffect, useState} from "react";
 import Pagination from "../Pagination/Pagination";
+import {SearchContext} from "../../App";
 
 type itemsData = {
     title: string,
@@ -19,7 +19,7 @@ export interface SortType {
     name: string
 }
 
-function Home(props: PropsTypeSearch) {
+function Home() {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [categoryId, setCategoryId] = useState<number>(0);
@@ -28,6 +28,7 @@ function Home(props: PropsTypeSearch) {
         sort: "rating",
         name: "популярности (по возрастанию)"
     });
+    const {searchValue} = useContext(SearchContext);
 
     useEffect(() => {
         setIsLoading(true);
@@ -45,7 +46,7 @@ function Home(props: PropsTypeSearch) {
     }, [categoryId, sorting, currentPage]);
 
     const pizzas = items.filter( obj => {
-        if (obj.title.toLowerCase().includes(props.searchValue.toLowerCase())) {
+        if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
             return true;
         }
         
