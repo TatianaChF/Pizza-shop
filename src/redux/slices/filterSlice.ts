@@ -1,12 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface CounterState {
-    value: number
+export interface FilterState {
+    categoryID: number,
+    sorting: {
+        sort: string,
+        name: string
+    }
 }
 
-const initialState: CounterState = {
-    value: 0,
+const initialState: FilterState = {
+    categoryID: 0,
+    sorting: {
+        sort: "rating",
+        name: "популярности (по возрастанию)"
+    }
 }
 
 export const filterSlice = createSlice({
