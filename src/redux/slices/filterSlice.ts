@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface FilterState {
-    categoryID: number,
+    categoryId: number,
     sorting: {
         sort: string,
         name: string
@@ -10,7 +10,7 @@ export interface FilterState {
 }
 
 const initialState: FilterState = {
-    categoryID: 0,
+    categoryId: 0,
     sorting: {
         sort: "rating",
         name: "популярности (по возрастанию)"
@@ -22,7 +22,7 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         setCategoryId: (state, action) => {
-            state.categoryID = action.payload
+            state.categoryId = action.payload
         }
     }
 })

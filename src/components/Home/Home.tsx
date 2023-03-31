@@ -5,6 +5,8 @@ import Catalog from "../Catalog/Catalog";
 import React, {useContext, useEffect, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
 
 type itemsData = {
     title: string,
@@ -20,9 +22,10 @@ export interface SortType {
 }
 
 function Home() {
+    const categoryId = useSelector((state: RootState) => state.filter.categoryId)
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [categoryId, setCategoryId] = useState<number>(0);
+    /*const [categoryId, setCategoryId] = useState<number>(0);*/
     const [currentPage, setCurrentPage] = useState(1);
     const [sorting, setSorting] = useState<SortType>({
         sort: "rating",
