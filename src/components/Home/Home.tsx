@@ -5,7 +5,7 @@ import Catalog from "../Catalog/Catalog";
 import React, {useContext, useEffect, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 
 type itemsData = {
@@ -22,6 +22,7 @@ export interface SortType {
 }
 
 function Home() {
+    const dispatch = useDispatch();
     const categoryId = useSelector((state: RootState) => state.filter.categoryId)
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
