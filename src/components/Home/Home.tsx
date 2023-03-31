@@ -7,6 +7,8 @@ import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
+import {Action, AnyAction} from "@reduxjs/toolkit";
+import {setCategoryId} from "../../redux/slices/filterSlice";
 
 type itemsData = {
     title: string,
@@ -26,7 +28,6 @@ function Home() {
     const categoryId = useSelector((state: RootState) => state.filter.categoryId)
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    /*const [categoryId, setCategoryId] = useState<number>(0);*/
     const [currentPage, setCurrentPage] = useState(1);
     const [sorting, setSorting] = useState<SortType>({
         sort: "rating",
@@ -49,6 +50,10 @@ function Home() {
         window.scrollTo(0, 0);
     }, [categoryId, sorting, currentPage]);
 
+    const onChangeCategory = (id: number) => {
+        dispatch(setCategoryId(id));
+    }
+
     const pizzas = items.filter( obj => {
         if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
             return true;
@@ -66,7 +71,7 @@ function Home() {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
+                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} />
                 <Sort sorting={sorting} onChangeSorting={(value) => setSorting(value)} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
