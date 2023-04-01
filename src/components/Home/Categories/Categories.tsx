@@ -1,5 +1,4 @@
 import React from "react";
-import {Action} from "@reduxjs/toolkit";
 
 type PropsType = {
     categoryId: number,
