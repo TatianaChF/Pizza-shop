@@ -7,7 +7,7 @@ import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {setCategoryId, setSorting} from "../../redux/slices/filterSlice";
+import {setCategoryId} from "../../redux/slices/filterSlice";
 
 type itemsData = {
     title: string,
