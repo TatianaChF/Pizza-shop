@@ -8,6 +8,7 @@ import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {setCategoryId} from "../../redux/slices/filterSlice";
+import axios from "axios";
 
 type itemsData = {
     title: string,
@@ -33,14 +34,12 @@ function Home() {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${currentPage}&limit=4&category=${
+        axios
+            .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${currentPage}&limit=4&category=${
             categoryId > 0 ? categoryId : ""
         }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
-            .then((res) => {
-                return res.json();
-            })
-            .then((arr) => {
-                setItems(arr);
+            .then((response) => {
+                setItems(response.data);
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
