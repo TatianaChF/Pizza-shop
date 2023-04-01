@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import {SortType} from "../Home";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../redux/store";
+import {setSorting} from "../../../redux/slices/filterSlice";
 
-type PropsType = {
-    sorting: SortType,
-    onChangeSorting: (value: SortType) => void
-}
-
-function Sort(props: PropsType) {
+function Sort() {
+    const dispatch = useDispatch();
+    const sorting = useSelector((state: RootState) => state.filter.sorting);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const list = [
         { name: "популярности (по возрастанию)", sort: "rating" },
@@ -18,7 +18,7 @@ function Sort(props: PropsType) {
     ];
 
     const chooseListItem = (value: SortType) => {
-        props.onChangeSorting(value);
+        dispatch(setSorting(value));
         setIsOpen(false);
     }
 
@@ -38,7 +38,7 @@ function Sort(props: PropsType) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setIsOpen(!isOpen)}>{props.sorting.name}</span>
+                <span onClick={() => setIsOpen(!isOpen)}>{sorting.name}</span>
             </div>
             {isOpen && (
                 <div className="sort__popup">
@@ -46,7 +46,7 @@ function Sort(props: PropsType) {
                         {
                             list.map((value) => (
                                 <li key={value.name} onClick={() => chooseListItem(value)}
-                                    className={value.sort === props.sorting.sort ? "active" : ""}>
+                                    className={value.sort === sorting.sort ? "active" : ""}>
                                     {value.name}
                                 </li>
                                 ))
