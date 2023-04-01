@@ -5,6 +5,9 @@ import Catalog from "../Catalog/Catalog";
 import React, {useContext, useEffect, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
+import {setCategoryId} from "../../redux/slices/filterSlice";
 
 type itemsData = {
     title: string,
@@ -20,21 +23,19 @@ export interface SortType {
 }
 
 function Home() {
+    const dispatch = useDispatch();
+    const {categoryId, sorting} = useSelector((state: RootState) => state.filter);
+    const sortType = sorting.sort;
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [categoryId, setCategoryId] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [sorting, setSorting] = useState<SortType>({
-        sort: "rating",
-        name: "популярности (по возрастанию)"
-    });
     const {searchValue} = useContext(SearchContext);
 
     useEffect(() => {
         setIsLoading(true);
         fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${currentPage}&limit=4&category=${
             categoryId > 0 ? categoryId : ""
-        }&sortBy=${sorting.sort.replace("-", "")}&order=${sorting.sort.includes("-") ? "asc" : "desc"}`)
+        }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
             .then((res) => {
                 return res.json();
             })
@@ -43,14 +44,16 @@ function Home() {
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, [categoryId, sorting, currentPage]);
+    }, [categoryId, sortType, currentPage]);
+
+    const onChangeCategory = (id: number) => {
+        dispatch(setCategoryId(id));
+    }
 
     const pizzas = items.filter( obj => {
-        if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
-            return true;
-        }
+        return obj.title.toLowerCase().includes(searchValue.toLowerCase());
         
-        return false;
+
     }).map(pizza => <Catalog key={pizza.title}
                                                title={pizza.title}
                                                price={pizza.price}
@@ -62,8 +65,8 @@ function Home() {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories categoryId={categoryId} onClickCategory={(id) => setCategoryId(id)} />
-                <Sort sorting={sorting} onChangeSorting={(value) => setSorting(value)} />
+                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} />
+                <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
