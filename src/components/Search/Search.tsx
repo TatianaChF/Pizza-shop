@@ -7,6 +7,10 @@ import {SearchContext} from "../../App";
 function Search() {
     const {searchValue, setSearchValue} = useContext(SearchContext);
     const inputRef = useRef<HTMLInputElement>(null);
+    const onClickClear = () => {
+        setSearchValue("");
+        if (inputRef.current) inputRef.current.focus();
+    }
 
     return (
         <div className={style.root} >
@@ -18,7 +22,7 @@ function Search() {
                 className={style.input}
                 placeholder="Найти пиццу..." />
             {searchValue && (
-                <img onClick={() => setSearchValue("")} className={style.clearIcon} src={closeIcon} alt="close" />
+                <img onClick={onClickClear} className={style.clearIcon} src={closeIcon} alt="close" />
             )}
         </div>
     )
