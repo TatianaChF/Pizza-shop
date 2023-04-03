@@ -11,8 +11,8 @@ function Search() {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const requestTimer  = useCallback(
-        debounce(() => {
-            console.log("Request");
+        debounce((str) => {
+            setSearchValue(str);
         }, 1000),
         []
     );
@@ -24,8 +24,9 @@ function Search() {
 
     const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
         /*setSearchValue(event.target.value);
-        requestTimer();*/
+        */
         setInputValue(event.target.value);
+        requestTimer(event.target.value);
     }
 
     return (
