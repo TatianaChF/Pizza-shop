@@ -1,11 +1,12 @@
 import style from "./Search.module.scss";
 import searchIcon from "../../assets/img/search.svg";
-import {ChangeEvent, useCallback, useContext, useRef} from "react";
+import {ChangeEvent, useCallback, useContext, useRef, useState} from "react";
 import closeIcon from "../../assets/img/close.svg";
 import {SearchContext} from "../../App";
 import debounce from "lodash.debounce";
 
 function Search() {
+    const [inputValue, setInputValue] = useState("");
     const {searchValue, setSearchValue} = useContext(SearchContext);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,8 +23,9 @@ function Search() {
     }
 
     const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(event.target.value);
-        requestTimer();
+        /*setSearchValue(event.target.value);
+        requestTimer();*/
+        setInputValue(event.target.value);
     }
 
     return (
@@ -31,11 +33,11 @@ function Search() {
             <img src={searchIcon} className={style.icon} alt="search" />
             <input
                 ref={inputRef}
-                value={searchValue}
+                value={inputValue}
                 onChange={ onChangeInput }
                 className={style.input}
                 placeholder="Найти пиццу..." />
-            {searchValue && (
+            {inputValue && (
                 <img onClick={onClickClear} className={style.clearIcon} src={closeIcon} alt="close" />
             )}
         </div>
