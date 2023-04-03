@@ -13,12 +13,13 @@ function Search() {
     const requestTimer  = useCallback(
         debounce((str) => {
             setSearchValue(str);
-        }, 1000),
+        }, 250),
         []
     );
 
     const onClickClear = () => {
         setSearchValue("");
+        setInputValue("");
         if (inputRef.current) inputRef.current.focus();
     }
 
