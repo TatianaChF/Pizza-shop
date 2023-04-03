@@ -7,7 +7,7 @@ import debounce from "lodash.debounce";
 
 function Search() {
     const [inputValue, setInputValue] = useState("");
-    const {searchValue, setSearchValue} = useContext(SearchContext);
+    const { setSearchValue} = useContext(SearchContext);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const requestTimer  = useCallback(
@@ -24,8 +24,6 @@ function Search() {
     }
 
     const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-        /*setSearchValue(event.target.value);
-        */
         setInputValue(event.target.value);
         requestTimer(event.target.value);
     }
