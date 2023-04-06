@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {setCategoryId, setPageCount} from "../../redux/slices/filterSlice";
 import axios from "axios";
+import qs from "qs";
 
 type itemsData = {
     title: string,
@@ -42,6 +43,12 @@ function Home() {
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
+    }, [categoryId, sortType, pageCount]);
+
+    useEffect(() => {
+        const queryString = qs.stringify({
+            categoryId, sortType, pageCount
+        });
     }, [categoryId, sortType, pageCount]);
 
     const onChangeCategory = (id: number) => {
