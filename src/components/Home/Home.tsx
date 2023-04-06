@@ -10,6 +10,7 @@ import {RootState} from "../../redux/store";
 import {setCategoryId, setPageCount} from "../../redux/slices/filterSlice";
 import axios from "axios";
 import qs from "qs";
+import {useNavigate} from "react-router-dom";
 
 type itemsData = {
     title: string,
@@ -25,6 +26,7 @@ export interface SortType {
 }
 
 function Home() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const {categoryId, sorting, pageCount} = useSelector((state: RootState) => state.filter);
     const sortType = sorting.sort;
@@ -49,6 +51,8 @@ function Home() {
         const queryString = qs.stringify({
             categoryId, sortType, pageCount
         });
+
+        navigate(`?${queryString}`);
     }, [categoryId, sortType, pageCount]);
 
     const onChangeCategory = (id: number) => {
