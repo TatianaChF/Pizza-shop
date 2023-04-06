@@ -30,6 +30,11 @@ export const filterSlice = createSlice({
         },
         setPageCount: (state, action) => {
             state.pageCount = action.payload;
+        },
+        setFilters: (state, action) => {
+            state.pageCount = Number(action.payload.pageCount);
+            state.sorting = action.payload.sorting;
+            state.categoryId = Number(action.payload.categoryId);
         }
     }
 })
