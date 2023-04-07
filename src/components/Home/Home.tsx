@@ -1,5 +1,5 @@
 import Categories from "./Categories/Categories";
-import Sort from "./Sort/Sort";
+import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
 import React, {useContext, useEffect, useState} from "react";
@@ -7,7 +7,7 @@ import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {setCategoryId, setPageCount} from "../../redux/slices/filterSlice";
+import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import axios from "axios";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
@@ -54,6 +54,20 @@ function Home() {
 
         navigate(`?${queryString}`);
     }, [categoryId, sortType, pageCount]);
+
+    useEffect(() => {
+        if (window.location.search) {
+            const params = qs.parse(window.location.search.substring(1));
+            const sort = sortList.find(obj => obj.sort === params.sortType);
+
+            dispatch(
+                setFilters({
+                    ...params,
+                    sort
+                })
+            )
+        }
+    }, [])
 
     const onChangeCategory = (id: number) => {
         dispatch(setCategoryId(id));
