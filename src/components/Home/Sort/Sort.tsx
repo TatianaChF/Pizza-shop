@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {SortType} from "../Home";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
@@ -24,7 +24,11 @@ function Sort() {
         setIsOpen(false);
     }
 
-
+    useEffect(() => {
+        document.body.addEventListener("click", event => {
+            console.log(event);
+        })
+    }, [])
 
     return (
         <div ref={sortRef} className="sort">
