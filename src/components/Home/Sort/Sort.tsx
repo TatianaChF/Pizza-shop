@@ -4,18 +4,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 import {setSorting} from "../../../redux/slices/filterSlice";
 
+export const sortList = [
+    { name: "популярности (по возрастанию)", sort: "rating" },
+    { name: "популярности (по убыванию)", sort: "-rating" },
+    { name: "цене (по возрастанию)", sort: "price" },
+    { name: "цене (по убыванию)", sort: "-price" },
+    { name: "алфавиту (по возрастанию)", sort: "title" },
+    { name: "алфавиту (по убыванию)", sort: "-title" }
+];
+
 function Sort() {
     const dispatch = useDispatch();
     const sorting = useSelector((state: RootState) => state.filter.sorting);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const list = [
-        { name: "популярности (по возрастанию)", sort: "rating" },
-        { name: "популярности (по убыванию)", sort: "-rating" },
-        { name: "цене (по возрастанию)", sort: "price" },
-        { name: "цене (по убыванию)", sort: "-price" },
-        { name: "алфавиту (по возрастанию)", sort: "title" },
-        { name: "алфавиту (по убыванию)", sort: "-title" }
-    ];
 
     const chooseListItem = (value: SortType) => {
         dispatch(setSorting(value));
@@ -44,7 +45,7 @@ function Sort() {
                 <div className="sort__popup">
                     <ul>
                         {
-                            list.map((value) => (
+                            sortList.map((value) => (
                                 <li key={value.name} onClick={() => chooseListItem(value)}
                                     className={value.sort === sorting.sort ? "active" : ""}>
                                     {value.name}

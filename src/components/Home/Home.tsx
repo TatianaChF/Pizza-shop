@@ -1,14 +1,16 @@
 import Categories from "./Categories/Categories";
-import Sort from "./Sort/Sort";
+import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {setCategoryId, setPageCount} from "../../redux/slices/filterSlice";
+import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import axios from "axios";
+import qs from "qs";
+import {useNavigate} from "react-router-dom";
 
 type itemsData = {
     title: string,
@@ -24,24 +26,61 @@ export interface SortType {
 }
 
 function Home() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const {categoryId, sorting, pageCount} = useSelector((state: RootState) => state.filter);
     const sortType = sorting.sort;
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const {searchValue} = useContext(SearchContext);
+    const isFetch = useRef(false);
+    const isMounted = useRef(false);
 
-    useEffect(() => {
+    const fetchPizzas  = () => {
         setIsLoading(true);
         axios
             .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
-            categoryId > 0 ? categoryId : ""
-        }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
+                categoryId > 0 ? categoryId : ""
+            }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
             .then((response) => {
                 setItems(response.data);
                 setIsLoading(false);
             });
+    }
+
+    useEffect(() => {
+        if (window.location.search) {
+            const params = qs.parse(window.location.search.substring(1));
+            const sort = sortList.find(obj => obj.sort === params.sortType);
+
+            dispatch(
+                setFilters({
+                    ...params,
+                    sort
+                })
+            );
+            isFetch.current = true;
+        }
+    }, [])
+
+    useEffect(() => {
         window.scrollTo(0, 0);
+
+        if (!isFetch.current) {
+            fetchPizzas();
+        }
+        isFetch.current = false;
+    }, [categoryId, sortType, pageCount]);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const queryString = qs.stringify({
+                categoryId, sortType, pageCount
+            });
+
+            navigate(`?${queryString}`);
+        }
+        isMounted.current = true;
     }, [categoryId, sortType, pageCount]);
 
     const onChangeCategory = (id: number) => {
