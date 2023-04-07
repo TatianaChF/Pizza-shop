@@ -34,6 +34,7 @@ function Home() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const {searchValue} = useContext(SearchContext);
     const isFetch = useRef(false);
+    const isMounted = useRef(false);
 
     const fetchPizzas  = () => {
         setIsLoading(true);
@@ -72,11 +73,14 @@ function Home() {
     }, [categoryId, sortType, pageCount]);
 
     useEffect(() => {
-        const queryString = qs.stringify({
-            categoryId, sortType, pageCount
-        });
+        if (isMounted.current) {
+            const queryString = qs.stringify({
+                categoryId, sortType, pageCount
+            });
 
-        navigate(`?${queryString}`);
+            navigate(`?${queryString}`);
+        }
+        isMounted.current = true;
     }, [categoryId, sortType, pageCount]);
 
     const onChangeCategory = (id: number) => {
