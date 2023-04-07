@@ -17,15 +17,17 @@ function Sort() {
     const dispatch = useDispatch();
     const sorting = useSelector((state: RootState) => state.filter.sorting);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const sortRef = useRef();
+    const sortRef = useRef<HTMLDivElement>(null);
 
     const chooseListItem = (value: SortType) => {
         dispatch(setSorting(value));
         setIsOpen(false);
     }
 
+
+
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
