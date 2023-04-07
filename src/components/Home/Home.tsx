@@ -2,7 +2,7 @@ import Categories from "./Categories/Categories";
 import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
@@ -33,27 +33,19 @@ function Home() {
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const {searchValue} = useContext(SearchContext);
+    const isFetch = useRef(false);
 
-    useEffect(() => {
+    const fetchPizzas  = () => {
         setIsLoading(true);
         axios
             .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
-            categoryId > 0 ? categoryId : ""
-        }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
+                categoryId > 0 ? categoryId : ""
+            }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
             .then((response) => {
                 setItems(response.data);
                 setIsLoading(false);
             });
-        window.scrollTo(0, 0);
-    }, [categoryId, sortType, pageCount]);
-
-    useEffect(() => {
-        const queryString = qs.stringify({
-            categoryId, sortType, pageCount
-        });
-
-        navigate(`?${queryString}`);
-    }, [categoryId, sortType, pageCount]);
+    }
 
     useEffect(() => {
         if (window.location.search) {
@@ -65,9 +57,27 @@ function Home() {
                     ...params,
                     sort
                 })
-            )
+            );
+            isFetch.current = true;
         }
     }, [])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        if (!isFetch.current) {
+            fetchPizzas();
+        }
+        isFetch.current = false;
+    }, [categoryId, sortType, pageCount]);
+
+    useEffect(() => {
+        const queryString = qs.stringify({
+            categoryId, sortType, pageCount
+        });
+
+        navigate(`?${queryString}`);
+    }, [categoryId, sortType, pageCount]);
 
     const onChangeCategory = (id: number) => {
         dispatch(setCategoryId(id));
