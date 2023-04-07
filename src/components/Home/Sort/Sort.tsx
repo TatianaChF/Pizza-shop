@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {SortType} from "../Home";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
@@ -17,6 +17,7 @@ function Sort() {
     const dispatch = useDispatch();
     const sorting = useSelector((state: RootState) => state.filter.sorting);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const sortRef = useRef();
 
     const chooseListItem = (value: SortType) => {
         dispatch(setSorting(value));
