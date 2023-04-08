@@ -28,7 +28,9 @@ export interface SortType {
 function Home() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {categoryId, sorting, pageCount} = useSelector((state: RootState) => state.filter);
+    const {categoryId,
+        sorting,
+        pageCount} = useSelector((state: RootState) => state.filter);
     const sortType = sorting.sort;
     const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
