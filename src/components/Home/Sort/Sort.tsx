@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, RefObject, useEffect, useRef, useState} from "react";
 import {SortType} from "../Home";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
@@ -17,7 +17,7 @@ function Sort() {
     const dispatch = useDispatch();
     const sorting = useSelector((state: RootState) => state.filter.sorting);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const sortRef = useRef<HTMLDivElement>(null);
+    const sortRef = useRef<HTMLDivElement | EventTarget>();
 
     const chooseListItem = (value: SortType) => {
         dispatch(setSorting(value));
@@ -25,13 +25,17 @@ function Sort() {
     }
 
     useEffect(() => {
-        document.body.addEventListener("click", event => {
-            console.log(event);
+        document.body.addEventListener("click", (event) => {
+            const path = event.composedPath && event.composedPath();
+            if (path.includes(sortRef.current as EventTarget)) {
+                console.log("был клик по сортировке!");
+            }
+
         })
     }, [])
 
     return (
-        <div ref={sortRef} className="sort">
+        <div ref={sortRef as RefObject<HTMLDivElement>} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
