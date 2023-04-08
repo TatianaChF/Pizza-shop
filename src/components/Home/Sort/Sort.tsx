@@ -27,12 +27,11 @@ function Sort() {
     useEffect(() => {
         document.body.addEventListener("click", (event) => {
             const path = event.composedPath && event.composedPath();
-            if (path.includes(sortRef.current as EventTarget)) {
-                console.log("был клик по сортировке!");
-            }
-
-        })
-    }, [])
+            if (!path.includes(sortRef.current as EventTarget)) {
+                setIsOpen(false);
+                console.log("click outside");
+        }
+    })}, [])
 
     return (
         <div ref={sortRef as RefObject<HTMLDivElement>} className="sort">
