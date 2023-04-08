@@ -1,4 +1,4 @@
-import React, {ChangeEvent, RefObject, useEffect, useRef, useState} from "react";
+import React, {RefObject, useEffect, useRef, useState} from "react";
 import {SortType} from "../Home";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
