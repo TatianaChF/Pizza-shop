@@ -13,6 +13,7 @@ import qs from "qs";
 import {useNavigate} from "react-router-dom";
 
 type itemsData = {
+    id: number,
     title: string,
     price: number,
     imageUrl: string,
@@ -95,14 +96,13 @@ function Home() {
 
     const pizzas = items.filter( obj => {
         return obj.title.toLowerCase().includes(searchValue.toLowerCase());
-        
-
     }).map(pizza => <Catalog key={pizza.title}
-                                               title={pizza.title}
-                                               price={pizza.price}
-                                               imagePizza={pizza.imageUrl}
-                                               sizes={pizza.sizes}
-                                               types={pizza.types} />);
+                                id={pizza.id}
+                                title={pizza.title}
+                                price={pizza.price}
+                                imagePizza={pizza.imageUrl}
+                                sizes={pizza.sizes}
+                                types={pizza.types} />);
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
 
     return (
