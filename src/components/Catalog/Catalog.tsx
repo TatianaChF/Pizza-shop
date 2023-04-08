@@ -6,6 +6,7 @@ export type PizzaType = {
 }
 
 type PropsType = {
+    id: number,
     title: string,
     price: number,
     imagePizza: string,
@@ -20,6 +21,17 @@ function Catalog(props: PropsType) {
     const typeTitle = ["тонкое", "традиционное"];
     const addPizzaToCart = () => {
         setPizzaCount(pizzaCount + 1);
+    }
+
+    const onClickAddToCart = () => {
+        const product = {
+            id: props.id,
+            title: props.title,
+            price: props.price,
+            imagePizza: props.imagePizza,
+            size: activeSize,
+            type: activeType
+        }
     }
 
     return (
