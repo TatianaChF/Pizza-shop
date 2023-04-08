@@ -1,21 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-export interface FilterState {
-    categoryId: number,
-    pageCount: number,
-    sorting: {
-        sort: string,
-        name: string
-    }
+export interface CartState {
+    totalPrice: number,
+    goods: Array<object>
 }
 
-const initialState: FilterState = {
-    categoryId: 0,
-    pageCount: 1,
-    sorting: {
-        sort: "rating",
-        name: "популярности (по возрастанию)"
-    }
+const initialState: CartState = {
+    totalPrice: 0,
+    goods: []
+
 }
 
 export const cartSlice = createSlice({
@@ -23,7 +16,7 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         setCategoryId: (state, action) => {
-            state.categoryId = action.payload;
+
         }
     }
 })
