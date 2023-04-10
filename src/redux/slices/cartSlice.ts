@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
             }
 
             state.totalPrice = state.products.reduce((sum, obj) => {
-                return obj.price + sum;
+                return (obj.price * obj.count) + sum;
             }, 0)
         },
         removeProduct: (state, action) => {
