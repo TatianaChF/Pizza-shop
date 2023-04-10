@@ -1,5 +1,7 @@
 import React from "react";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addProduct} from "../../redux/slices/cartSlice";
 
 export type PizzaType = {
     title: string
@@ -19,6 +21,7 @@ function Catalog(props: PropsType) {
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
     const typeTitle = ["тонкое", "традиционное"];
+    const dispatch = useDispatch();
     const addPizzaToCart = () => {
         setPizzaCount(pizzaCount + 1);
     }
@@ -31,7 +34,8 @@ function Catalog(props: PropsType) {
             imagePizza: props.imagePizza,
             size: activeSize,
             type: activeType
-        }
+        };
+        dispatch(addProduct(product));
     }
 
     return (
