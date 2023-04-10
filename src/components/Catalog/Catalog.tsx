@@ -73,7 +73,7 @@ function Catalog(props: PropsType) {
                 </div>
                 <div className="pizza-block__bottom">
                     <div className="pizza-block__price">от {props.price} ₽</div>
-                    <button onClick={addPizzaToCart}
+                    <button onClick={onClickAddToCart}
                             className="button button--outline button--add">
                         <svg
                             width="12"
