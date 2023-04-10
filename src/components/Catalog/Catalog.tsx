@@ -1,10 +1,13 @@
 import React from "react";
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addProduct} from "../../redux/slices/cartSlice";
+import {RootState} from "../../redux/store";
 
-export type PizzaType = {
-    title: string
+type Products = {
+    id: number,
+    price: number,
+    count: number
 }
 
 type PropsType = {
@@ -17,14 +20,14 @@ type PropsType = {
 }
 
 function Catalog(props: PropsType) {
+    const cartCount = useSelector((state: RootState) => state.cart.products
+        .find((obj: Products) => obj.id === props.id));
+    const addedCount = cartCount ? cartCount.count : 0;
     const [pizzaCount, setPizzaCount] = useState<number>(0);
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
     const typeTitle = ["тонкое", "традиционное"];
     const dispatch = useDispatch();
-    const addPizzaToCart = () => {
-        setPizzaCount(pizzaCount + 1);
-    }
 
     const onClickAddToCart = () => {
         const product = {
@@ -88,9 +91,7 @@ function Catalog(props: PropsType) {
                             />
                         </svg>
                         <span>Добавить</span>
-                        <i>
-                            {pizzaCount}
-                        </i>
+                        { addedCount > 0 && <i>{addedCount}</i> }
                     </button>
                 </div>
             </div>
