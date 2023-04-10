@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addProduct} from "../../redux/slices/cartSlice";
 import {RootState} from "../../redux/store";
 
-type Products = {
+export type Products = {
     id: number,
     price: number,
     count: number
@@ -23,7 +23,6 @@ function Catalog(props: PropsType) {
     const cartCount = useSelector((state: RootState) => state.cart.products
         .find((obj: Products) => obj.id === props.id));
     const addedCount = cartCount ? cartCount.count : 0;
-    const [pizzaCount, setPizzaCount] = useState<number>(0);
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
     const typeTitle = ["тонкое", "традиционное"];
