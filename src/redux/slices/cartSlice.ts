@@ -4,7 +4,8 @@ export interface CartState {
     totalPrice: number,
     products: Array<{
         id: number,
-        price: number
+        price: number,
+        count: number
     }>
 }
 
@@ -18,8 +19,26 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        addProduct: (state, action) => {
+        /*addProduct: (state, action) => {
             state.products.push(action.payload);
+            state.totalPrice = state.products.reduce((sum, obj) => {
+                return obj.price + sum;
+            }, 0)
+        },*/
+        addProduct: (state, action) => {
+            const findProduct = state.products.find(obj =>
+                obj.id === action.payload.id
+            );
+
+            if (findProduct) {
+                findProduct.count++;
+            } else {
+                state.products.push({
+                    ...action.payload,
+                    count: 1
+                });
+            }
+
             state.totalPrice = state.products.reduce((sum, obj) => {
                 return obj.price + sum;
             }, 0)
