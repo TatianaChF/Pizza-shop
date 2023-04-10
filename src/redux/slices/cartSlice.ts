@@ -10,10 +10,7 @@ export interface CartState {
 
 const initialState: CartState = {
     totalPrice: 0,
-    products: [{
-        id: 0,
-        price: 0
-    }]
+    products: []
 
 }
 
