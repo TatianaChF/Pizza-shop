@@ -2,8 +2,11 @@ import React from "react";
 
 type PropsType = {
     id: number,
+    title: string,
+    imagePizza: string,
     price: number,
-    count: number
+    count: number,
+    type: string
 }
 
 function CartProduct(props: PropsType) {
@@ -12,13 +15,13 @@ function CartProduct(props: PropsType) {
             <div className="cart__item-img">
                 <img
                     className="pizza-block__image"
-                    src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                    src={props.imagePizza}
                     alt="Pizza"
                 />
             </div>
             <div className="cart__item-info">
-                <h3>Сырный цыпленок</h3>
-                <p>тонкое тесто, 26 см.</p>
+                <h3>{props.title}</h3>
+                <p>{props.type}, 26 см.</p>
             </div>
             <div className="cart__item-count">
                 <div className="button button--outline button--circle cart__item-count-minus">
@@ -33,7 +36,7 @@ function CartProduct(props: PropsType) {
                     </svg>
 
                 </div>
-                <b>2</b>
+                <b>{props.count}</b>
                 <div className="button button--outline button--circle cart__item-count-plus">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
