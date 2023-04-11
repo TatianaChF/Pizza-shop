@@ -7,6 +7,9 @@ import CartProduct from "./CartProduct";
 function Cart() {
     const dispatch = useDispatch();
     const products = useSelector((state: RootState) => state.cart.products);
+    const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
+    const totalCount = products
+        .reduce((sum, product) => sum + product.count, 0);
 
     return (
         <div className="container container--cart">
@@ -44,13 +47,13 @@ function Cart() {
                 </div>
                 <div className="content__items">
                     {products.map((product) => (
-                        <CartProduct key={product.id} id={product.id} price={product.price} count={product.count} />
+                        <CartProduct key={product.id} {...product} />
                     ))}
                 </div>
                 <div className="cart__bottom">
                     <div className="cart__bottom-details">
-                        <span> Всего пицц: <b>3 шт.</b> </span>
-                        <span> Сумма заказа: <b>900 ₽</b> </span>
+                        <span> Всего пицц: <b>{totalCount} шт.</b> </span>
+                        <span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
                     </div>
                     <div className="cart__bottom-buttons">
                         <Link to="/" className="button button--outline button--add go-back-btn">
