@@ -19,13 +19,14 @@ type PropsType = {
     types: Array<number>
 }
 
+const typeTitle = ["тонкое", "традиционное"];
+
 function Catalog(props: PropsType) {
     const cartCount = useSelector((state: RootState) => state.cart.products
         .find((obj: Products) => obj.id === props.id));
     const addedCount = cartCount ? cartCount.count : 0;
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
-    const typeTitle = ["тонкое", "традиционное"];
     const dispatch = useDispatch();
 
     const onClickAddToCart = () => {
@@ -35,7 +36,7 @@ function Catalog(props: PropsType) {
             price: props.price,
             imagePizza: props.imagePizza,
             size: activeSize,
-            type: activeType
+            type: typeTitle[activeType]
         };
         dispatch(addProduct(product));
     }
