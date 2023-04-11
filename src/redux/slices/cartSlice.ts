@@ -4,8 +4,11 @@ export interface CartState {
     totalPrice: number,
     products: Array<{
         id: number,
+        title: string,
+        imagePizza: string,
         price: number,
-        count: number
+        count: number,
+        type: string
     }>
 }
 
