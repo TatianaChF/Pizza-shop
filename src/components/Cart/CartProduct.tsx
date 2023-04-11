@@ -1,4 +1,6 @@
 import React from "react";
+import {useDispatch} from "react-redux";
+import {addProduct} from "../../redux/slices/cartSlice";
 
 type PropsType = {
     id: number,
@@ -10,6 +12,12 @@ type PropsType = {
 }
 
 function CartProduct(props: PropsType) {
+    const dispatch = useDispatch();
+
+    const onClickPlus = () => {
+        dispatch(addProduct(props.id));
+    }
+
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -37,7 +45,7 @@ function CartProduct(props: PropsType) {
 
                 </div>
                 <b>{props.count}</b>
-                <div className="button button--outline button--circle cart__item-count-plus">
+                <div onClick={onClickPlus} className="button button--outline button--circle cart__item-count-plus">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
