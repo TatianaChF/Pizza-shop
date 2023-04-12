@@ -23,7 +23,6 @@ function CartProduct(props: PropsType) {
     }
 
     const onClickPlus = () => {
-        debugger
         dispatch(addProduct(pizza));
     }
 
