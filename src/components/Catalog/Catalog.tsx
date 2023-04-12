@@ -35,7 +35,7 @@ function Catalog(props: PropsType) {
             title: props.title,
             price: props.price,
             imagePizza: props.imagePizza,
-            size: activeSize,
+            size: props.sizes[activeSize],
             type: typeTitle[activeType]
         };
         dispatch(addProduct(product));
