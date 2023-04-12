@@ -8,6 +8,7 @@ export interface CartState {
         imagePizza: string,
         price: number,
         count: number,
+        size: string,
         type: string
     }>
 }
