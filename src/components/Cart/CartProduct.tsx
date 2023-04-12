@@ -30,6 +30,12 @@ function CartProduct(props: PropsType) {
         dispatch(minusProduct(pizza));
     }
 
+    const onClickRemove = () => {
+        if (window.confirm("Вы действительно хотите удалить товар?")) {
+            dispatch(removeProduct(props.id));
+        }
+    }
+
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -74,7 +80,7 @@ function CartProduct(props: PropsType) {
                 <b>{props.price * props.count} ₽</b>
             </div>
             <div className="cart__item-remove">
-                <div className="button button--outline button--circle">
+                <div onClick={onClickRemove} className="button button--outline button--circle">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
