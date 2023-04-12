@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import CartProduct from "./CartProduct";
+import {clearProducts} from "../../redux/slices/cartSlice";
 
 function Cart() {
     const dispatch = useDispatch();
@@ -10,6 +11,13 @@ function Cart() {
     const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
     const totalCount = products
         .reduce((sum, product) => sum + product.count, 0);
+
+    const onClickClear = () => {
+        if (window.confirm("Очистить корзину?")) {
+            dispatch(clearProducts(products));
+        }
+    }
+
 
     return (
         <div className="container container--cart">
@@ -29,7 +37,7 @@ function Cart() {
                         </svg>
                         Корзина
                     </h2>
-                    <div className="cart__clear">
+                    <div onClick={onClickClear} className="cart__clear">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.5 5H4.16667H17.5" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round"
                                   strokeLinejoin="round"/>
