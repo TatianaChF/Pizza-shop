@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {addProduct} from "../../redux/slices/cartSlice";
+import {addProduct, minusProduct, removeProduct} from "../../redux/slices/cartSlice";
 
 type PropsType = {
     id: number,
@@ -26,6 +26,10 @@ function CartProduct(props: PropsType) {
         dispatch(addProduct(pizza));
     }
 
+    const onClickMinus = () => {
+        dispatch(minusProduct(pizza));
+    }
+
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -40,7 +44,7 @@ function CartProduct(props: PropsType) {
                 <p>{props.type}, 26 см.</p>
             </div>
             <div className="cart__item-count">
-                <div className="button button--outline button--circle cart__item-count-minus">
+                <div onClick={onClickMinus} className="button button--outline button--circle cart__item-count-minus">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
