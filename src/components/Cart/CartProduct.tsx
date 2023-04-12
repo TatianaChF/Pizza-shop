@@ -8,6 +8,7 @@ type PropsType = {
     imagePizza: string,
     price: number,
     count: number,
+    size: string,
     type: string
 }
 
@@ -47,7 +48,7 @@ function CartProduct(props: PropsType) {
             </div>
             <div className="cart__item-info">
                 <h3>{props.title}</h3>
-                <p>{props.type}, 26 см.</p>
+                <p>{props.type}, {props.size} см.</p>
             </div>
             <div className="cart__item-count">
                 <div onClick={onClickMinus} className="button button--outline button--circle cart__item-count-minus">
