@@ -13,9 +13,18 @@ type PropsType = {
 
 function CartProduct(props: PropsType) {
     const dispatch = useDispatch();
+    const pizza = {
+        id: props.id,
+        title: props.title,
+        imagePizza: props.imagePizza,
+        price: props.price,
+        count: props.count,
+        type: props.type
+    }
 
     const onClickPlus = () => {
-        dispatch(addProduct(props.id));
+        debugger
+        dispatch(addProduct(pizza));
     }
 
     return (
