@@ -1,11 +1,17 @@
 import React from "react";
 import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {addProduct} from "../../redux/slices/cartSlice";
+import {RootState} from "../../redux/store";
 
-export type PizzaType = {
-    title: string
+export type Products = {
+    id: number,
+    price: number,
+    count: number
 }
 
 type PropsType = {
+    id: number,
     title: string,
     price: number,
     imagePizza: string,
@@ -13,13 +19,26 @@ type PropsType = {
     types: Array<number>
 }
 
+const typeTitle = ["тонкое", "традиционное"];
+
 function Catalog(props: PropsType) {
-    const [pizzaCount, setPizzaCount] = useState<number>(0);
+    const cartCount = useSelector((state: RootState) => state.cart.products
+        .find((obj: Products) => obj.id === props.id));
+    const addedCount = cartCount ? cartCount.count : 0;
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
-    const typeTitle = ["тонкое", "традиционное"];
-    const addPizzaToCart = () => {
-        setPizzaCount(pizzaCount + 1);
+    const dispatch = useDispatch();
+
+    const onClickAddToCart = () => {
+        const product = {
+            id: props.id,
+            title: props.title,
+            price: props.price,
+            imagePizza: props.imagePizza,
+            size: props.sizes[activeSize],
+            type: typeTitle[activeType]
+        };
+        dispatch(addProduct(product));
     }
 
     return (
@@ -57,7 +76,7 @@ function Catalog(props: PropsType) {
                 </div>
                 <div className="pizza-block__bottom">
                     <div className="pizza-block__price">от {props.price} ₽</div>
-                    <button onClick={addPizzaToCart}
+                    <button onClick={onClickAddToCart}
                             className="button button--outline button--add">
                         <svg
                             width="12"
@@ -72,9 +91,7 @@ function Catalog(props: PropsType) {
                             />
                         </svg>
                         <span>Добавить</span>
-                        <i>
-                            {pizzaCount}
-                        </i>
+                        { addedCount > 0 && <i>{addedCount}</i> }
                     </button>
                 </div>
             </div>
