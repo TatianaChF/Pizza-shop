@@ -51,7 +51,7 @@ function Home() {
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
-            console.log("ERROR", error)
+            alert("Ошибка при получении пицц :(");
         }
     }
 
