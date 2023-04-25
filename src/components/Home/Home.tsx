@@ -48,10 +48,10 @@ function Home() {
                     categoryId > 0 ? categoryId : ""
                 }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`);
             setItems(response.data);
-            setIsLoading(false);
         } catch (error) {
-            setIsLoading(false);
             alert("Ошибка при получении пицц :(");
+        } finally {
+            setIsLoading(false);
         }
     }
 
