@@ -39,9 +39,9 @@ function Home() {
     const isFetch = useRef(false);
     const isMounted = useRef(false);
 
-    const fetchPizzas  = () => {
+    const fetchPizzas  = async () => {
         setIsLoading(true);
-        axios
+        await axios
             .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
                 categoryId > 0 ? categoryId : ""
             }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`)
