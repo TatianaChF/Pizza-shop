@@ -41,12 +41,18 @@ function Home() {
 
     const fetchPizzas  = async () => {
         setIsLoading(true);
-        const response = await axios
-            .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
-            categoryId > 0 ? categoryId : ""
-        }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`);
-        setItems(response.data);
-        setIsLoading(false);
+
+        try {
+            const response = await axios
+                .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
+                    categoryId > 0 ? categoryId : ""
+                }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`);
+            setItems(response.data);
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+            console.log("ERROR", error)
+        }
     }
 
     useEffect(() => {
