@@ -7,19 +7,11 @@ import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
+import {FilterState, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import axios from "axios";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
-
-type itemsData = {
-    id: number,
-    title: string,
-    price: number,
-    imageUrl: string,
-    sizes: Array<number>,
-    types: Array<number>
-}
+import {itemsData, PizzasState, setItems} from "../../redux/slices/pizzasSlice";
 
 export interface SortType {
     sort: string,
@@ -32,8 +24,8 @@ function Home() {
     const {categoryId,
         sorting,
         pageCount} = useSelector((state: RootState) => state.filter);
+    const items = useSelector((state: RootState) => state.pizzas.items)
     const sortType = sorting.sort;
-    const [items, setItems] = useState<Array<itemsData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const {searchValue} = useContext(SearchContext);
     const isFetch = useRef(false);
@@ -43,11 +35,11 @@ function Home() {
         setIsLoading(true);
 
         try {
-            const response = await axios
+            const { data } = await axios
                 .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
                     categoryId > 0 ? categoryId : ""
                 }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`);
-            setItems(response.data);
+            dispatch(setItems(data));
         } catch (error) {
             alert("Ошибка при получении пицц :(");
         } finally {
@@ -98,9 +90,9 @@ function Home() {
         dispatch(setPageCount(page));
     }
 
-    const pizzas = items.filter( obj => {
+    const pizzas = (items as any).filter( (obj: { title: string; }) => {
         return obj.title.toLowerCase().includes(searchValue.toLowerCase());
-    }).map(pizza => <Catalog key={pizza.title}
+    }).map((pizza: itemsData) => <Catalog key={pizza.title}
                                 id={pizza.id}
                                 title={pizza.title}
                                 price={pizza.price}
