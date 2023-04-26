@@ -1,11 +1,27 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+export type itemsData  = {
+    id: number,
+    title: string,
+    price: number,
+    imageUrl: string,
+    sizes: Array<number>,
+    types: Array<number>
+}
+
 export interface PizzasState {
-    items: Array<string>
+    items: Array<itemsData>
 }
 
 const initialState: PizzasState = {
-    items: []
+    items: [{
+        id: 0,
+        title: "",
+        price: 0,
+        imageUrl: "",
+        sizes: [],
+        types: []
+    }]
 }
 
 export const pizzasSlice = createSlice({
@@ -13,7 +29,7 @@ export const pizzasSlice = createSlice({
     initialState,
     reducers: {
         setItems: (state, action) => {
-            state.items = action.payload.items;
+            state.items = action.payload;
         }
     }
 })
