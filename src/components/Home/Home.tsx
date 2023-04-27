@@ -6,12 +6,12 @@ import React, {useContext, useEffect, useRef, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
+import {RootState, store, useAppDispatch} from "../../redux/store";
 import {FilterState, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import axios from "axios";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
-import {itemsData, PizzasState, setItems} from "../../redux/slices/pizzasSlice";
+import {itemsData, fetchPizzasData} from "../../redux/slices/pizzasSlice";
 
 export interface SortType {
     sort: string,
@@ -20,7 +20,7 @@ export interface SortType {
 
 function Home() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {categoryId,
         sorting,
         pageCount} = useSelector((state: RootState) => state.filter);
@@ -35,11 +35,9 @@ function Home() {
         setIsLoading(true);
 
         try {
-            const { data } = await axios
-                .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
-                    categoryId > 0 ? categoryId : ""
-                }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`);
-            dispatch(setItems(data));
+            dispatch(fetchPizzasData(
+                {pageCount, categoryId, sortType}
+            ));
         } catch (error) {
             alert("Ошибка при получении пицц :(");
         } finally {
