@@ -24,15 +24,13 @@ function Home() {
     const {categoryId,
         sorting,
         pageCount} = useSelector((state: RootState) => state.filter);
-    const items = useSelector((state: RootState) => state.pizzas.items)
+    const { items, status } = useSelector((state: RootState) => state.pizzas);
     const sortType = sorting.sort;
-    const [isLoading, setIsLoading] = useState<boolean>(true);
     const {searchValue} = useContext(SearchContext);
     const isFetch = useRef(false);
     const isMounted = useRef(false);
 
     const fetchPizzas  = async () => {
-        setIsLoading(true);
 
         try {
             dispatch(fetchPizzasData(
@@ -40,8 +38,6 @@ function Home() {
             ));
         } catch (error) {
             alert("Ошибка при получении пицц :(");
-        } finally {
-            setIsLoading(false);
         }
     }
 
@@ -108,7 +104,7 @@ function Home() {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    isLoading ? skeleton : pizzas
+                    status === "loading" ? skeleton : pizzas
                 }
             </div>
             <Pagination pageCount={pageCount} onChangePage={onChangePage} />
