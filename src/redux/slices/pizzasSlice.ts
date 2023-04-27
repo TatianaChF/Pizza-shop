@@ -17,7 +17,8 @@ type ParamsType = {
 }
 
 export interface PizzasState {
-    items: Array<itemsData>
+    items: Array<itemsData>,
+    status: string
 }
 
 const initialState: PizzasState = {
@@ -28,7 +29,8 @@ const initialState: PizzasState = {
         imageUrl: "",
         sizes: [],
         types: []
-    }]
+    }],
+    status: ""
 }
 
 export const fetchPizzasData = createAsyncThunk(
@@ -51,7 +53,21 @@ export const pizzasSlice = createSlice({
     reducers: {
         setItems: (state, action) => {
             state.items = action.payload;
-        }
+        },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchPizzasData.fulfilled, (state, action) => {
+            state.items = action.payload;
+            state.status = "loaded";
+        })
+            .addCase(fetchPizzasData.pending, (state, action) => {
+                state.items = [];
+                state.status = "loading";
+            })
+            .addCase(fetchPizzasData.rejected, (state, action) => {
+                state.items = [];
+                state.status = "error";
+            })
     }
 })
 
