@@ -2,24 +2,15 @@ import Categories from "./Categories/Categories";
 import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
+import {useSelector} from "react-redux";
+import {RootState, useAppDispatch} from "../../redux/store";
 import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
-import axios from "axios";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
-
-type itemsData = {
-    id: number,
-    title: string,
-    price: number,
-    imageUrl: string,
-    sizes: Array<number>,
-    types: Array<number>
-}
+import {itemsData, fetchPizzasData} from "../../redux/slices/pizzasSlice";
 
 export interface SortType {
     sort: string,
@@ -28,30 +19,24 @@ export interface SortType {
 
 function Home() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {categoryId,
         sorting,
         pageCount} = useSelector((state: RootState) => state.filter);
+    const { items, status } = useSelector((state: RootState) => state.pizzas);
     const sortType = sorting.sort;
-    const [items, setItems] = useState<Array<itemsData>>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
     const {searchValue} = useContext(SearchContext);
     const isFetch = useRef(false);
     const isMounted = useRef(false);
 
     const fetchPizzas  = async () => {
-        setIsLoading(true);
 
         try {
-            const response = await axios
-                .get(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${
-                    categoryId > 0 ? categoryId : ""
-                }&sortBy=${sortType.replace("-", "")}&order=${sortType.includes("-") ? "asc" : "desc"}`);
-            setItems(response.data);
+            dispatch(fetchPizzasData(
+                {pageCount, categoryId, sortType}
+            ));
         } catch (error) {
             alert("Ошибка при получении пицц :(");
-        } finally {
-            setIsLoading(false);
         }
     }
 
@@ -98,9 +83,9 @@ function Home() {
         dispatch(setPageCount(page));
     }
 
-    const pizzas = items.filter( obj => {
+    const pizzas = (items as any).filter( (obj: { title: string; }) => {
         return obj.title.toLowerCase().includes(searchValue.toLowerCase());
-    }).map(pizza => <Catalog key={pizza.title}
+    }).map((pizza: itemsData) => <Catalog key={pizza.title}
                                 id={pizza.id}
                                 title={pizza.title}
                                 price={pizza.price}
@@ -116,11 +101,20 @@ function Home() {
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
-            <div className="content__items">
-                {
-                    isLoading ? skeleton : pizzas
-                }
-            </div>
+            {
+                status === "error" ? (
+                    <div className="content__error-info">
+                        <h2>Произошла ошибка</h2>
+                        <p>К сожалению, не удалось получить пиццы. Пожалуйста, повторите попытку позже.</p>
+                    </div>
+                ) : (
+                    <div className="content__items">
+                        {
+                            status === "loading" ? skeleton : pizzas
+                        }
+                    </div>
+                )
+            }
             <Pagination pageCount={pageCount} onChangePage={onChangePage} />
         </div>
     )
