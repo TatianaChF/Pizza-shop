@@ -102,11 +102,20 @@ function Home() {
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
-            <div className="content__items">
-                {
-                    status === "loading" ? skeleton : pizzas
-                }
-            </div>
+            {
+                status === "error" ? (
+                    <div>
+                        <h2>Произошла ошибка</h2>
+                        <p>К сожалению, не удалось получить пиццы. Пожалуйста, повторите попытку позже.</p>
+                    </div>
+                ) : (
+                    <div className="content__items">
+                        {
+                            status === "loading" ? skeleton : pizzas
+                        }
+                    </div>
+                )
+            }
             <Pagination pageCount={pageCount} onChangePage={onChangePage} />
         </div>
     )
