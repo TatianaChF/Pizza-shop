@@ -60,6 +60,8 @@ export const cartSlice = createSlice({
     }
 })
 
+export const cartSelector = (state: any) => state.cart;
+
 export const { addProduct,
     minusProduct,
     removeProduct,
