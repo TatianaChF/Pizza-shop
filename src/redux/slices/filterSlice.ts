@@ -7,7 +7,8 @@ export interface FilterState {
     sorting: {
         sort: string,
         name: string
-    }
+    },
+    searchValue: string
 }
 
 const initialState: FilterState = {
@@ -16,7 +17,8 @@ const initialState: FilterState = {
     sorting: {
         sort: "rating",
         name: "популярности (по возрастанию)"
-    }
+    },
+    searchValue: ""
 }
 export const filterSlice = createSlice({
     name: 'filters',
