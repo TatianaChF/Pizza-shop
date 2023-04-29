@@ -1,6 +1,6 @@
-import {AnyAction, createSlice} from "@reduxjs/toolkit";
-import {Reducer} from "react";
+import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../store";
+import {Products} from "../../components/Catalog/Catalog";
 
 export interface CartState {
     totalPrice: number,
@@ -63,6 +63,8 @@ export const cartSlice = createSlice({
 })
 
 export const cartSelector = (state: RootState) => state.cart;
+export const cartProductsSelectorById = (id: number, state: RootState) => state.cart.products
+    .find((obj: Products) => obj.id === id);
 
 export const { addProduct,
     minusProduct,
