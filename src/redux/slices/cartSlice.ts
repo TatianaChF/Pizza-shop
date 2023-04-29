@@ -1,4 +1,6 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {AnyAction, createSlice} from "@reduxjs/toolkit";
+import {Reducer} from "react";
+import {RootState} from "../store";
 
 export interface CartState {
     totalPrice: number,
@@ -60,7 +62,7 @@ export const cartSlice = createSlice({
     }
 })
 
-export const cartSelector = (state: any) => state.cart;
+export const cartSelector = (state: RootState) => state.cart;
 
 export const { addProduct,
     minusProduct,
