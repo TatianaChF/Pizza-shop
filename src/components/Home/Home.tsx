@@ -7,7 +7,7 @@ import Pagination from "../Pagination/Pagination";
 import {SearchContext} from "../../App";
 import {useSelector} from "react-redux";
 import {RootState, useAppDispatch} from "../../redux/store";
-import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
+import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
 import {itemsData, fetchPizzasData} from "../../redux/slices/pizzasSlice";
@@ -22,7 +22,7 @@ function Home() {
     const dispatch = useAppDispatch();
     const {categoryId,
         sorting,
-        pageCount} = useSelector((state: RootState) => state.filter);
+        pageCount} = useSelector(filterSelector);
     const { items, status } = useSelector((state: RootState) => state.pizzas);
     const sortType = sorting.sort;
     const {searchValue} = useContext(SearchContext);
