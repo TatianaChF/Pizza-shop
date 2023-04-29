@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import {RootState} from "../store";
 
 export interface FilterState {
     categoryId: number,
@@ -17,7 +18,6 @@ const initialState: FilterState = {
         name: "популярности (по возрастанию)"
     }
 }
-
 export const filterSlice = createSlice({
     name: 'filters',
     initialState,
@@ -38,6 +38,7 @@ export const filterSlice = createSlice({
         }
     }
 })
+export const filterSelector = (state: RootState) => state.filter;
 
 export const { setCategoryId,
     setSorting,
