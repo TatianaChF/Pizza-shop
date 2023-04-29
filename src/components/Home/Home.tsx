@@ -2,11 +2,10 @@ import Categories from "./Categories/Categories";
 import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useContext, useEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import Pagination from "../Pagination/Pagination";
-import {SearchContext} from "../../App";
 import {useSelector} from "react-redux";
-import {RootState, useAppDispatch} from "../../redux/store";
+import {useAppDispatch} from "../../redux/store";
 import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
@@ -22,10 +21,10 @@ function Home() {
     const dispatch = useAppDispatch();
     const {categoryId,
         sorting,
-        pageCount} = useSelector(filterSelector);
+        pageCount,
+        searchValue} = useSelector(filterSelector);
     const { items, status } = useSelector(pizzasSelector);
     const sortType = sorting.sort;
-    const {searchValue} = useContext(SearchContext);
     const isFetch = useRef(false);
     const isMounted = useRef(false);
 
