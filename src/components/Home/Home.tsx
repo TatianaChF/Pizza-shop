@@ -10,7 +10,7 @@ import {RootState, useAppDispatch} from "../../redux/store";
 import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
-import {itemsData, fetchPizzasData} from "../../redux/slices/pizzasSlice";
+import {itemsData, fetchPizzasData, pizzasSelector} from "../../redux/slices/pizzasSlice";
 
 export interface SortType {
     sort: string,
@@ -23,7 +23,7 @@ function Home() {
     const {categoryId,
         sorting,
         pageCount} = useSelector(filterSelector);
-    const { items, status } = useSelector((state: RootState) => state.pizzas);
+    const { items, status } = useSelector(pizzasSelector);
     const sortType = sorting.sort;
     const {searchValue} = useContext(SearchContext);
     const isFetch = useRef(false);
