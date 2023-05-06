@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store";
 import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import qs from "qs";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {itemsData, fetchPizzasData, pizzasSelector} from "../../redux/slices/pizzasSlice";
 
 export interface SortType {
@@ -29,7 +29,6 @@ function Home() {
     const isMounted = useRef(false);
 
     const fetchPizzas  = async () => {
-
         try {
             dispatch(fetchPizzasData(
                 {pageCount, categoryId, sortType}
@@ -84,13 +83,13 @@ function Home() {
 
     const pizzas = (items as any).filter( (obj: { title: string; }) => {
         return obj.title.toLowerCase().includes(searchValue.toLowerCase());
-    }).map((pizza: itemsData) => <Catalog key={pizza.title}
+    }).map((pizza: itemsData) => <Link key={pizza.title} to={`/pizza/${pizza.id}`}> <Catalog
                                 id={pizza.id}
                                 title={pizza.title}
                                 price={pizza.price}
                                 imagePizza={pizza.imageUrl}
                                 sizes={pizza.sizes}
-                                types={pizza.types} />);
+                                types={pizza.types} /> </Link>);
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
 
     return (
