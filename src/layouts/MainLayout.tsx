@@ -1,15 +1,14 @@
 import Header from "../components/Header/Header";
 import React from "react";
+import {Outlet} from "react-router-dom";
 
-type ChildrenElement = {
-    children: any
-}
-
-function MainLayout( { children }: ChildrenElement ) {
+function MainLayout() {
     return (
         <div className="wrapper">
             <Header/>
-            <div className="content">{children}</div>
+            <div className="content">
+                <Outlet />
+            </div>
         </div>
     )
 }
