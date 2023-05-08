@@ -9,16 +9,13 @@ import Pizza from "./components/Catalog/Pizza/Pizza";
 
 function App() {
     return (
-        <div className="wrapper">
-            <Header/>
-            <div className="content">
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/cart" element={<Cart/>}/>
-                    <Route path="/pizza/:id" element={<Pizza />}/>
-                    <Route path="*" element={<NotFound/>}/>
-                </Routes>
-            </div>
+        <div className="content">
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/cart" element={<Cart/>}/>
+                <Route path="/pizza/:id" element={<Pizza/>}/>
+                <Route path="*" element={<NotFound/>}/>
+            </Routes>
         </div>
     );
 }
