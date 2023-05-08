@@ -32,11 +32,12 @@ function Pizza() {
     }
 
     return (
-        <div>
+        <div className="content__info-pizza">
             <img src={pizza.imageUrl} />
-            <h2>{pizza.title}</h2>
-            <p></p>
-            <h4>{pizza.price} ₽</h4>
+            <div>
+                <h2>{pizza.title}</h2>
+                <h4>{pizza.price} ₽</h4>
+            </div>
         </div>
     )
 }
