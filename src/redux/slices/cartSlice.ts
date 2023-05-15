@@ -66,9 +66,11 @@ export const cartSelector = (state: RootState) => state.cart;
 export const cartProductsSelectorById = (id: number, state: RootState) => state.cart.products
     .find((obj: Products) => obj.id === id);
 
-export const { addProduct,
+export const {
+    addProduct,
     minusProduct,
     removeProduct,
-    clearProducts} = cartSlice.actions
+    clearProducts
+} = cartSlice.actions
 
 export default cartSlice.reducer

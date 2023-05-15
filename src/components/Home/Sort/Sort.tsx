@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {filterSortingSelector, setSorting} from "../../../redux/slices/filterSlice";
 
 export const sortList = [
-    { name: "популярности (по возрастанию)", sort: "rating" },
-    { name: "популярности (по убыванию)", sort: "-rating" },
-    { name: "цене (по возрастанию)", sort: "price" },
-    { name: "цене (по убыванию)", sort: "-price" },
-    { name: "алфавиту (по возрастанию)", sort: "title" },
-    { name: "алфавиту (по убыванию)", sort: "-title" }
+    {name: "популярности (по возрастанию)", sort: "rating"},
+    {name: "популярности (по убыванию)", sort: "-rating"},
+    {name: "цене (по возрастанию)", sort: "price"},
+    {name: "цене (по убыванию)", sort: "-price"},
+    {name: "алфавиту (по возрастанию)", sort: "title"},
+    {name: "алфавиту (по убыванию)", sort: "-title"}
 ];
 
 function Sort() {
@@ -25,12 +25,12 @@ function Sort() {
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-                     const path = event.composedPath && event.composedPath();
-                     if (!path.includes(sortRef.current as EventTarget)) {
-                         setIsOpen(false);
-                         console.log("click outside");
-                }
-             }
+            const path = event.composedPath && event.composedPath();
+            if (!path.includes(sortRef.current as EventTarget)) {
+                setIsOpen(false);
+                console.log("click outside");
+            }
+        }
         document.body.addEventListener("click", handleClickOutside);
 
         return () => {
@@ -65,7 +65,7 @@ function Sort() {
                                     className={value.sort === sorting.sort ? "active" : ""}>
                                     {value.name}
                                 </li>
-                                ))
+                            ))
                         }
                     </ul>
                 </div>

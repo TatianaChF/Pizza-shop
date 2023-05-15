@@ -1,4 +1,3 @@
-import React from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import CartProduct from "./CartProduct";
@@ -7,7 +6,7 @@ import CartEmpty from "./CartEmpty/CartEmpty";
 
 function Cart() {
     const dispatch = useDispatch();
-    const { products, totalPrice } = useSelector(cartSelector);
+    const {products, totalPrice} = useSelector(cartSelector);
     const totalCount = products
         .reduce((sum, product) => sum + product.count, 0);
 
@@ -18,7 +17,7 @@ function Cart() {
     }
 
     if (!totalPrice) {
-        return <CartEmpty />
+        return <CartEmpty/>
     }
 
     return (

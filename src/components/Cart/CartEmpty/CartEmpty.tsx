@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import emptyCart from "../../../assets/img/empty-cart.png";
+
 function CartEmpty() {
     return (
         <div>

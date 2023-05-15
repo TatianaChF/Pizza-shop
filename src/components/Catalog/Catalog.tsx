@@ -1,5 +1,4 @@
-import React from "react";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addProduct, cartProductsSelectorById} from "../../redux/slices/cartSlice";
 import {RootState} from "../../redux/store";
@@ -91,7 +90,7 @@ function Catalog(props: PropsType) {
                             />
                         </svg>
                         <span>Добавить</span>
-                        { addedCount > 0 && <i>{addedCount}</i> }
+                        {addedCount > 0 && <i>{addedCount}</i>}
                     </button>
                 </div>
             </div>

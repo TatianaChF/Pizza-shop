@@ -1,4 +1,5 @@
 import style from "./NotFound.module.scss";
+
 function NotFound() {
     return (
         <div className={style.root}>

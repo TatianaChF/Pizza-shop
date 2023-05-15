@@ -9,7 +9,7 @@ import {useAppDispatch} from "../../redux/store";
 import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import qs from "qs";
 import {Link, useNavigate} from "react-router-dom";
-import {itemsData, fetchPizzasData, pizzasSelector} from "../../redux/slices/pizzasSlice";
+import {fetchPizzasData, itemsData, pizzasSelector} from "../../redux/slices/pizzasSlice";
 
 export interface SortType {
     sort: string,
@@ -19,16 +19,18 @@ export interface SortType {
 function Home() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const {categoryId,
+    const {
+        categoryId,
         sorting,
         pageCount,
-        searchValue} = useSelector(filterSelector);
-    const { items, status } = useSelector(pizzasSelector);
+        searchValue
+    } = useSelector(filterSelector);
+    const {items, status} = useSelector(pizzasSelector);
     const sortType = sorting.sort;
     const isFetch = useRef(false);
     const isMounted = useRef(false);
 
-    const fetchPizzas  = async () => {
+    const fetchPizzas = async () => {
         try {
             dispatch(fetchPizzasData(
                 {pageCount, categoryId, sortType}
@@ -81,22 +83,22 @@ function Home() {
         dispatch(setPageCount(page));
     }
 
-    const pizzas = (items as any).filter( (obj: { title: string; }) => {
+    const pizzas = (items as any).filter((obj: { title: string; }) => {
         return obj.title.toLowerCase().includes(searchValue.toLowerCase());
     }).map((pizza: itemsData) => <Link key={pizza.title} to={`/pizza/${pizza.id}`}> <Catalog
-                                id={pizza.id}
-                                title={pizza.title}
-                                price={pizza.price}
-                                imagePizza={pizza.imageUrl}
-                                sizes={pizza.sizes}
-                                types={pizza.types} /> </Link>);
-    const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
+        id={pizza.id}
+        title={pizza.title}
+        price={pizza.price}
+        imagePizza={pizza.imageUrl}
+        sizes={pizza.sizes}
+        types={pizza.types}/> </Link>);
+    const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index}/>);
 
     return (
         <div className="container">
             <div className="content__top">
-                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} />
-                <Sort />
+                <Categories categoryId={categoryId} onClickCategory={onChangeCategory}/>
+                <Sort/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             {
@@ -113,7 +115,7 @@ function Home() {
                     </div>
                 )
             }
-            <Pagination pageCount={pageCount} onChangePage={onChangePage} />
+            <Pagination pageCount={pageCount} onChangePage={onChangePage}/>
         </div>
     )
 }
