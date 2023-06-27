@@ -1,4 +1,4 @@
-import './scss/app.scss';
+import "./App.scss";
 import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
 import {Route, Routes} from "react-router-dom";

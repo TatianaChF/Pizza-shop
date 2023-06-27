@@ -1,5 +1,6 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import styles from "./Pizza.module.scss";
 
 type PizzaType = {
     imageUrl: string,
@@ -34,7 +35,7 @@ function Pizza() {
     }
 
     return (
-        <div className="content__info-pizza">
+        <div className={styles.info__pizza}>
             <img src={pizza.imageUrl}/>
             <div>
                 <h2>{pizza.title}</h2>

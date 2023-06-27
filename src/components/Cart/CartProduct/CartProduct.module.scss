@@ -1,0 +1,207 @@
+.cart {
+  &__item {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #f6f6f6;
+    padding-top: 30px;
+    margin-top: 30px;
+
+    &_img {
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+      width: 10%;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+
+      h3 {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 27px;
+        letter-spacing: 0.01em;
+      }
+
+      p {
+        font-size: 18px;
+        color: #8d8d8d;
+      }
+    }
+
+    &_count {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 13%;
+
+      &-minus {
+        svg {
+          path:first-of-type {
+            display: none;
+          }
+        }
+      }
+
+      b {
+        font-size: 22px;
+      }
+    }
+
+    &__price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33%;
+
+      b {
+        font-weight: bold;
+        font-size: 22px;
+        letter-spacing: 0.01em;
+      }
+    }
+
+    &__remove {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 4%;
+
+      .button {
+        border-color: darken($color: #f6f6f6, $amount: 10);
+      }
+
+      svg {
+        transform: rotate(45deg);
+
+        path {
+          fill: darken($color: #f6f6f6, $amount: 15);
+        }
+      }
+
+      .button {
+        svg {
+          width: 11.5px;
+          height: 11.5px;
+          position: relative;
+        }
+
+        &:hover,
+        &:active {
+          border-color: darken($color: #f6f6f6, $amount: 80);
+          background-color: darken($color: #f6f6f6, $amount: 80);
+        }
+      }
+    }
+  }
+}
+
+.pizza__block_img {
+  width: 260px;
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.button__minus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 2px solid #fe5f1e;
+
+  svg {
+    path:first-of-type {
+      display: none;
+    }
+  }
+
+  &:hover {
+    background-color: #fe5f1e;
+
+    &,
+    span {
+      color: #fff;
+    }
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.button__plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 2px solid #fe5f1e;
+
+  &:hover {
+    background-color: #fe5f1e;
+
+    &,
+    span {
+      color: #fff;
+    }
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.button__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  background-color: #fff;
+  border: 2px solid #f6f6f6;
+  border-radius: 30px;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: #232323;
+    cursor: pointer;
+
+    &,
+    span {
+      color: #fff;
+    }
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+}

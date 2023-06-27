@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addProduct, cartProductsSelectorById} from "../../redux/slices/cartSlice";
 import {RootState} from "../../redux/store";
+import styles from "./Catalog.module.scss";
 
 export type Products = {
     id: number,
@@ -41,15 +42,15 @@ function Catalog(props: PropsType) {
     }
 
     return (
-        <div className="pizza-block-wrapper">
-            <div className="pizza-block">
+        <div className={styles.catalog__wrapper}>
+            <div className={styles.catalog}>
                 <img
-                    className="pizza-block__image"
+                    className={styles.catalog__image}
                     src={props.imagePizza}
                     alt="Pizza"
                 />
-                <h4 className="pizza-block__title">{props.title}</h4>
-                <div className="pizza-block__selector">
+                <h4 className={styles.catalog__title}>{props.title}</h4>
+                <div className={styles.catalog__selector}>
                     <ul>
                         {
                             props.types.map(type => (
@@ -73,10 +74,10 @@ function Catalog(props: PropsType) {
                         }
                     </ul>
                 </div>
-                <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">от {props.price} ₽</div>
+                <div className={styles.catalog__bottom}>
+                    <div className={styles.catalog__price}>от {props.price} ₽</div>
                     <button onClick={onClickAddToCart}
-                            className="button button--outline button--add">
+                            className={styles.button}>
                         <svg
                             width="12"
                             height="12"

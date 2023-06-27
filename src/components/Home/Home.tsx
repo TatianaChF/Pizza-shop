@@ -10,6 +10,7 @@ import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../red
 import qs from "qs";
 import {Link, useNavigate} from "react-router-dom";
 import {fetchPizzasData, itemsData, pizzasSelector} from "../../redux/slices/pizzasSlice";
+import styles from "./Home.module.scss";
 
 export interface SortType {
     sort: string,
@@ -95,20 +96,20 @@ function Home() {
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index}/>);
 
     return (
-        <div className="container">
-            <div className="content__top">
+        <div className={styles.container}>
+            <div className={styles.content__top}>
                 <Categories categoryId={categoryId} onClickCategory={onChangeCategory}/>
                 <Sort/>
             </div>
-            <h2 className="content__title">Все пиццы</h2>
+            <h2 className={styles.content__title}>Все пиццы</h2>
             {
                 status === "error" ? (
-                    <div className="content__error-info">
+                    <div className={styles.content__error__info}>
                         <h2>Произошла ошибка</h2>
                         <p>К сожалению, не удалось получить пиццы. Пожалуйста, повторите попытку позже.</p>
                     </div>
                 ) : (
-                    <div className="content__items">
+                    <div className={styles.content__items}>
                         {
                             status === "loading" ? skeleton : pizzas
                         }

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Categories.module.scss";
 
 type PropsType = {
     categoryId: number,
@@ -16,12 +17,12 @@ function Categories(props: PropsType) {
     ]
 
     return (
-        <div className="categories">
+        <div className={styles.categories}>
             <ul>
                 {categories.map((category) => (
                     <li key={category.title}
                         onClick={() => props.onClickCategory(category.id)}
-                        className={props.categoryId === category.id ? "active" : ""}>
+                        className={props.categoryId === category.id ? styles.active : ""}>
                         {category.title}
                     </li>
                 ))}

@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {addProduct, minusProduct, removeProduct} from "../../redux/slices/cartSlice";
+import {addProduct, minusProduct, removeProduct} from "../../../redux/slices/cartSlice.ts";
+import styles from "./CartProduct.module.scss";
 
 type PropsType = {
     id: number,
@@ -38,20 +39,19 @@ function CartProduct(props: PropsType) {
     }
 
     return (
-        <div className="cart__item">
-            <div className="cart__item-img">
+        <div className={styles.cart__item}>
+            <div className={styles.cart__item_img}>
                 <img
-                    className="pizza-block__image"
                     src={props.imagePizza}
                     alt="Pizza"
                 />
             </div>
-            <div className="cart__item-info">
+            <div className={styles.cart__item_info}>
                 <h3>{props.title}</h3>
                 <p>{props.type}, {props.size} см.</p>
             </div>
-            <div className="cart__item-count">
-                <div onClick={onClickMinus} className="button button--outline button--circle cart__item-count-minus">
+            <div className={styles.cart__item_count}>
+                <div onClick={onClickMinus} className={styles.button__minus}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -64,7 +64,7 @@ function CartProduct(props: PropsType) {
 
                 </div>
                 <b>{props.count}</b>
-                <div onClick={onClickPlus} className="button button--outline button--circle cart__item-count-plus">
+                <div onClick={onClickPlus} className={styles.button__plus}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -77,11 +77,11 @@ function CartProduct(props: PropsType) {
 
                 </div>
             </div>
-            <div className="cart__item-price">
+            <div className={styles.cart__item__price}>
                 <b>{props.price * props.count} ₽</b>
             </div>
-            <div className="cart__item-remove">
-                <div onClick={onClickRemove} className="button button--outline button--circle">
+            <div className={styles.cart__item__remove}>
+                <div onClick={onClickRemove} className={styles.button__remove}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
