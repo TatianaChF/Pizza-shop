@@ -86,13 +86,14 @@ function Home() {
 
     const pizzas = (items as any).filter((obj: { title: string; }) => {
         return obj.title.toLowerCase().includes(searchValue.toLowerCase());
-    }).map((pizza: itemsData) => <Link key={pizza.title} to={`/pizza/${pizza.id}`}> <Catalog
+    }).map((pizza: itemsData) => <Catalog
+        key={pizza.title} 
         id={pizza.id}
         title={pizza.title}
         price={pizza.price}
         imagePizza={pizza.imageUrl}
         sizes={pizza.sizes}
-        types={pizza.types}/> </Link>);
+        types={pizza.types}/>);
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index}/>);
 
     return (

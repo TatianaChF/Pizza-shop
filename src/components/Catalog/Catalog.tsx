@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addProduct, cartProductsSelectorById} from "../../redux/slices/cartSlice";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
+import {Link} from "react-router-dom";
 
 export type Products = {
     id: number,
@@ -44,18 +45,20 @@ function Catalog(props: PropsType) {
     return (
         <div className={styles.catalog__wrapper}>
             <div className={styles.catalog}>
-                <img
-                    className={styles.catalog__image}
-                    src={props.imagePizza}
-                    alt="Pizza"
-                />
-                <h4 className={styles.catalog__title}>{props.title}</h4>
+                <Link to={`/pizza/${props.id}`}>
+                    <img
+                        className={styles.catalog__image}
+                        src={props.imagePizza}
+                        alt="Pizza"
+                    />
+                    <h4 className={styles.catalog__title}>{props.title}</h4>
+                </Link> 
                 <div className={styles.catalog__selector}>
                     <ul>
                         {
                             props.types.map(type => (
                                 <li key={type}
-                                    className={activeType === type ? "active" : ""}
+                                    className={activeType === type ? styles.active : ""}
                                     onClick={() => setActiveType(type)}>
                                     {typeTitle[type]}
                                 </li>
@@ -66,7 +69,7 @@ function Catalog(props: PropsType) {
                         {
                             props.sizes.map((size, id) => (
                                 <li key={size}
-                                    className={id === activeSize ? "active" : ""}
+                                    className={id === activeSize ? styles.active : ""}
                                     onClick={() => setActiveSize(id)}>
                                     {size} см.
                                 </li>

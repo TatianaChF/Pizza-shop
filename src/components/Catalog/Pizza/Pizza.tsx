@@ -15,6 +15,7 @@ function Pizza() {
 
     useEffect(() => {
         async function fetchPizza() {
+            debugger
             try {
                 const res = await fetch("https://64145f1f9172235b8692eea8.mockapi.io/items/" + id);
                 const data = await res.json()
