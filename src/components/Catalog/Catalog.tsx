@@ -11,7 +11,7 @@ export type Products = {
     count: number
 }
 
-type PropsType = {
+type CatalogProps = {
     id: number,
     title: string,
     price: number,
@@ -22,7 +22,7 @@ type PropsType = {
 
 const typeTitle = ["тонкое", "традиционное"];
 
-function Catalog(props: PropsType) {
+function Catalog(props: CatalogProps) {
     const cartCount = useSelector((state: RootState) =>
         cartProductsSelectorById(props.id, state));
     const addedCount = cartCount ? cartCount.count : 0;
