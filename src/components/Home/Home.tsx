@@ -2,7 +2,7 @@ import Categories from "./Categories/Categories";
 import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import React, {useEffect, useRef} from "react";
+import {useEffect, useRef} from "react";
 import Pagination from "../Pagination/Pagination";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store";

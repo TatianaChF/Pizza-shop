@@ -9,7 +9,7 @@ import styles from "./Header.module.scss";
 function Header() {
     const {products, totalPrice} = useSelector(cartSelector);
     const totalCount = products
-        .reduce((sum, product) => sum + product.count, 0);
+        .reduce((sum: number, product) => sum + product.count, 0);
 
     return (
         <div className={styles.header}>

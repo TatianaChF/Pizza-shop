@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {addProduct, minusProduct, removeProduct} from "../../../redux/slices/cartSlice.ts";
 import styles from "./CartProduct.module.scss";
 
-type PropsType = {
+type CartProductProps = {
     id: number,
     title: string,
     imagePizza: string,
@@ -13,7 +13,7 @@ type PropsType = {
     type: string
 }
 
-function CartProduct(props: PropsType) {
+function CartProduct(props: CartProductProps) {
     const dispatch = useDispatch();
     const pizza = {
         id: props.id,
