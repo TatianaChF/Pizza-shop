@@ -9,7 +9,7 @@ function Cart() {
     const dispatch = useDispatch();
     const {products, totalPrice} = useSelector(cartSelector);
     const totalCount = products
-        .reduce((sum, product) => sum + product.count, 0);
+        .reduce((sum: number, product) => sum + product.count, 0);
 
     const onClickClear = () => {
         if (window.confirm("Очистить корзину?")) {
