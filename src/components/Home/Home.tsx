@@ -8,7 +8,7 @@ import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store";
 import {filterSelector, setCategoryId, setFilters, setPageCount} from "../../redux/slices/filterSlice";
 import qs from "qs";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {fetchPizzasData, itemsData, pizzasSelector} from "../../redux/slices/pizzasSlice";
 import styles from "./Home.module.scss";
 
