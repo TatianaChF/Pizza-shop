@@ -92,6 +92,7 @@ function Home() {
         title={pizza.title}
         price={pizza.price}
         imagePizza={pizza.imageUrl}
+        count={pizza.count}
         sizes={pizza.sizes}
         types={pizza.types}/>);
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index}/>);
