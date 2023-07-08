@@ -18,7 +18,7 @@ type ParamsType = {
 
 export interface PizzasState {
     items: Array<itemsData>,
-    status: string
+    status: "loaded" | "loading" | "error"
 }
 
 const initialState: PizzasState = {
@@ -30,7 +30,7 @@ const initialState: PizzasState = {
         sizes: [],
         types: []
     }],
-    status: ""
+    status: "loading"
 }
 
 export const fetchPizzasData = createAsyncThunk(
