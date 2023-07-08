@@ -45,7 +45,7 @@ export const cartSlice = createSlice({
                 return (obj.price * obj.count) + sum;
             }, 0)
         },
-        minusProduct: (state, action) => {
+        minusProduct: (state, action: PayloadAction<CartItem>) => {
             const findProduct = state.products.find(obj =>
                 obj.id === action.payload.id
             );
@@ -54,10 +54,10 @@ export const cartSlice = createSlice({
                 findProduct.count--;
             }
         },
-        removeProduct: (state, action) => {
-            state.products = state.products.filter(obj => obj.id !== action.payload);
+        removeProduct: (state, action: PayloadAction<CartItem>) => {
+            state.products = state.products.filter(obj => obj.id !== action.payload.id);
         },
-        clearProducts: (state, action) => {
+        clearProducts: (state) => {
             state.products = [];
             state.totalPrice = 0;
         }
