@@ -13,7 +13,7 @@ import {fetchPizzasData, itemsData, pizzasSelector} from "../../redux/slices/piz
 import styles from "./Home.module.scss";
 
 export interface SortType {
-    sort: string,
+    sort: "rating" | "price" | "title" | "-rating" | "-price" | "-title",
     name: string
 }
 
