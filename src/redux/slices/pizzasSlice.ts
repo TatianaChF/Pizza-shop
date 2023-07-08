@@ -20,7 +20,13 @@ type ParamsType = {
 
 export interface PizzasState {
     items: Array<itemsData>,
-    status: "loaded" | "loading" | "error"
+    status: Status
+}
+
+enum Status {
+    LOADING = "loading",
+    LOADED = "loaded",
+    ERROR = "error"
 }
 
 const initialState: PizzasState = {
@@ -33,7 +39,7 @@ const initialState: PizzasState = {
         sizes: [],
         types: []
     }],
-    status: "loading"
+    status: Status.LOADING
 }
 
 export const fetchPizzasData = createAsyncThunk( 
@@ -65,15 +71,15 @@ export const pizzasSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchPizzasData.fulfilled, (state, action) => {
             state.items = action.payload;
-            state.status = "loaded";
+            state.status = Status.LOADED;
         })
             .addCase(fetchPizzasData.pending, (state, action) => {
                 state.items = [];
-                state.status = "loading";
+                state.status = Status.LOADING;
             })
             .addCase(fetchPizzasData.rejected, (state, action) => {
                 state.items = [];
-                state.status = "error";
+                state.status = Status.ERROR;
             })
     }
 })
