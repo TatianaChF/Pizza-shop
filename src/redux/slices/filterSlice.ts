@@ -5,7 +5,7 @@ export interface FilterState {
     categoryId: number,
     pageCount: number,
     sorting: {
-        sort: string,
+        sort: "rating" | "price" | "title" | "-rating" | "-price" | "-title",
         name: string
     },
     searchValue: string
