@@ -6,6 +6,7 @@ export type itemsData = {
     title: string,
     price: number,
     imageUrl: string,
+    count: number,
     sizes: Array<number>,
     types: Array<number>
 }
@@ -27,6 +28,7 @@ const initialState: PizzasState = {
         title: "",
         price: 0,
         imageUrl: "",
+        count: 0,
         sizes: [],
         types: []
     }],
