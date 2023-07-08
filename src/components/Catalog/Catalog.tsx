@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addProduct, cartProductsSelectorById} from "../../redux/slices/cartSlice";
+import {CartItem, addProduct, cartProductsSelectorById} from "../../redux/slices/cartSlice";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
 import {Link} from "react-router-dom";
@@ -16,6 +16,7 @@ type CatalogProps = {
     title: string,
     price: number,
     imagePizza: string,
+    count: number,
     sizes: Array<number>,
     types: Array<number>
 }
@@ -31,13 +32,14 @@ function Catalog(props: CatalogProps) {
     const dispatch = useDispatch();
 
     const onClickAddToCart = () => {
-        const product = {
+        const product: CartItem = {
             id: props.id,
             title: props.title,
             price: props.price,
             imagePizza: props.imagePizza,
+            count: props.count,
             size: props.sizes[activeSize],
-            type: typeTitle[activeType]
+            type: typeTitle[activeType],
         };
         dispatch(addProduct(product));
     }
