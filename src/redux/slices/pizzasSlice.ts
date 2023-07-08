@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../store";
+import { CartItem } from "./cartSlice";
 
 export type itemsData = {
     id: number,
@@ -35,7 +36,7 @@ const initialState: PizzasState = {
     status: "loading"
 }
 
-export const fetchPizzasData = createAsyncThunk(
+export const fetchPizzasData = createAsyncThunk( 
     'pizzas/fetchPizzasStatus',
     async (params: ParamsType) => {
         const {
@@ -49,7 +50,7 @@ export const fetchPizzasData = createAsyncThunk(
         const order = sortType.includes("-") ? "asc" : "desc";
 
         const res = await fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${category}&sortBy=${sort}&order=${order}`);
-        return await res.json();
+        return (await res.json()) as itemsData[];
     }
 )
 
