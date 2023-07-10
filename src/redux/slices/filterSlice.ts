@@ -35,9 +35,9 @@ export const filterSlice = createSlice({
         setPageCount: (state, action: PayloadAction<number>) => {
             state.pageCount = action.payload;
         },
-        setFilters: (state, action: PayloadAction<FilterState>) => {
+        setFilters: (state, action) => {
             state.pageCount = action.payload.pageCount;
-            state.sorting.sort = action.payload.sorting.sort;
+            state.sorting.sort = action.payload.sortType;
             state.categoryId = action.payload.categoryId;
         },
         setSearchValue: (state, action: PayloadAction<string>) => {
