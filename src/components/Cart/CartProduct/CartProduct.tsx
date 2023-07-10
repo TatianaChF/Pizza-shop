@@ -8,7 +8,7 @@ type CartProductProps = {
     imagePizza: string,
     price: number,
     count: number,
-    size: string,       
+    size: number,       
     type: string
 }
 
@@ -20,6 +20,7 @@ function CartProduct(props: CartProductProps) {
         imagePizza: props.imagePizza,
         price: props.price,
         count: props.count,
+        size: props.size,
         type: props.type
     }
 
