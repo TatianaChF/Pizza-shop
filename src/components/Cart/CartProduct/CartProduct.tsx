@@ -1,4 +1,3 @@
-import React from "react";
 import {useDispatch} from "react-redux";
 import {addProduct, minusProduct, removeProduct} from "../../../redux/slices/cartSlice.ts";
 import styles from "./CartProduct.module.scss";
@@ -9,7 +8,7 @@ type CartProductProps = {
     imagePizza: string,
     price: number,
     count: number,
-    size: string,
+    size: string,       
     type: string
 }
 
@@ -51,7 +50,7 @@ function CartProduct(props: CartProductProps) {
                 <p>{props.type}, {props.size} см.</p>
             </div>
             <div className={styles.cart__item_count}>
-                <div onClick={onClickMinus} className={styles.button__minus}>
+                <button onClick={onClickMinus} className={styles.button__minus}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -62,7 +61,7 @@ function CartProduct(props: CartProductProps) {
                             fill="#EB5A1E"/>
                     </svg>
 
-                </div>
+                </button>
                 <b>{props.count}</b>
                 <div onClick={onClickPlus} className={styles.button__plus}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
