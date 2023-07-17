@@ -53,9 +53,12 @@ export const cartSlice = createSlice({
             if (findProduct) {
                 findProduct.count--;
             }
+
+            state.totalPrice = state.totalPrice - action.payload.price;
         },
         removeProduct: (state, action: PayloadAction<CartItem>) => {
             state.products = state.products.filter(obj => obj.id !== action.payload.id);
+            state.totalPrice = state.totalPrice - (action.payload.price * action.payload.count);
         },
         clearProducts: (state) => {
             state.products = [];
