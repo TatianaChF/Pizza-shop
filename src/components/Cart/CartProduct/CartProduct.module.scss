@@ -124,7 +124,7 @@
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   border: 2px solid #fe5f1e;
 
-  &__disabled {
+  &:disabled {
     opacity: 0.4;
     align-items: center;
     justify-content: center;
@@ -137,6 +137,24 @@
     cursor: pointer;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
     border: 2px solid #7b7b7b;
+
+    &:active {
+      transform: none;
+    }
+
+    &:hover {
+      background-color: transparent;
+
+      svg {
+        path:first-of-type {
+          display: none;
+        }
+  
+        path {
+          fill: #7b7b7b;
+        }
+      }
+    }
 
     svg {
       path:first-of-type {
