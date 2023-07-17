@@ -64,7 +64,7 @@ function CartProduct(props: CartProductProps) {
 
                 </button>
                 <b>{props.count}</b>
-                <div onClick={onClickPlus} className={styles.button__plus}>
+                <button onClick={onClickPlus} className={styles.button__plus}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -75,7 +75,7 @@ function CartProduct(props: CartProductProps) {
                             fill="#EB5A1E"/>
                     </svg>
 
-                </div>
+                </button>
             </div>
             <div className={styles.cart__item__price}>
                 <b>{props.price * props.count} ₽</b>
