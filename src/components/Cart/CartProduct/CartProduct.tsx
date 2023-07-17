@@ -51,7 +51,7 @@ function CartProduct(props: CartProductProps) {
                 <p>{props.type}, {props.size} см.</p>
             </div>
             <div className={styles.cart__item_count}>
-                <button onClick={onClickMinus} className={styles.button__minus}>
+                <button disabled={props.count === 1} onClick={onClickMinus} className={styles.button__minus}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
