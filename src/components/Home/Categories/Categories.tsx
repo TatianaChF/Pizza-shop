@@ -1,4 +1,3 @@
-import { useWhyDidYouUpdate } from 'ahooks';
 import styles from "./Categories.module.scss";
 import React from 'react';
 
@@ -17,7 +16,6 @@ const categories = [
 ]
 
 const Categories = React.memo(function Categories(props: PropsType) {
-    useWhyDidYouUpdate("Categories", props);
 
     return (
         <div className={styles.categories}>

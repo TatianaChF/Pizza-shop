@@ -23,7 +23,6 @@ const Sort = React.memo(function Sort({ sorting } : SortPropsType) {
     const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const sortRef = useRef<HTMLDivElement | EventTarget>();
-    useWhyDidYouUpdate("Sort", sorting);
 
     const chooseListItem = (value: SortType) => {
         dispatch(setSorting(value));
