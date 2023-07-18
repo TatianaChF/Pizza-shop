@@ -1,5 +1,5 @@
 import logo from "../../assets/img/pizza-logo.svg";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {Link} from "react-router-dom";
 import Search from "../Search/Search";
 import {useSelector} from "react-redux";
@@ -8,8 +8,17 @@ import styles from "./Header.module.scss";
 
 function Header() {
     const {products, totalPrice} = useSelector(cartSelector);
+    const isMounted = useRef(false);
     const totalCount = products
         .reduce((sum: number, product) => sum + product.count, 0);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const json = JSON.stringify(products);
+            localStorage.setItem("cart", json);
+        }
+        isMounted.current = true;
+    }, [products]);
 
     return (
         <div className={styles.header}>
