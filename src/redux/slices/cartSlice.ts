@@ -18,9 +18,11 @@ export type CartItem = {
     type: string
 }
 
+const CartData = getCartFromLS();
+
 const initialState: CartState = {
-    totalPrice: 0,
-    products: getCartFromLS()
+    totalPrice: CartData.totalPrice,
+    products: CartData.products
 
 }
 
