@@ -3,6 +3,8 @@ import {SortType} from "../Home";
 import {useDispatch, useSelector} from "react-redux";
 import {filterSortingSelector, setSorting} from "../../../redux/slices/filterSlice";
 import styles from "./Sort.module.scss";
+import { useWhyDidYouUpdate } from "ahooks";
+import React from "react";
 
 export const sortList: SortType[] = [
     {name: "популярности (по возрастанию)", sort: "rating"},
@@ -13,11 +15,12 @@ export const sortList: SortType[] = [
     {name: "алфавиту (по убыванию)", sort: "-title"}
 ];
 
-function Sort() {
+const Sort = React.memo(function Sort() {
     const dispatch = useDispatch();
     const sorting = useSelector(filterSortingSelector);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const sortRef = useRef<HTMLDivElement | EventTarget>();
+    useWhyDidYouUpdate("Sort", sorting);
 
     const chooseListItem = (value: SortType) => {
         dispatch(setSorting(value));
@@ -73,6 +76,6 @@ function Sort() {
             )}
         </div>
     )
-}
+});
 
 export default Sort;
