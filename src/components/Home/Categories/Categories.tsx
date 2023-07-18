@@ -1,4 +1,4 @@
-import React from "react";
+import { useWhyDidYouUpdate } from 'ahooks';
 import styles from "./Categories.module.scss";
 
 type PropsType = {
@@ -16,6 +16,7 @@ const categories = [
 ]
 
 function Categories(props: PropsType) {
+    useWhyDidYouUpdate("Categories", props);
 
     return (
         <div className={styles.categories}>
