@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from "react";
 import {Link} from "react-router-dom";
 import Search from "../Search/Search";
 import {useSelector} from "react-redux";
-import {cartSelector} from "../../redux/slices/cartSlice";
 import styles from "./Header.module.scss";
+import { cartSelector } from "../../redux/slices/cart/selectors";
 
 function Header() {
     const {products, totalPrice} = useSelector(cartSelector);

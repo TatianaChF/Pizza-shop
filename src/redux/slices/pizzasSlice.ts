@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../store";
-import { CartItem } from "./cartSlice";
+import { CartItem } from "./cart/cartSlice";
 
 export type itemsData = {
     id: number,
