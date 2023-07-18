@@ -8,7 +8,7 @@ export interface FilterState {
     searchValue: string
 }
 
-type FilterSort = {
+export type FilterSort = {
     sort: "rating" | "price" | "title" | "-rating" | "-price" | "-title",   
     name: string
 }

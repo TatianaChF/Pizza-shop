@@ -101,7 +101,7 @@ function Home() {
         <div className={styles.container}>
             <div className={styles.content__top}>
                 <Categories categoryId={categoryId} onClickCategory={onChangeCategory}/>
-                <Sort/>
+                <Sort sorting={sorting} />
             </div>
             <h2 className={styles.content__title}>Все пиццы</h2>
             {
