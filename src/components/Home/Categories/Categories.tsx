@@ -1,5 +1,6 @@
 import { useWhyDidYouUpdate } from 'ahooks';
 import styles from "./Categories.module.scss";
+import React from 'react';
 
 type PropsType = {
     categoryId: number,
@@ -15,7 +16,7 @@ const categories = [
     {id: 5, title: "Закрытые"},
 ]
 
-function Categories(props: PropsType) {
+const Categories = React.memo(function Categories(props: PropsType) {
     useWhyDidYouUpdate("Categories", props);
 
     return (
@@ -31,6 +32,6 @@ function Categories(props: PropsType) {
             </ul>
         </div>
     )
-}
+});
 
 export default Categories;
