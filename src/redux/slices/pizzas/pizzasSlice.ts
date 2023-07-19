@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {RootState} from "../../store";
-import { ParamsType, PizzasState, Status, itemsData } from "./types";
+import {createSlice} from "@reduxjs/toolkit";
+import {PizzasState, Status} from "./types";
+import { fetchPizzasData } from "./asyncActions";
 
 const initialState: PizzasState = {
     items: [{
@@ -14,24 +14,6 @@ const initialState: PizzasState = {
     }],
     status: Status.LOADING
 }
-
-export const fetchPizzasData = createAsyncThunk( 
-    'pizzas/fetchPizzasStatus',
-    async (params: ParamsType) => {
-        const {
-            pageCount,
-            categoryId,
-            sortType
-        } = params;
-
-        const category = categoryId > 0 ? categoryId : "";
-        const sort = sortType.replace("-", "");
-        const order = sortType.includes("-") ? "asc" : "desc";
-
-        const res = await fetch(`https://64145f1f9172235b8692eea8.mockapi.io/items?page=${pageCount}&limit=4&category=${category}&sortBy=${sort}&order=${order}`);
-        return (await res.json()) as itemsData[];
-    }
-)
 
 export const pizzasSlice = createSlice({
     name: 'pizzas',
