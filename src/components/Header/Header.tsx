@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Search from "../Search/Search";
 import {useSelector} from "react-redux";
 import styles from "./Header.module.scss";
-import { cartSelector } from "../../redux/slices/cart/selectors";
+import { cartSelector } from "../../redux/cart/selectors";
 
 function Header() {
     const {products, totalPrice} = useSelector(cartSelector);

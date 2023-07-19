@@ -1,7 +1,7 @@
 import {RefObject, useEffect, useRef, useState} from "react";
 import {SortType} from "../Home";
 import {useDispatch} from "react-redux";
-import {FilterSort, setSorting} from "../../../redux/slices/filter/filterSlice";
+import {FilterSort, setSorting} from "../../../redux/filter/filterSlice";
 import styles from "./Sort.module.scss";
 import { useWhyDidYouUpdate } from "ahooks";
 import React from "react";

@@ -1,5 +1,5 @@
-import { Products } from "../../../components/Catalog/Catalog";
-import { RootState } from "../../store";
+import { Products } from "../../components/Catalog/Catalog";
+import { RootState } from "../store";
 
 export const cartSelector = (state: RootState) => state.cart;
 

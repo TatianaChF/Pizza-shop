@@ -1,8 +1,8 @@
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addProduct} from "../../redux/slices/cart/cartSlice";
-import {cartProductsSelectorById} from "../../redux/slices/cart/selectors";
-import {CartItem} from "../../redux/slices/cart/types";
+import {addProduct} from "../../redux/cart/cartSlice";
+import {cartProductsSelectorById} from "../../redux/cart/selectors";
+import {CartItem} from "../../redux/cart/types";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
 import {Link} from "react-router-dom";

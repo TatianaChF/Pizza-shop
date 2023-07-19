@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {addProduct, minusProduct, removeProduct} from "../../../redux/slices/cart/cartSlice.ts";
+import {addProduct, minusProduct, removeProduct} from "../../../redux/cart/cartSlice.ts";
 import styles from "./CartProduct.module.scss";
 
 type CartProductProps = {

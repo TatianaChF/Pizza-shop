@@ -6,13 +6,13 @@ import {useCallback, useEffect, useRef} from "react";
 import Pagination from "../Pagination/Pagination";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store";
-import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filter/filterSlice";
-import {filterSelector} from "../../redux/slices/filter/selectors";
+import {setCategoryId, setFilters, setPageCount} from "../../redux/filter/filterSlice";
+import {filterSelector} from "../../redux/filter/selectors";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
-import {fetchPizzasData} from "../../redux/slices/pizzas/asyncActions";
-import {itemsData} from "../../redux/slices/pizzas/types";
-import {pizzasSelector}from "../../redux/slices/pizzas/selectors";
+import {fetchPizzasData} from "../../redux/pizzas/asyncActions";
+import {itemsData} from "../../redux/pizzas/types";
+import {pizzasSelector}from "../../redux/pizzas/selectors";
 import styles from "./Home.module.scss";
 
 export interface SortType {

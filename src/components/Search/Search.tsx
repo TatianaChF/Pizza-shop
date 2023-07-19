@@ -3,7 +3,7 @@ import searchIcon from "../../assets/img/search.svg";
 import {ChangeEvent, useCallback, useRef, useState} from "react";
 import closeIcon from "../../assets/img/close.svg";
 import {useDispatch} from "react-redux";
-import {setSearchValue} from "../../redux/slices/filter/filterSlice";
+import {setSearchValue} from "../../redux/filter/filterSlice";
 
 function Search() {
     const dispatch = useDispatch();
