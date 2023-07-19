@@ -10,7 +10,9 @@ import {setCategoryId, setFilters, setPageCount} from "../../redux/slices/filter
 import {filterSelector} from "../../redux/slices/filter/selectors";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
-import {fetchPizzasData, itemsData, pizzasSelector} from "../../redux/slices/pizzasSlice";
+import {fetchPizzasData} from "../../redux/slices/pizzas/pizzasSlice";
+import {itemsData} from "../../redux/slices/pizzas/types";
+import {pizzasSelector}from "../../redux/slices/pizzas/selectors";
 import styles from "./Home.module.scss";
 
 export interface SortType {
