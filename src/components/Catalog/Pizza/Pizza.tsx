@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import styles from "./Pizza.module.scss";
 
@@ -31,17 +31,22 @@ function Pizza() {
 
     if (!pizza) {
         return (
-            <div>Загрузка</div>
+            <div>Загрузка...</div>
         );
     }
 
     return (
-        <div className={styles.info__pizza}>
-            <img src={pizza.imageUrl}/>
-            <div>
-                <h2>{pizza.title}</h2>
-                <h4>{pizza.price} ₽</h4>
+        <div>
+            <div className={styles.info__pizza}>
+                <img src={pizza.imageUrl}/>
+                <div>
+                    <h2>{pizza.title}</h2>
+                    <h4>{pizza.price} ₽</h4>
+                </div>
             </div>
+            <Link to="/">
+                <button className={styles.btn}>Назад</button>
+            </Link>
         </div>
     )
 }
