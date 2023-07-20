@@ -20,7 +20,7 @@ export interface SortType {
     name: string
 }
 
-function Home() {
+const Home = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {

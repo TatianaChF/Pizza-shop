@@ -8,7 +8,7 @@ type PizzaType = {
     price: string
 }
 
-function Pizza() {
+const Pizza = () => {
     const [pizza, setPizza] = useState<PizzaType>();
     const {id} = useParams();
     const navigate = useNavigate();

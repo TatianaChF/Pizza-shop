@@ -6,7 +6,7 @@ type PaginationProps = {
     onChangePage: (number: number) => void
 }
 
-function Pagination(props: PaginationProps) {
+const Pagination = (props: PaginationProps) => {
     return (
         <div>
             <ReactPaginate

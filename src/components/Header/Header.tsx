@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import styles from "./Header.module.scss";
 import { cartSelector } from "../../redux/cart/selectors";
 
-function Header() {
+const Header = () => {
     const {products, totalPrice} = useSelector(cartSelector);
     const isMounted = useRef(false);
     const totalCount = products

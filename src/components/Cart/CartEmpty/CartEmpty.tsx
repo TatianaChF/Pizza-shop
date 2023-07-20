@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import emptyCart from "../../../assets/img/empty-cart.png";
 import styles from "./CartEmpty.module.scss";
 
-function CartEmpty() {
+const CartEmpty = () => {
     return (
         <div>
             <div className={styles.cart__empty}>

@@ -12,7 +12,7 @@ type CartProductProps = {
     type: string
 }
 
-function CartProduct(props: CartProductProps) {
+const CartProduct = (props: CartProductProps) => {
     const dispatch = useDispatch();
     const pizza = {
         id: props.id,

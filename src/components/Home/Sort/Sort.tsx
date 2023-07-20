@@ -1,9 +1,9 @@
-import {RefObject, useEffect, useRef, useState} from "react";
-import {SortType} from "../Home";
-import {useDispatch} from "react-redux";
-import {FilterSort, setSorting} from "../../../redux/filter/filterSlice";
+import { RefObject, useEffect, useRef, useState } from "react";
+import { SortType } from "../Home";
+import { useDispatch } from "react-redux";
+import { setSorting } from "../../../redux/filter/filterSlice";
+import { FilterSort } from "../../../redux/filter/types";
 import styles from "./Sort.module.scss";
-import { useWhyDidYouUpdate } from "ahooks";
 import React from "react";
 
 export const sortList: SortType[] = [

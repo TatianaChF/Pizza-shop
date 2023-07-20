@@ -25,7 +25,7 @@ type CatalogProps = {
 
 const typeTitle = ["тонкое", "традиционное"];
 
-function Catalog(props: CatalogProps) {
+const Catalog = (props: CatalogProps) => {
     const cartCount = useSelector((state: RootState) =>
         cartProductsSelectorById(props.id, state));
     const addedCount = cartCount ? cartCount.count : 0;

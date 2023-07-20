@@ -6,7 +6,7 @@ import {cartSelector} from "../../redux/cart/selectors.ts";
 import CartEmpty from "./CartEmpty/CartEmpty";
 import styles from "./Cart.module.scss";
 
-function Cart() {
+const Cart = () => {
     const dispatch = useDispatch();
     const {products, totalPrice} = useSelector(cartSelector);
     const totalCount = products

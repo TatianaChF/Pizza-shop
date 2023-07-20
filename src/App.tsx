@@ -8,7 +8,7 @@ const Cart = React.lazy(() => import("./components/Cart/Cart"));
 const Pizza = React.lazy(() => import("./components/Catalog/Pizza/Pizza"));
 const NotFound = React.lazy(() => import("./components/NotFound/NotFound"));
 
-function App() {
+const App = () => {
     return (
         <Routes>
             <Route path="/" element={<MainLayout/>}>

@@ -5,7 +5,7 @@ import closeIcon from "../../assets/img/close.svg";
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux/filter/filterSlice";
 
-function Search() {
+const Search = () => {
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
