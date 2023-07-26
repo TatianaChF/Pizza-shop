@@ -15,6 +15,6 @@ export interface InterContextType {
             name: string;
             buttonText: string;
             cart: string
-        }
-    }
+        };
+    };
 }
