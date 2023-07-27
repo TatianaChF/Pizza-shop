@@ -110,7 +110,7 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <div>
-                <select>
+                <select onChange={changeLanguage}>
                     {langs.map((lang) => <option key={lang} value={lang}>{lang}</option>)}
                 </select>
             </div>
@@ -122,8 +122,8 @@ const Home = () => {
             {
                 status === "error" ? (
                     <div className={styles.content__error__info}>
-                        <h2>{t("Произошла ошибка")}</h2>
-                        <p>{t("К сожалению, не удалось получить пиццы. Пожалуйста, повторите попытку позже.")}</p>
+                        <h2>{`${t('home.errorMessage')}`}</h2>
+                        <p>{`${t('home.errorMessageTwo')}`}</p>
                     </div>
                 ) : (
                     <div className={styles.content__items}>
