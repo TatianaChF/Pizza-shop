@@ -14,6 +14,7 @@ import {fetchPizzasData} from "../../redux/pizzas/asyncActions";
 import {itemsData} from "../../redux/pizzas/types";
 import {pizzasSelector}from "../../redux/pizzas/selectors";
 import styles from "./Home.module.scss";
+import { useTranslation } from "react-i18next";
 
 export interface SortType {
     sort: "rating" | "price" | "title" | "-rating" | "-price" | "-title",
@@ -33,6 +34,8 @@ const Home = () => {
     const sortType = sorting.sort;
     const isFetch = useRef(false);
     const isMounted = useRef(false);
+    const langs = ["ru", "en"];
+    const {t, i18n} = useTranslation(); 
 
     const fetchPizzas = async () => {
         try {
@@ -100,18 +103,27 @@ const Home = () => {
         types={pizza.types}/>);
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index}/>);
 
+    const changeLanguage = (el: React.ChangeEvent<HTMLSelectElement> | string) => {
+        void i18n.changeLanguage((el as React.ChangeEvent<HTMLSelectElement>).target.value);
+    }
+
     return (
         <div className={styles.container}>
+            <div>
+                <select>
+                    {langs.map((lang) => <option key={lang} value={lang}>{lang}</option>)}
+                </select>
+            </div>
             <div className={styles.content__top}>
-                <Categories categoryId={categoryId} onClickCategory={onChangeCategory}/>
+                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} />
                 <Sort sorting={sorting} />
             </div>
-            <h2 className={styles.content__title}>Все пиццы</h2>
+            <h2 className={styles.content__title}>{`${t('home.header')}`}</h2>
             {
                 status === "error" ? (
                     <div className={styles.content__error__info}>
-                        <h2>Произошла ошибка</h2>
-                        <p>К сожалению, не удалось получить пиццы. Пожалуйста, повторите попытку позже.</p>
+                        <h2>{t("Произошла ошибка")}</h2>
+                        <p>{t("К сожалению, не удалось получить пиццы. Пожалуйста, повторите попытку позже.")}</p>
                     </div>
                 ) : (
                     <div className={styles.content__items}>
