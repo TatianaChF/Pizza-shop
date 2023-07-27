@@ -6,6 +6,7 @@ import {CartItem} from "../../redux/cart/types";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
 import {Link} from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export type Products = {
     id: number,
@@ -32,6 +33,7 @@ const Catalog = (props: CatalogProps) => {
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
     const dispatch = useDispatch();
+    const {t, i18n} = useTranslation();
 
     const onClickAddToCart = () => {
         const product: CartItem = {
@@ -97,7 +99,7 @@ const Catalog = (props: CatalogProps) => {
                                 fill="white"
                             />
                         </svg>
-                        <span>Добавить</span>
+                        <span>{`${t('home.addBuutton')}`}</span>
                         {addedCount > 0 && <i>{addedCount}</i>}
                     </button>
                 </div>
