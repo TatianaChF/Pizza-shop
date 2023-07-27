@@ -10,9 +10,8 @@ void i18n
     .init({
         fallbackLng: 'ru',
         debug: true,
-        detection: {
-            order: ['queryString', 'cookie']
-        },
+        nonExplicitSupportedLngs: true,
+        supportedLngs: ['ru', 'en'],
         interpolation: {
             escapeValue: false
         }
