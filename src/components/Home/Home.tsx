@@ -115,8 +115,8 @@ const Home = () => {
                 </select>
             </div>
             <div className={styles.content__top}>
-                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} />
-                <Sort sorting={sorting} />
+                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} t={t} />
+                <Sort sorting={sorting} t={t} />
             </div>
             <h2 className={styles.content__title}>{`${t('home.header')}`}</h2>
             {
