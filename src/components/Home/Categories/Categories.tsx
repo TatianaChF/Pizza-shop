@@ -3,7 +3,8 @@ import React from 'react';
 
 type PropsType = {
     categoryId: number,
-    onClickCategory: (id: number) => void
+    onClickCategory: (id: number) => void,
+    changeLanguage: (el: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const categories = [
