@@ -34,6 +34,8 @@
             "thin": "thin",
             "traditional": "traditional"
         },
-        "addBuutton": "Add"
+        "addBuutton": "Add",
+        "errorMessage": "An error has occurred",
+        "errorMessageTwo": "Unfortunately it was not possible to get pizzas. Please try again later."
     }
 }
