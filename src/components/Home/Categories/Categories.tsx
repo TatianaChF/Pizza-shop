@@ -1,10 +1,12 @@
+import { TFunction } from "i18next";
 import styles from "./Categories.module.scss";
 import React from 'react';
 
 type PropsType = {
     categoryId: number,
     onClickCategory: (id: number) => void,
-    changeLanguage: (el: React.ChangeEvent<HTMLSelectElement>) => void
+    changeLanguage: (el: React.ChangeEvent<HTMLSelectElement>) => void,
+    t:  TFunction<"translation", undefined>
 }
 
 const categories = [
