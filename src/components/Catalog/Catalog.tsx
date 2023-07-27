@@ -99,7 +99,7 @@ const Catalog = (props: CatalogProps) => {
                                 fill="white"
                             />
                         </svg>
-                        <span>{`${t('home.addBuutton')}`}</span>
+                        <span>{`${t('home.addButton')}`}</span>
                         {addedCount > 0 && <i>{addedCount}</i>}
                     </button>
                 </div>
