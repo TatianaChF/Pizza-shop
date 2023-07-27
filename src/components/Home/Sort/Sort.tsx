@@ -8,12 +8,12 @@ import React from "react";
 import { TFunction } from "i18next";
 
 export const sortList: SortType[] = [
-    {name: "популярности (по возрастанию)", sort: "rating"},
-    {name: "популярности (по убыванию)", sort: "-rating"},
-    {name: "цене (по возрастанию)", sort: "price"},
-    {name: "цене (по убыванию)", sort: "-price"},
-    {name: "алфавиту (по возрастанию)", sort: "title"},
-    {name: "алфавиту (по убыванию)", sort: "-title"}
+    {name: "populASC", sort: "rating"},
+    {name: "populDESC", sort: "-rating"},
+    {name: "priceASC", sort: "price"},
+    {name: "priceDESC", sort: "-price"},
+    {name: "alphASC", sort: "title"},
+    {name: "alphDESC", sort: "-title"}
 ];
 
 type SortPropsType = {
@@ -61,7 +61,7 @@ const Sort = React.memo(function Sort({ sorting, t } : SortPropsType) {
                     />
                 </svg>
                 <b>{`${t('home.sortHeader')}`}</b>
-                <span onClick={() => setIsOpen(!isOpen)}>{sorting.name}</span>
+                <span onClick={() => setIsOpen(!isOpen)}>{`${t(`home.sort.${sorting.name}`)}`}</span>
             </div>
             {isOpen && (
                 <div className={styles.sort__popup}>
@@ -70,7 +70,7 @@ const Sort = React.memo(function Sort({ sorting, t } : SortPropsType) {
                             sortList.map((value) => (
                                 <li key={value.name} onClick={() => chooseListItem(value)}
                                     className={value.sort === sorting.sort ? styles.active : ""}>
-                                    {value.name}
+                                        {`${t(`home.sort.${value.name}`)}`}
                                 </li>
                             ))
                         }
