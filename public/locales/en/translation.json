@@ -1,0 +1,39 @@
+{
+    "home": {
+        "categories": {
+            "all": "All",
+            "meat": "Meat",
+            "vegan": "Vegetarian",
+            "gril": "Grill",
+            "spicy": "Spicy",
+            "closed": "Closed"
+        },
+        "sortHeader": "Sort by",
+        "sort": {
+            "populASC": "popularity (asc)",
+            "populDESC": "popularity (desc)",
+            "priceASC": "price (asc)",
+            "priceDESC": "price (desc)",
+            "alphASC": "alphabet (asc)",
+            "alphDESC": "alphabet (desc)"
+        },
+        "header": "All pizzas",
+        "title": {
+            "Margarita": "Margarita",
+            "FourSeasons": "Four seasons",
+            "Pepperoni": "Pepperoni",
+            "Cheesburger": "Cheeseburger pizza",
+            "VegAndMush": "Vegetables and mushrooms",
+            "Cheese": "Cheese",
+            "PepFresh": "Pepperoni Fresh with pepper",
+            "Chicken": "BBQ chicken",
+            "Chick": "Sweet and sour chicken",
+            "Crazy": "Crazy pepperoni"
+        },
+        "thickness": {
+            "thin": "thin",
+            "traditional": "traditional"
+        },
+        "addBuutton": "Add"
+    }
+}
