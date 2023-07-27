@@ -5,6 +5,7 @@ import { setSorting } from "../../../redux/filter/filterSlice";
 import { FilterSort } from "../../../redux/filter/types";
 import styles from "./Sort.module.scss";
 import React from "react";
+import { TFunction } from "i18next";
 
 export const sortList: SortType[] = [
     {name: "популярности (по возрастанию)", sort: "rating"},
@@ -16,10 +17,11 @@ export const sortList: SortType[] = [
 ];
 
 type SortPropsType = {
-    sorting: FilterSort;
+    sorting: FilterSort,
+    t: TFunction<"translation", undefined>
 }
 
-const Sort = React.memo(function Sort({ sorting } : SortPropsType) {
+const Sort = React.memo(function Sort({ sorting, t } : SortPropsType) {
     const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const sortRef = useRef<HTMLDivElement | EventTarget>();
@@ -34,7 +36,6 @@ const Sort = React.memo(function Sort({ sorting } : SortPropsType) {
             const path = event.composedPath && event.composedPath();
             if (!path.includes(sortRef.current as EventTarget)) {
                 setIsOpen(false);
-                console.log("click outside");
             }
         }
         document.body.addEventListener("click", handleClickOutside);
@@ -59,7 +60,7 @@ const Sort = React.memo(function Sort({ sorting } : SortPropsType) {
                         fill="#2C2C2C"
                     />
                 </svg>
-                <b>Сортировка по:</b>
+                <b>{`${t('home.sortHeader')}`}</b>
                 <span onClick={() => setIsOpen(!isOpen)}>{sorting.name}</span>
             </div>
             {isOpen && (
