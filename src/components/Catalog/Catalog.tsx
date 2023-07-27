@@ -24,7 +24,7 @@ type CatalogProps = {
     types: Array<number>
 }
 
-const typeTitle = ["тонкое", "традиционное"];
+const typeTitle = ["thin", "traditional"];
 
 const Catalog = (props: CatalogProps) => {
     const cartCount = useSelector((state: RootState) =>
@@ -57,7 +57,7 @@ const Catalog = (props: CatalogProps) => {
                         src={props.imagePizza}
                         alt="Pizza"
                     />
-                    <h4 className={styles.catalog__title}>{props.title}</h4>
+                    <h4 className={styles.catalog__title}>{`${t(`home.title.${props.title}`)}`}</h4>
                 </Link> 
                 <div className={styles.catalog__selector}>
                     <ul>
@@ -66,7 +66,7 @@ const Catalog = (props: CatalogProps) => {
                                 <li key={type}
                                     className={activeType === type ? styles.active : ""}
                                     onClick={() => setActiveType(type)}>
-                                    {typeTitle[type]}
+                                        {`${t(`home.thickness.${typeTitle[type]}`)}`}
                                 </li>
                             ))
                         }
