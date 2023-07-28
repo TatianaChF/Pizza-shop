@@ -7,7 +7,7 @@ const initialState: FilterState = {
     pageCount: 1,
     sorting: {
         sort: "rating",
-        name: "популярности (по возрастанию)"
+        name: "populASC"
     },
     searchValue: ""
 }
