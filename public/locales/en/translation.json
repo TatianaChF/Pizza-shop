@@ -41,6 +41,14 @@
     "header": {
         "headerLogo": "the most delicious pizza in the universe",
         "search": "Find pizza..."
+    },
+    "cart": {
+        "cartHeader": "Cart",
+        "removeCart": "Empty cart",
+        "backButton": "Come back",
+        "buyButton": "Pay now",
+        "clearConfirmation": "Empty cart?",
+        "all": "Total pizzas:",
+        "sum": "Order price:"
     }
-    
 }
