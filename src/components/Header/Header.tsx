@@ -5,12 +5,14 @@ import Search from "../Search/Search";
 import {useSelector} from "react-redux";
 import styles from "./Header.module.scss";
 import { cartSelector } from "../../redux/cart/selectors";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
     const {products, totalPrice} = useSelector(cartSelector);
     const isMounted = useRef(false);
     const totalCount = products
         .reduce((sum: number, product) => sum + product.count, 0);
+    const {t} = useTranslation(); 
 
     useEffect(() => {
         if (isMounted.current) {
@@ -28,7 +30,7 @@ const Header = () => {
                         <img width="38" src={logo} alt="Pizza logo"/>
                         <div>
                             <h1>React Pizza</h1>
-                            <p>самая вкусная пицца во вселенной</p>
+                            <p>{`${t('header.headerLogo')}`}</p>
                         </div>
                     </div>
                 </Link>
