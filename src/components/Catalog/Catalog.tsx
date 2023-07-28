@@ -33,7 +33,7 @@ const Catalog = (props: CatalogProps) => {
     const [activeType, setActiveType] = useState<number>(0);
     const [activeSize, setActiveSize] = useState<number>(0);
     const dispatch = useDispatch();
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     const onClickAddToCart = () => {
         const product: CartItem = {
