@@ -37,5 +37,10 @@
         "addButton": "Add",
         "errorMessage": "An error has occurred",
         "errorMessageTwo": "Unfortunately it was not possible to get pizzas. Please try again later."
+    },
+    "header": {
+        "headerLogo": "the most delicious pizza in the universe",
+        "search": "Find pizza..."
     }
+    
 }
