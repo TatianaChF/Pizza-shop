@@ -66,7 +66,8 @@ const Cart = () => {
                     </div>
                     <div className={styles.cart__bottom}>
                         <div className={styles.cart__bottom__details}>
-                            <span> {`${t('cart.all')}`} <b>{totalCount} шт.</b> </span>
+                            <span> {`${t('cart.all')}`} <b>{totalCount} </b> 
+                            <b>{totalCount === 1 ? t('home.abbreviations.pc') : t('home.abbreviations.pcs')}</b> </span>
                             <span> {`${t('cart.sum')}`} <b>{totalPrice} ₽</b> </span>
                         </div>
                         <div className={styles.cart__bottom__buttons}>

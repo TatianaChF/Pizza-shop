@@ -77,7 +77,7 @@ const Catalog = (props: CatalogProps) => {
                                 <li key={size}
                                     className={id === activeSize ? styles.active : ""}
                                     onClick={() => setActiveSize(id)}>
-                                    {size} см.
+                                    {size} {`${t('home.abbreviations.sm')}`}
                                 </li>
                             ))
                         }
