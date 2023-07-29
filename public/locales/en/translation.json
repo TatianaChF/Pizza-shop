@@ -36,7 +36,12 @@
         },
         "addButton": "Add",
         "errorMessage": "An error has occurred",
-        "errorMessageTwo": "Unfortunately it was not possible to get pizzas. Please try again later."
+        "errorMessageTwo": "Unfortunately it was not possible to get pizzas. Please try again later.",
+        "abbreviations": {
+            "sm": "sm.",
+            "pc": "pc.",
+            "pcs": "pcs."
+        }
     },
     "header": {
         "headerLogo": "the most delicious pizza in the universe",
