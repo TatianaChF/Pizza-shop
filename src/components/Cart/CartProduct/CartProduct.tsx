@@ -1,6 +1,7 @@
 import {useDispatch} from "react-redux";
 import {addProduct, minusProduct, removeProduct} from "../../../redux/cart/cartSlice.ts";
 import styles from "./CartProduct.module.scss";
+import { useTranslation } from "react-i18next";
 
 type CartProductProps = {
     id: number,
@@ -14,6 +15,7 @@ type CartProductProps = {
 
 const CartProduct = (props: CartProductProps) => {
     const dispatch = useDispatch();
+    const {t} = useTranslation();
     const pizza = {
         id: props.id,
         title: props.title,
@@ -47,8 +49,8 @@ const CartProduct = (props: CartProductProps) => {
                 />
             </div>
             <div className={styles.cart__item_info}>
-                <h3>{props.title}</h3>
-                <p>{props.type}, {props.size} см.</p>
+                <h3>{`${t(`home.title.${props.title}`)}`}</h3>
+                <p>{`${t(`home.thickness.${props.type}`)}`}, {props.size} см.</p>
             </div>
             <div className={styles.cart__item_count}>
                 <button disabled={props.count === 1} onClick={onClickMinus} 
