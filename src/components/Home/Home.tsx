@@ -111,7 +111,7 @@ const Home = () => {
         <div className={styles.container}>
             <div>
                 <select onChange={changeLanguage} className={styles.selectLanguage}>
-                    {langs.map((lang) => <option key={lang} value={lang}>{lang}</option>)}
+                    {langs.map((lang) => <option key={lang} value={lang} className={styles.selectLanguage__option}>{lang}</option>)}
                 </select>
             </div>
             <div className={styles.content__top}>
