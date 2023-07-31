@@ -55,5 +55,9 @@
         "clearConfirmation": "Empty cart?",
         "all": "Total pizzas:",
         "sum": "Order price:"
+    },
+    "pizzaBlock": {
+        "loading": "Loading...",
+        "back": "Back"
     }
 }

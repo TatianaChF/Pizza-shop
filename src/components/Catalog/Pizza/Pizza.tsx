@@ -1,6 +1,7 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import styles from "./Pizza.module.scss";
+import { useTranslation } from "react-i18next";
 
 type PizzaType = {
     imageUrl: string,
@@ -12,6 +13,7 @@ const Pizza = () => {
     const [pizza, setPizza] = useState<PizzaType>();
     const {id} = useParams();
     const navigate = useNavigate();
+    const {t} = useTranslation(); 
 
     useEffect(() => {
         async function fetchPizza() {
@@ -31,7 +33,7 @@ const Pizza = () => {
 
     if (!pizza) {
         return (
-            <div>Загрузка...</div>
+            <div>{`${t('pizzaBlock.loading')}`}</div>
         );
     }
 
@@ -45,7 +47,7 @@ const Pizza = () => {
                 </div>
             </div>
             <Link to="/">
-                <button className={styles.btn}>Назад</button>
+                <button className={styles.btn}>{`${t('pizzaBlock.back')}`}</button>
             </Link>
         </div>
     )
