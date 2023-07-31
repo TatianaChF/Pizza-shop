@@ -2,7 +2,7 @@ import Categories from "./Categories/Categories";
 import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
-import {useCallback, useEffect, useRef} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store";
@@ -43,7 +43,7 @@ const Home = () => {
                 {pageCount, categoryId, sortType}
             ));
         } catch (error) {
-            alert("Ошибка при получении пицц :(");
+            alert(t('home.errorFetch'));
         }
     }
 

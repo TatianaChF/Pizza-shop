@@ -35,7 +35,7 @@ const CartProduct = (props: CartProductProps) => {
     }
 
     const onClickRemove = () => {
-        if (window.confirm("Вы действительно хотите удалить товар?")) {
+        if (window.confirm(t('cart.removeProduct'))) {
             dispatch(removeProduct(pizza));
         }
     }

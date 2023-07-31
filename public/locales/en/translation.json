@@ -41,7 +41,8 @@
             "sm": "sm.",
             "pc": "pc.",
             "pcs": "pcs."
-        }
+        },
+        "errorFetch": "Error when getting pizzas :("
     },
     "header": {
         "headerLogo": "the most delicious pizza in the universe",
@@ -54,7 +55,8 @@
         "buyButton": "Pay now",
         "clearConfirmation": "Empty cart?",
         "all": "Total pizzas:",
-        "sum": "Order price:"
+        "sum": "Order price:",
+        "removeProduct": "Are you sure you want to delete the item?"
     },
     "pizzaBlock": {
         "loading": "Loading...",
