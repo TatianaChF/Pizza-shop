@@ -42,7 +42,8 @@
             "pc": "pc.",
             "pcs": "pcs."
         },
-        "errorFetch": "Error when getting pizzas :("
+        "errorFetch": "Error when getting pizzas :(",
+        "from": "from"
     },
     "header": {
         "headerLogo": "the most delicious pizza in the universe",
