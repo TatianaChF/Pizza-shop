@@ -57,7 +57,13 @@
         "clearConfirmation": "Empty cart?",
         "all": "Total pizzas:",
         "sum": "Order price:",
-        "removeProduct": "Are you sure you want to delete the item?"
+        "removeProduct": "Are you sure you want to delete the item?",
+        "cartEmpty": {
+            "header": "Cart is empty ",
+            "paragraph": "Most likely, you have not added pizza yet.",
+            "paragraphTwo": "To order pizza, go to the main page.",
+            "button": "Come back"
+        }
     },
     "pizzaBlock": {
         "loading": "Loading...",
