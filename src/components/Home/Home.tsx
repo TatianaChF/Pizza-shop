@@ -85,8 +85,8 @@ const Home = () => {
         isMounted.current = true;
     }, [categoryId, sortType, pageCount]);
 
-    const onChangeCategory = useCallback((id: number) => {
-        dispatch(setCategoryId(id));
+    const onChangeCategory = useCallback((title: string) => {
+        dispatch(setCategoryId(title));
     }, []); 
 
     const onChangePage = (page: number) => {
