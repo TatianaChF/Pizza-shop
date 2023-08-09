@@ -10,12 +10,12 @@
         },
         "sortHeader": "Sort by",
         "sort": {
-            "populASC": "popularity (asc)",
-            "populDESC": "popularity (desc)",
-            "priceASC": "price (asc)",
-            "priceDESC": "price (desc)",
-            "alphASC": "alphabet (asc)",
-            "alphDESC": "alphabet (desc)"
+            "rating": "popularity (asc)",
+            "-rating": "popularity (desc)",
+            "price": "price (asc)",
+            "-price": "price (desc)",
+            "title": "alphabet (asc)",
+            "-title": "alphabet (desc)"
         },
         "header": "All pizzas",
         "title": {
