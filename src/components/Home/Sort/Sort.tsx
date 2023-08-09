@@ -61,7 +61,7 @@ const Sort = React.memo(function Sort({ sorting, t } : SortPropsType) {
                     />
                 </svg>
                 <b>{`${t('home.sortHeader')}`}</b>
-                <span onClick={() => setIsOpen(!isOpen)}>{`${t(`home.sort.${sorting.name}`)}`}</span>
+                <span onClick={() => setIsOpen(!isOpen)}>{`${t(`home.sort.${sorting.sort}`)}`}</span>
             </div>
             {isOpen && (
                 <div className={styles.sort__popup}>
@@ -70,7 +70,7 @@ const Sort = React.memo(function Sort({ sorting, t } : SortPropsType) {
                             sortList.map((value) => (
                                 <li key={value.name} onClick={() => chooseListItem(value)}
                                     className={value.sort === sorting.sort ? styles.active : ""}>
-                                        {`${t(`home.sort.${value.name}`)}`}
+                                        {`${t(`home.sort.${value.sort}`)}`}
                                 </li>
                             ))
                         }
