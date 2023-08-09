@@ -15,8 +15,6 @@ import {itemsData} from "../../redux/pizzas/types";
 import {pizzasSelector}from "../../redux/pizzas/selectors";
 import styles from "./Home.module.scss";
 import { useTranslation } from "react-i18next";
-import { setChangeLang } from "../../redux/language/languageSlice";
-import { langSelector } from "../../redux/language/selectors";
 
 export interface SortType {
     sort: "rating" | "price" | "title" | "-rating" | "-price" | "-title",
@@ -33,7 +31,6 @@ const Home = () => {
         searchValue
     } = useSelector(filterSelector);
     const {items, status} = useSelector(pizzasSelector);
-    const {language} = useSelector(langSelector);
     const sortType = sorting.sort;
     const isFetch = useRef(false);
     const isMounted = useRef(false);
@@ -106,15 +103,14 @@ const Home = () => {
         types={pizza.types}/>);
     const skeleton = [...new Array(6)].map((_, index) => <Placeholder key={index}/>);
 
-    const changeLanguage = (el: React.ChangeEvent<HTMLSelectElement> | string) => {
+    const changeLanguage = useCallback((el: React.ChangeEvent<HTMLSelectElement> | string) => {
         void i18n.changeLanguage((el as React.ChangeEvent<HTMLSelectElement>).target.value);
-        dispatch(setChangeLang((el as React.ChangeEvent<HTMLSelectElement>).target.value));
-    }
+    }, []);
 
     return (
         <div className={styles.container}>
             <div>
-                <select onChange={changeLanguage} className={styles.selectLanguage} defaultValue={language}>
+                <select onChange={changeLanguage} className={styles.selectLanguage} defaultValue={i18n.language}>
                     {langs.map((lang) => <option key={lang} value={lang} className={styles.selectLanguage__option}>{lang}</option>)}
                 </select>
             </div>
