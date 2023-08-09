@@ -2,7 +2,7 @@ import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import { FilterSort, FilterState } from './types';
 
 const initialState: FilterState = {
-    categoryId: 0,
+    categoryId: "all",
     pageCount: 1,
     sorting: {
         sort: "rating",
@@ -14,7 +14,7 @@ export const filterSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        setCategoryId: (state, action: PayloadAction<number>) => {
+        setCategoryId: (state, action: PayloadAction<string>) => {
             state.categoryId = action.payload;
         },
         setSorting: (state, action: PayloadAction<FilterSort>) => {
