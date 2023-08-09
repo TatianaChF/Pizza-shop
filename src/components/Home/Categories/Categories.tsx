@@ -3,7 +3,7 @@ import styles from "./Categories.module.scss";
 import React from 'react';
 
 type PropsType = {
-    categoryId: string,
+    categoryTitle: string,
     onClickCategory: (id: string) => void,
     changeLanguage: (el: React.ChangeEvent<HTMLSelectElement>) => void,
     t:  TFunction<"translation", undefined>
@@ -26,7 +26,7 @@ const Categories = React.memo(function Categories(props: PropsType) {
                 {categories.map((category) => (
                     <li key={category.title}
                         onClick={() => props.onClickCategory(category.title)}
-                        className={props.categoryId === category.title ? styles.active : ""}>
+                        className={props.categoryTitle === category.title ? styles.active : ""}>
                             {`${props.t(`home.categories.${category.title}`)}`}
                     </li>
                 ))}

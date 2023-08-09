@@ -6,11 +6,11 @@ export const fetchPizzasData = createAsyncThunk(
     async (params: ParamsType) => {
         const {
             pageCount,
-            categoryId,
+            categoryTitle,
             sortType
         } = params;
 
-        const category = categoryId !== "all" ? categoryId : "";
+        const category = categoryTitle !== "all" ? categoryTitle : "";
         const sort = sortType.replace("-", "");
         const order = sortType.includes("-") ? "asc" : "desc";
 

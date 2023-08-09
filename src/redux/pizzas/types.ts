@@ -10,7 +10,7 @@ export type itemsData = {
 
 export type ParamsType = {
     pageCount: number,
-    categoryId: string,
+    categoryTitle: string,
     sortType: string
 }
 

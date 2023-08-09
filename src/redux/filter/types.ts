@@ -1,5 +1,5 @@
 export interface FilterState {
-    categoryId: string,
+    categoryTitle: string,
     pageCount: number,
     sorting: FilterSort,
     searchValue: string

@@ -6,7 +6,7 @@ import {useCallback, useEffect, useRef, useState} from "react";
 import Pagination from "../Pagination/Pagination";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store";
-import {setCategoryId, setFilters, setPageCount} from "../../redux/filter/filterSlice";
+import {setCategoryTitle, setFilters, setPageCount} from "../../redux/filter/filterSlice";
 import {filterSelector} from "../../redux/filter/selectors";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
@@ -27,7 +27,7 @@ const Home = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {
-        categoryId,
+        categoryTitle,
         sorting,
         pageCount,
         searchValue
@@ -43,7 +43,7 @@ const Home = () => {
     const fetchPizzas = async () => {
         try {
             dispatch(fetchPizzasData(
-                {pageCount, categoryId, sortType}
+                {pageCount, categoryTitle, sortType}
             ));
         } catch (error) {
             alert(t('home.errorFetch'));
@@ -72,21 +72,21 @@ const Home = () => {
             fetchPizzas();
         }
         isFetch.current = false;
-    }, [categoryId, sortType, pageCount]);
+    }, [categoryTitle, sortType, pageCount]);
 
     useEffect(() => {
         if (isMounted.current) {
             const queryString = qs.stringify({
-                categoryId, sortType, pageCount
+                categoryTitle, sortType, pageCount
             });
 
             navigate(`?${queryString}`);
         }
         isMounted.current = true;
-    }, [categoryId, sortType, pageCount]);
+    }, [categoryTitle, sortType, pageCount]);
 
     const onChangeCategory = useCallback((title: string) => {
-        dispatch(setCategoryId(title));
+        dispatch(setCategoryTitle(title));
     }, []); 
 
     const onChangePage = (page: number) => {
@@ -119,7 +119,7 @@ const Home = () => {
                 </select>
             </div>
             <div className={styles.content__top}>
-                <Categories categoryId={categoryId} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} t={t} />
+                <Categories categoryTitle={categoryTitle} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} t={t} />
                 <Sort sorting={sorting} t={t} />
             </div>
             <h2 className={styles.content__title}>{`${t('home.header')}`}</h2>
