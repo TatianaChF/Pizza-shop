@@ -10,7 +10,7 @@ export const fetchPizzasData = createAsyncThunk(
             sortType
         } = params;
 
-        const category = categoryId > 0 ? categoryId : "";
+        const category = categoryId !== "all" ? categoryId : "";
         const sort = sortType.replace("-", "");
         const order = sortType.includes("-") ? "asc" : "desc";
 
