@@ -68,5 +68,10 @@
     "pizzaBlock": {
         "loading": "Loading...",
         "back": "Back"
+    },
+    "loading": {
+        "cartLoading": "Cart loading...",
+        "pizzaLoading": "Pizza loading...",
+        "loadingMain": "Loading..."
     }
 }
