@@ -5,7 +5,10 @@ import { fetchPizzasData } from "./asyncActions";
 const initialState: PizzasState = {
     items: [{
         id: 0,
-        title: "",
+        title: {
+            ru: "",
+            en: ""
+        },
         price: 0,
         imageUrl: "",
         count: 0,
