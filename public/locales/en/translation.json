@@ -18,18 +18,6 @@
             "-title": "alphabet (desc)"
         },
         "header": "All pizzas",
-        "title": {
-            "Margarita": "Margarita",
-            "FourSeasons": "Four seasons",
-            "Pepperoni": "Pepperoni",
-            "Cheesburger": "Cheeseburger pizza",
-            "VegAndMush": "Vegetables and mushrooms 🌱",
-            "Cheese": "Cheese",
-            "PepFresh": "Pepperoni Fresh with pepper",
-            "Chicken": "BBQ chicken",
-            "Chick": "Sweet and sour chicken",
-            "Crazy": "Crazy pepperoni"
-        },
         "thickness": {
             "thin": "thin",
             "traditional": "traditional"
