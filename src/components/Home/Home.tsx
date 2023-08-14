@@ -90,12 +90,12 @@ const Home = () => {
         dispatch(setPageCount(page));
     }
 
-    const pizzas = (items as any).filter((obj: { title: string; }) => {
-        return obj.title.toLowerCase().includes(searchValue.toLowerCase());
+    const pizzas = (items as any).filter((obj: { title: {ru: string, en: string};}) => {
+        return (i18n.language === "ru" ? obj.title.ru : obj.title.en).toLowerCase().includes(searchValue.toLowerCase());
     }).map((pizza: itemsData) => <Catalog
-        key={pizza.title} 
+        key={i18n.language === "ru" ? pizza.title.ru : pizza.title.en} 
         id={pizza.id}
-        title={pizza.title}
+        title={i18n.language === "ru" ? pizza.title.ru : pizza.title.en}
         price={pizza.price}
         imagePizza={pizza.imageUrl}
         count={pizza.count}
