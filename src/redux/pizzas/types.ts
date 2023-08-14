@@ -1,6 +1,9 @@
 export type itemsData = {
     id: number,
-    title: string,
+    title: {
+        ru: string,
+        en: string
+    },
     price: number,
     imageUrl: string,
     count: number,
