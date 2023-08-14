@@ -57,7 +57,7 @@ const Catalog = (props: CatalogProps) => {
                         src={props.imagePizza}
                         alt="Pizza"
                     />
-                    <h4 className={styles.catalog__title}>{`${t(`home.title.${props.title}`)}`}</h4>
+                    <h4 className={styles.catalog__title}>{props.title}</h4>
                 </Link> 
                 <div className={styles.catalog__selector}>
                     <ul>
