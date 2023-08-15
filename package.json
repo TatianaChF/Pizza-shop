@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/testing-library__jest-dom": "^5.14.9",
     "ahooks": "^3.7.8",
     "i18next": "^23.3.0",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -19,14 +20,15 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.2",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.1",
+    "react-test-renderer": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-typescript": "^7.22.5",
     "@jest/globals": "^29.6.2",
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
