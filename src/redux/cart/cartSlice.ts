@@ -51,7 +51,7 @@ export const cartSlice = createSlice({
             state.totalPrice = 0;
         }
     }
-})  
+})
 
 export const {
     addProduct,
