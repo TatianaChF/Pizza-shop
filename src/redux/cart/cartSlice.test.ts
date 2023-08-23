@@ -42,7 +42,12 @@ test("getting pizza data", () => {
     expect(newState.products[1].title).toBe("Pizza test two");
     expect(newState.products[1].price).toBe(200);
     expect(newState.products[1].imagePizza).toBe("../../../assets/img/test-pizza.png");
-    expect(newState.products[1].count).toBe(3);
     expect(newState.products[1].size).toBe(26);
     expect(newState.products[1].type).toBe("тонкое");
+});
+
+test("increase in the number of pizzas", () => {
+    const newState = cartReducer(state, addProduct(state.products[0]));
+
+    expect(newState.products[0].count).toBe(2);
 })
