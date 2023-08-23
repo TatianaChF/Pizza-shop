@@ -3,8 +3,7 @@ import {expect, test} from '@jest/globals';
 import { CartState } from "./types";
 import cartReducer, { addProduct } from './cartSlice';
 
-test("getting pizza data", () => {
-    const state: CartState = {
+const state: CartState = {
         totalPrice: 100,
         products: [
             {
@@ -35,8 +34,9 @@ test("getting pizza data", () => {
                 type: "традиционное"
             }
         ]
-    };
+};
 
+test("getting pizza data", () => {
     const newState = cartReducer(state, addProduct(state.products[1]));
 
     expect(newState.products[1].title).toBe("Pizza test two");
