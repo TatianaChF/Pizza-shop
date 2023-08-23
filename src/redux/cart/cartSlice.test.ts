@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/extend-expect"
 import {expect, test} from '@jest/globals';
 import { CartState } from "./types";
-import cartReducer, { addProduct } from './cartSlice';
+import cartReducer, { addProduct, minusProduct } from './cartSlice';
 
 const state: CartState = {
         totalPrice: 600,
@@ -56,4 +56,10 @@ test("increase the total price", () => {
     const newState = cartReducer(state, addProduct(state.products[0]));
 
     expect(newState.totalPrice).toBe(700);
+});
+
+test("reducing the amount of pizza", () => {
+    const newState = cartReducer(state, minusProduct(state.products[1]));
+    
+    expect(newState.products[1].count).toBe(1);
 })
