@@ -40,4 +40,9 @@ test("getting pizza data", () => {
     const newState = cartReducer(state, addProduct(state.products[1]));
 
     expect(newState.products[1].title).toBe("Pizza test two");
+    expect(newState.products[1].price).toBe(200);
+    expect(newState.products[1].imagePizza).toBe("../../../assets/img/test-pizza.png");
+    expect(newState.products[1].count).toBe(3);
+    expect(newState.products[1].size).toBe(26);
+    expect(newState.products[1].type).toBe("тонкое");
 })
