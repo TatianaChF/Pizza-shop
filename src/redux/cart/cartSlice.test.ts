@@ -4,7 +4,7 @@ import { CartState } from "./types";
 import cartReducer, { addProduct } from './cartSlice';
 
 const state: CartState = {
-        totalPrice: 100,
+        totalPrice: 600,
         products: [
             {
                 id: 0,
@@ -50,4 +50,10 @@ test("increase in the number of pizzas", () => {
     const newState = cartReducer(state, addProduct(state.products[0]));
 
     expect(newState.products[0].count).toBe(2);
+});
+
+test("increase the total price", () => {
+    const newState = cartReducer(state, addProduct(state.products[0]));
+
+    expect(newState.totalPrice).toBe(700);
 })
