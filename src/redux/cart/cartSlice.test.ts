@@ -62,4 +62,10 @@ test("reducing the amount of pizza", () => {
     const newState = cartReducer(state, minusProduct(state.products[1]));
     
     expect(newState.products[1].count).toBe(1);
+});
+
+test("total price reduction after pizza removal", () => {
+    const newState = cartReducer(state, minusProduct(state.products[1]));
+
+    expect(newState.totalPrice).toBe(400);
 })
