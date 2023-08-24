@@ -1,5 +1,5 @@
 import { FilterState } from "./types";
-import filterReducer, { setCategoryTitle } from "./filterSlice";
+import filterReducer, { setCategoryTitle, setSorting } from "./filterSlice";
 
 const state: FilterState = {
     categoryTitle: "all",
@@ -17,3 +17,9 @@ test("category change", () => {
     expect(newState.categoryTitle).toBe("Мясные");
 });
 
+test("sorting change", () => {
+    const newState = filterReducer(state, setSorting({sort: "title", name: "названию (по возврастанию)"}));
+
+    expect(newState.sorting.sort).toBe("title");
+    expect(newState.sorting.name).toBe("названию (по возврастанию)");
+})
