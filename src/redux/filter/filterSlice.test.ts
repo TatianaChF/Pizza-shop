@@ -1,5 +1,5 @@
 import { FilterState } from "./types";
-import filterReducer, { setCategoryTitle, setSorting } from "./filterSlice";
+import filterReducer, { setCategoryTitle, setPageCount, setSorting } from "./filterSlice";
 
 const state: FilterState = {
     categoryTitle: "all",
@@ -22,4 +22,10 @@ test("sorting change", () => {
 
     expect(newState.sorting.sort).toBe("title");
     expect(newState.sorting.name).toBe("названию (по возврастанию)");
+});
+
+test("page count change", () => {
+    const newState = filterReducer(state, setPageCount(2));
+
+    expect(newState.pageCount).toBe(2);
 })
