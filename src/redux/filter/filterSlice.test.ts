@@ -1,5 +1,5 @@
 import { FilterState } from "./types";
-import filterReducer, { setCategoryTitle, setPageCount, setSorting } from "./filterSlice";
+import filterReducer, { setCategoryTitle, setFilters, setPageCount, setSorting } from "./filterSlice";
 
 const state: FilterState = {
     categoryTitle: "all",
@@ -28,4 +28,16 @@ test("page count change", () => {
     const newState = filterReducer(state, setPageCount(2));
 
     expect(newState.pageCount).toBe(2);
+});
+
+test("change all filters", () => {
+    const newState = filterReducer(state, setFilters({
+        categoryTitle: "Мясные",
+        pageCount: 2,
+        sortType: "title"
+    }));
+
+    expect(newState.categoryTitle).toBe("Мясные");
+    expect(newState.pageCount).toBe(2);
+    expect(newState.sorting.sort).toBe("title");
 })
