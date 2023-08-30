@@ -18,7 +18,7 @@ test("renders a title", () => {
             type="0" /> 
         </Provider>
     );
-    const linkElement = screen.getByRole("Сырная");
-    expect(linkElement),toBeInTheDocument();
+    const linkElement = screen.getByText("home.title.Сырная");
+    expect(linkElement).toBeInTheDocument();
 
 })
