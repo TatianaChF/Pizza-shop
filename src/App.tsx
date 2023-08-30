@@ -3,19 +3,19 @@ import {Outlet} from "react-router-dom";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header/Header";
-
-const Cart = React.lazy(() => import("./components/Cart/Cart"));
-const Pizza = React.lazy(() => import("./components/Catalog/Pizza/Pizza"));
-const NotFound = React.lazy(() => import("./components/NotFound/NotFound"));
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const App = () => {
     return (
-        <div className="wrapper">
-            <Header/>
-            <div className="content">
-                <Outlet/>
+        <Provider store={store}>
+            <div className="wrapper">
+                <Header/>
+                <div className="content">
+                    <Outlet/>
+                </div>
             </div>
-        </div>
+        </Provider>
     );
 }
 
