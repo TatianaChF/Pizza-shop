@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom/extend-expect"
 import {expect, test} from '@jest/globals';
 import { CartState } from "./types";
 import cartReducer, { addProduct, clearProducts, minusProduct, removeProduct } from './cartSlice';
