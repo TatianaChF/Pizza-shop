@@ -1,11 +1,11 @@
 /** @type {import('jest').Config} */
 const config = {
   verbose: true,
-};
+}; 
 
-// module.exports = config;
+ module.exports = config;
 
-module.exports = {
+ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(test).ts?(x)"],
@@ -21,4 +21,4 @@ module.exports = {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "\\.(jpg|jpeg|png|svg)$": "<rootDir>/__mocks__/fileMock.ts",
   }
-}
+} 
