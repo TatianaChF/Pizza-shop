@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen } from "@testing-library/react";
+import { act, fireEvent, getByRole, render, screen } from "@testing-library/react";
 import React from "react";
 import CartProduct from "./CartProduct";
 import { toBeInTheDocument } from "@testing-library/jest-dom/matchers";
@@ -53,3 +53,20 @@ test("renders a type and a size", () => {
     const typeElement = screen.getByRole("p");
     expect(typeElement).toHaveTextContent("home.thickness.thin, 26 home.abbreviations.sm");
 });
+
+test("price display", () => {
+    render(
+        <Provider store={store}>
+            <CartProduct id={1} 
+            title="Сырная" 
+            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg"
+            price={245}
+            count={1}
+            size={26}
+            type="thin" /> 
+        </Provider>
+    );
+    const priceElement = screen.getByText("245 ₽");
+    expect(priceElement).toBeInTheDocument();
+})
+
