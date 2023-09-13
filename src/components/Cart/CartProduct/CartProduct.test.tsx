@@ -70,3 +70,18 @@ test("price display", () => {
     expect(priceElement).toBeInTheDocument();
 })
 
+test("multiplying the price and quantity of pizza", () => {
+    render(
+        <Provider store={store}>
+            <CartProduct id={1} 
+            title="Сырная" 
+            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg"
+            price={245}
+            count={3}
+            size={26}
+            type="thin" /> 
+        </Provider>
+    );
+    const totalPricePizza = screen.getByRole("price");
+    expect(totalPricePizza).toHaveTextContent("735 ₽");
+})
