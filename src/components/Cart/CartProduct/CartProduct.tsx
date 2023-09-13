@@ -80,7 +80,7 @@ const CartProduct = (props: CartProductProps) => {
                 </button>
             </div>
             <div className={styles.cart__item__price}>
-                <b>{props.price * props.count} ₽</b>
+                <b role="price">{props.price * props.count} ₽</b>
             </div>
             <div className={styles.cart__item__remove}>
                 <div onClick={onClickRemove} className={styles.button__remove}>
