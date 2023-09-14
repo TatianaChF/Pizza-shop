@@ -86,7 +86,7 @@ const Catalog = (props: CatalogProps) => {
                     </ul>
                 </div>
                 <div className={styles.catalog__bottom}>
-                    <div className={styles.catalog__price}>{`${t('home.from')}`} {props.price} ₽</div>
+                    <div role="price" className={styles.catalog__price}>{`${t('home.from')}`} {props.price} ₽</div>
                     <button onClick={onClickAddToCart}
                             className={styles.button}>
                         <svg
