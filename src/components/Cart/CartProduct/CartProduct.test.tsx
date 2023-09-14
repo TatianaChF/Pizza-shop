@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom'
-import { act, fireEvent, getByRole, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import CartProduct from "./CartProduct";
-import { toBeInTheDocument } from "@testing-library/jest-dom/matchers";
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 
