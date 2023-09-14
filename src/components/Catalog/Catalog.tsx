@@ -53,7 +53,7 @@ const Catalog = (props: CatalogProps) => {
             <div className={styles.catalog}>
                 <BrowserRouter>
                 <Link to={`/pizza/${props.id}`}>
-                    <img
+                    <img role="img"
                         className={styles.catalog__image}
                         src={props.imagePizza}
                         alt="Pizza"
