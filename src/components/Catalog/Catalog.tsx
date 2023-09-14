@@ -73,7 +73,7 @@ const Catalog = (props: CatalogProps) => {
                             ))
                         }
                     </ul>
-                    <ul>
+                    <ul role="sizes">
                         {
                             props.sizes.map((size, id) => (
                                 <li key={size}
