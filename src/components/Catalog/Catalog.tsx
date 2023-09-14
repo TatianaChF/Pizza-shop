@@ -5,7 +5,7 @@ import {cartProductsSelectorById} from "../../redux/cart/selectors";
 import {CartItem} from "../../redux/cart/types";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
-import {Link} from "react-router-dom";
+import {BrowserRouter, Link} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export type Products = {
@@ -51,6 +51,7 @@ const Catalog = (props: CatalogProps) => {
     return (
         <div className={styles.catalog__wrapper}>
             <div className={styles.catalog}>
+                <BrowserRouter>
                 <Link to={`/pizza/${props.id}`}>
                     <img
                         className={styles.catalog__image}
@@ -59,8 +60,9 @@ const Catalog = (props: CatalogProps) => {
                     />
                     <h4 className={styles.catalog__title}>{props.title}</h4>
                 </Link> 
+                </BrowserRouter>
                 <div className={styles.catalog__selector}>
-                    <ul>
+                    <ul role="types">
                         {
                             props.types.map(type => (
                                 <li key={type}
