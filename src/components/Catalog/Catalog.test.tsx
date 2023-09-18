@@ -95,7 +95,7 @@ test("pizza price display", () => {
     expect(price).toHaveTextContent("803 ₽");
 })
 
-test("", () => {
+test("detection of add pizza button and quantity in cart", () => {
     render(
         <Provider store={store}>
             <Catalog id={0}
@@ -109,7 +109,9 @@ test("", () => {
     );
 
     const button = screen.getByRole("button");
-    const click = fireEvent.click(button);
+    const click = fireEvent.click(button); 
+    const i = screen.getByRole("i_count");
 
     expect(button).toBeInTheDocument();
+    expect(i).toBeInTheDocument();
 })
