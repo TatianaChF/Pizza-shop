@@ -5,7 +5,6 @@ import {cartProductsSelectorById} from "../../redux/cart/selectors";
 import {CartItem} from "../../redux/cart/types";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
-import {BrowserRouter, Link} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export type Products = {
@@ -98,7 +97,7 @@ const Catalog = (props: CatalogProps) => {
                             />
                         </svg>
                         <span>{`${t('home.addButton')}`}</span>
-                        {addedCount > 0 && <i>{addedCount}</i>}
+                        {addedCount > 0 && <i role="i_count">{addedCount}</i>}
                     </button>
                 </div>
             </div>
