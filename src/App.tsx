@@ -1,5 +1,5 @@
 import "./App.scss";
-import {Outlet} from "react-router-dom";
+import {BrowserRouter, Outlet} from "react-router-dom";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Header from "./components/Header/Header";
