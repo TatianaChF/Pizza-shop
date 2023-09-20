@@ -34,8 +34,8 @@ const Header = () => {
                         </div>
                     </div>
                 </Link>
-                <Search/>
-                <div className={styles.header__cart}>
+                <Search />
+                <div role="btn_cart" className={styles.header__cart}>
                     <div className={styles.button}>
                         <Link to="/cart" className={styles.button__cart}>
                             <span>{totalPrice} ₽</span>
