@@ -2439,6 +2439,14 @@ core-js-compat@^3.31.0:
   dependencies:
     browserslist "^4.21.9"
 
+create-react-class@^15.7.0:
+  version "15.7.0"
+  resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.7.0.tgz#7499d7ca2e69bb51d13faf59bd04f0c65a1d6c1e"
+  integrity sha512-QZv4sFWG9S5RUvkTYWbflxeZX+JG7Cz0Tn33rQBJ+WFQTqTfUTjMjiv9tnfXazjsO5r0KhPs+AqCjyrQX6h2ng==
+  dependencies:
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 create-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
@@ -3986,6 +3994,16 @@ jest-snapshot@^29.6.2:
     pretty-format "^29.6.2"
     semver "^7.5.3"
 
+jest-svg-transformer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jest-svg-transformer/-/jest-svg-transformer-1.0.0.tgz#e38884ca4cd8b2295cdfa2a0b24667920c3a8a6d"
+  integrity sha512-+kD21VthJFHIbI3DZRz+jo4sBOSR1qWEMXhVC28owRMqC5nA+zEiJrHOlj+EqQIztYMouRc1dIjE8SJfFPJUXA==
+
+jest-transform-stub@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-transform-stub/-/jest-transform-stub-2.0.0.tgz#19018b0851f7568972147a5d60074b55f0225a7d"
+  integrity sha512-lspHaCRx/mBbnm3h4uMMS3R5aZzMwyNpNIJLXj4cEsV0mIUtS4IjYJLSoyjRCtnxb6RIGJ4NL2quZzfIeNhbkg==
+
 jest-util@^29.0.0, jest-util@^29.6.2:
   version "29.6.2"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-29.6.2.tgz#8a052df8fff2eebe446769fd88814521a517664d"
@@ -4188,7 +4206,7 @@ lodash@^4.17.15, lodash@^4.17.21:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -5150,6 +5168,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+svg-jest@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/svg-jest/-/svg-jest-1.0.1.tgz#3a820280bfd4c1e0637d68c8d477d37d0ae46abb"
+  integrity sha512-uVbY14nW3IGXkRueduWpQNOVOvC0XE9uu3Y1MIWX6zgweOqPT+hmP/J92yCNBv5kAQzNU7DW2nCO+enZpv+Hsw==
 
 symbol-tree@^3.2.4:
   version "3.2.4"
