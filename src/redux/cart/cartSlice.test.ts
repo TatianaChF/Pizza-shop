@@ -76,13 +76,13 @@ test("total price change when pizza is removed", () => {
 });
 
 test("resetting the total price after emptying the cart", () => {
-    const newState = cartReducer(state, clearProducts());
+    const newState = cartReducer(state, clearProducts(state.products));
 
     expect(newState.totalPrice).toBe(0);
 });
 
 test("zeroing the array of products after emptying the basket", () => {
-    const newState = cartReducer(state, clearProducts());
+    const newState = cartReducer(state, clearProducts(state.products));
 
     expect(newState.products).toBeNull;
 })
