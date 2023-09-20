@@ -1,6 +1,6 @@
 export interface CartState {
     totalPrice: number,
-    products: Array<CartItem>
+    products: Array<CartItem> 
 }
 
 export type CartItem = {
