@@ -6,12 +6,13 @@ import {cartSelector} from "../../redux/cart/selectors.ts";
 import CartEmpty from "./CartEmpty/CartEmpty";
 import styles from "./Cart.module.scss";
 import { useTranslation } from "react-i18next";
+import { CartItem } from "../../redux/cart/types.ts";
 
 const Cart = () => {
     const dispatch = useDispatch();
     const {products, totalPrice} = useSelector(cartSelector);
     const totalCount = products
-        .reduce((sum: number, product) => sum + product.count, 0);
+        .reduce((sum: number, product: CartItem) => sum + product.count, 0);
     const {t} = useTranslation();
 
     const onClickClear = () => {
