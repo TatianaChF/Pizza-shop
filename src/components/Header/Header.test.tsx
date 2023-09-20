@@ -21,7 +21,18 @@ describe("Header component", () => {
         expect(btn_cart).toBeInTheDocument();
     });
 
-    test("", () => {
+    test("zero default price and quantity values", () => {
+        render(
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Header />
+                </MemoryRouter>
+            </Provider>
+        )
 
+        const price = screen.getByRole("price");
+        const count = screen.getByRole("count");
+        expect(price).toHaveTextContent("0 ₽");
+        expect(count).toHaveTextContent("0");
     })
 })
