@@ -38,7 +38,7 @@ const Header = () => {
                 <div role="btn_cart" className={styles.header__cart}>
                     <div className={styles.button}>
                         <Link to="/cart" className={styles.button__cart}>
-                            <span>{totalPrice} ₽</span>
+                            <span role="price">{totalPrice} ₽</span>
                             <div className={styles.button__delimiter}></div>
                             <svg
                                 width="18"
@@ -69,7 +69,7 @@ const Header = () => {
                                     strokeLinejoin="round"
                                 />
                             </svg>
-                            <span>{totalCount}</span>
+                            <span role="count">{totalCount}</span>
                         </Link>
                     </div>
                 </div>
