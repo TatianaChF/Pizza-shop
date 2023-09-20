@@ -27,8 +27,8 @@ const Search = () => {
 
     return (
         <div className={style.root}>
-            <img src={searchIcon} className={style.icon} alt="search"/>
-            <input
+            <img role="icon" src={searchIcon} className={style.icon} alt="search"/>
+            <input role="input"
                 ref={inputRef}
                 value={inputValue}
                 onChange={onChangeInput}
