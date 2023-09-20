@@ -5,15 +5,23 @@ import { store } from "../../redux/store"
 import Header from './Header';
 import { MemoryRouter } from 'react-router-dom';
 
-test("logo display", () => {
-    render(
-        <Provider store={store}>
-            <MemoryRouter>
-                <Header />
-            </MemoryRouter>
-        </Provider>
-    )
+describe("Header component", () => {
+    test("logo and cart display", () => {
+        render(
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Header />
+                </MemoryRouter>
+            </Provider>
+        )
+    
+        const logo = screen.getByRole("logo");
+        const btn_cart = screen.getByRole("btn_cart");
+        expect(logo).toBeInTheDocument();
+        expect(btn_cart).toBeInTheDocument();
+    });
 
-    const logo = screen.getByRole("logo");
-    expect(logo).toBeInTheDocument();
+    test("", () => {
+
+    })
 })
