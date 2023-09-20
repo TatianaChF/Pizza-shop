@@ -26,7 +26,7 @@ const Header = () => {
         <div className={styles.header}>
             <div className={styles.container}>
                 <Link to="/">
-                    <div className={styles.header__logo}>
+                    <div role="logo" className={styles.header__logo}>
                         <img width="38" src={logo} alt="Pizza logo"/>
                         <div>
                             <h1>React Pizza</h1>
