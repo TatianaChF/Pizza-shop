@@ -35,7 +35,7 @@ const Search = () => {
                 className={style.input}
                 placeholder={`${t('header.search')}`}/>
             {inputValue && (
-                <img onClick={onClickClear} className={style.clearIcon} src={closeIcon} alt="close"/>
+                <img role="close_icon" onClick={onClickClear} className={style.clearIcon} src={closeIcon} alt="close"/>
             )}
         </div>
     )
