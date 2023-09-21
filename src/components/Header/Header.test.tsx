@@ -53,7 +53,7 @@ describe("Header component", () => {
         expect(icon).toBeInTheDocument();
     });
 
-    test("entering a value into the search", () => {
+    test("entering a value into the search and close icon", () => {
         render(
             <Provider store={store}>
                 <MemoryRouter>
@@ -64,6 +64,8 @@ describe("Header component", () => {
 
         const input = screen.getByRole("input");
         fireEvent.change(input, { target: {value : "Пепперони"} });
+        const close_icon = screen.getByRole("close_icon");
         expect(screen.getByDisplayValue("Пепперони")).toBeInTheDocument();
-    })
+        expect(close_icon).toBeInTheDocument();
+    });
 })
