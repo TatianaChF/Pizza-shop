@@ -38,7 +38,7 @@ describe("Header component", () => {
         expect(count).toHaveTextContent("0");
     });
 
-    test("search display", () => {
+    test("search and icon display", () => {
         render(
             <Provider store={store}>
                 <MemoryRouter>
@@ -48,10 +48,12 @@ describe("Header component", () => {
         )
 
         const input = screen.getByRole("input");
+        const icon = screen.getByRole("icon");
         expect(input).toBeInTheDocument();
+        expect(icon).toBeInTheDocument();
     });
 
-    test("icon display", () => {
+    test("entering a value into the search", () => {
         render(
             <Provider store={store}>
                 <MemoryRouter>
@@ -60,7 +62,8 @@ describe("Header component", () => {
             </Provider>
         )
 
-        const icon = screen.getByRole("icon");
-        expect(icon).toBeInTheDocument();
+        const input = screen.getByRole("input");
+        fireEvent.change(input, { target: {value : "Пепперони"} });
+        expect(screen.getByDisplayValue("Пепперони")).toBeInTheDocument();
     })
 })
