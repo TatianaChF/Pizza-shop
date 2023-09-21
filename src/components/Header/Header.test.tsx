@@ -49,5 +49,18 @@ describe("Header component", () => {
 
         const input = screen.getByRole("input");
         expect(input).toBeInTheDocument();
+    });
+
+    test("icon display", () => {
+        render(
+            <Provider store={store}>
+                <MemoryRouter>
+                    <Header />
+                </MemoryRouter>
+            </Provider>
+        )
+
+        const icon = screen.getByRole("icon");
+        expect(icon).toBeInTheDocument();
     })
 })
