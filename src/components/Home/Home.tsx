@@ -110,7 +110,7 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <div>
-                <select onChange={changeLanguage} className={styles.selectLanguage} defaultValue={i18n.language}>
+                <select role="select" onChange={changeLanguage} className={styles.selectLanguage} defaultValue={i18n.language}>
                     {langs.map((lang) => <option key={lang} value={lang} className={styles.selectLanguage__option}>{lang}</option>)}
                 </select>
             </div>
@@ -118,7 +118,7 @@ const Home = () => {
                 <Categories categoryTitle={categoryTitle} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} t={t} />
                 <Sort sorting={sorting} t={t} />
             </div>
-            <h2 className={styles.content__title}>{`${t('home.header')}`}</h2>
+            <h2 role="h2" className={styles.content__title}>{`${t('home.header')}`}</h2>
             {
                 status === "error" ? (
                     <div className={styles.content__error__info}>
