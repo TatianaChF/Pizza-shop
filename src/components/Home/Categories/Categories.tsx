@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { TFunction } from "i18next";
 import styles from "./Categories.module.scss";
 import React from 'react';
@@ -18,7 +19,7 @@ const categories = [
     {id: 5, title: "closed"},
 ]
 
-const Categories = React.memo(function Categories(props: PropsType) {
+export const Categories = memo((props: PropsType) => {
 
     return (
         <div className={styles.categories}>
@@ -34,5 +35,3 @@ const Categories = React.memo(function Categories(props: PropsType) {
         </div>
     )
 });
-
-export default Categories;

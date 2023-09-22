@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSorting } from "../../../redux/filter/filterSlice";
 import { FilterSort } from "../../../redux/filter/types";
 import styles from "./Sort.module.scss";
-import React from "react";
+import { memo } from "react";
 import { TFunction } from "i18next";
 
 export const sortList: SortType[] = [
@@ -21,7 +21,7 @@ type SortPropsType = {
     t: TFunction<"translation", undefined>
 }
 
-const Sort = React.memo(function Sort({ sorting, t } : SortPropsType) {
+const Sort = memo(({ sorting, t } : SortPropsType) => {
     const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const sortRef = useRef<HTMLDivElement | EventTarget>();
