@@ -4,8 +4,6 @@ import { Provider } from "react-redux"
 import { store } from "../../redux/store"
 import Header from './Header';
 import { MemoryRouter } from 'react-router-dom';
-import CartProduct from '../Cart/CartProduct/CartProduct';
-import Cart from '../Cart/Cart';
 
 describe("Header component", () => {
     test("logo and cart display", () => {
