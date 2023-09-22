@@ -12,6 +12,7 @@ const config = {
   transform: {
       "^.+\\.(js|ts)$": "ts-jest"
   },
+  setupFiles: ['<rootDir>/script/test-setup.js'],
   transformIgnorePatterns: [
       "/node_modules/(?![@autofiy/autofiyable|@autofiy/property]).+\\.js$",
       "/node_modules/(?![@autofiy/autofiyable|@autofiy/property]).+\\.ts$",
