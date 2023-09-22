@@ -19,7 +19,7 @@ describe("Home component" , () => {
 
         const select = screen.getByRole("select");
         const sorting = screen.getByRole("sorting");
-        const h2 = screen.getByRole("heading", { level: 2 });
+        const h2 = screen.getByRole("h2");
         const pagination = screen.getByRole("pagination");
         
         expect(select).toBeInTheDocument();
