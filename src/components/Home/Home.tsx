@@ -1,4 +1,4 @@
-import Categories from "./Categories/Categories";
+import {Categories} from "./Categories/Categories";
 import Sort, {sortList} from "./Sort/Sort";
 import Placeholder from "../Placeholder/Placeholder";
 import Catalog from "../Catalog/Catalog";
@@ -114,7 +114,7 @@ const Home = () => {
                     {langs.map((lang) => <option key={lang} value={lang} className={styles.selectLanguage__option}>{lang}</option>)}
                 </select>
             </div>
-            <div className={styles.content__top}>
+            <div role="sorting" className={styles.content__top}>
                 <Categories categoryTitle={categoryTitle} onClickCategory={onChangeCategory} changeLanguage={changeLanguage} t={t} />
                 <Sort sorting={sorting} t={t} />
             </div>
@@ -133,7 +133,9 @@ const Home = () => {
                     </div>
                 )
             }
-            <Pagination pageCount={pageCount} onChangePage={onChangePage}/>
+            <div role="pagination">
+                <Pagination pageCount={pageCount} onChangePage={onChangePage}/>
+            </div>
         </div>
     )
 }
