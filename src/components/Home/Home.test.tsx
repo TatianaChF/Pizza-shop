@@ -6,7 +6,7 @@ import { store } from "../../redux/store"
 import { MemoryRouter } from 'react-router-dom'
 
 describe("Home component" , () => {
-    test("", async () => {
+    test("displaying content on screen", async () => {
         await waitFor(() => {
             render(
                 <Provider store={store}>
