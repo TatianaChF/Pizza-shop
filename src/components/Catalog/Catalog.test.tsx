@@ -5,17 +5,20 @@ import { toBeInTheDocument } from "@testing-library/jest-dom/matchers";
 import { store } from '../../redux/store';
 import Catalog from './Catalog';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 test("getting pizza types", () => {
     render(
         <Provider store={store}>
-            <Catalog id={0}
-            title="Пепперони Фреш с перцем"
-            price={803}
-            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
-            count={1}
-            sizes={[26, 30, 40]}
-            types={[0, 1]} />
+            <MemoryRouter>
+                <Catalog id={0}
+                title="Пепперони Фреш с перцем"
+                price={803}
+                imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+                count={1}
+                sizes={[26, 30, 40]}
+                types={[0, 1]} />
+            </MemoryRouter>
         </Provider>
     );
 
@@ -27,13 +30,15 @@ test("getting pizza types", () => {
 test("image acquisition", () => {
     render(
         <Provider store={store}>
-            <Catalog id={0}
-            title="Пепперони Фреш с перцем"
-            price={803}
-            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
-            count={1}
-            sizes={[26, 30, 40]}
-            types={[0, 1]} />
+            <MemoryRouter>
+                <Catalog id={0}
+                title="Пепперони Фреш с перцем"
+                price={803}
+                imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+                count={1}
+                sizes={[26, 30, 40]}
+                types={[0, 1]} />
+            </MemoryRouter>
         </Provider>
     );
 
@@ -44,13 +49,15 @@ test("image acquisition", () => {
 test("displaying the name of the pizza", () => {
     render(
         <Provider store={store}>
-            <Catalog id={0}
-            title="Пепперони Фреш с перцем"
-            price={803}
-            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
-            count={1}
-            sizes={[26, 30, 40]}
-            types={[0, 1]} />
+            <MemoryRouter>
+                <Catalog id={0}
+                title="Пепперони Фреш с перцем"
+                price={803}
+                imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+                count={1}
+                sizes={[26, 30, 40]}
+                types={[0, 1]} />
+            </MemoryRouter>
         </Provider>
     );
 
@@ -62,13 +69,15 @@ test("displaying the name of the pizza", () => {
 test("getting pizza sizes", () => {
     render(
         <Provider store={store}>
-            <Catalog id={0}
-            title="Пепперони Фреш с перцем"
-            price={803}
-            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
-            count={1}
-            sizes={[26, 30, 40]}
-            types={[0, 1]} />
+            <MemoryRouter>
+                <Catalog id={0}
+                title="Пепперони Фреш с перцем"
+                price={803}
+                imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+                count={1}
+                sizes={[26, 30, 40]}
+                types={[0, 1]} />
+            </MemoryRouter>
         </Provider>
     );
 
@@ -80,13 +89,15 @@ test("getting pizza sizes", () => {
 test("pizza price display", () => {
     render(
         <Provider store={store}>
-            <Catalog id={0}
-            title="Пепперони Фреш с перцем"
-            price={803}
-            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
-            count={1}
-            sizes={[26, 30, 40]}
-            types={[0, 1]} />
+            <MemoryRouter>
+                <Catalog id={0}
+                title="Пепперони Фреш с перцем"
+                price={803}
+                imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+                count={1}
+                sizes={[26, 30, 40]}
+                types={[0, 1]} />
+            </MemoryRouter>
         </Provider>
     );
 
@@ -98,13 +109,15 @@ test("pizza price display", () => {
 test("detection of add pizza button and quantity in cart", () => {
     render(
         <Provider store={store}>
-            <Catalog id={0}
-            title="Пепперони Фреш с перцем"
-            price={803}
-            imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
-            count={1}
-            sizes={[26, 30, 40]}
-            types={[0, 1]} />
+            <MemoryRouter>
+                <Catalog id={0}
+                title="Пепперони Фреш с перцем"
+                price={803}
+                imagePizza="https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+                count={1}
+                sizes={[26, 30, 40]}
+                types={[0, 1]} />
+            </MemoryRouter>
         </Provider>
     );
 
