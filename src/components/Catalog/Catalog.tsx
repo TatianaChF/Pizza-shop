@@ -6,6 +6,7 @@ import {CartItem} from "../../redux/cart/types";
 import {RootState} from "../../redux/store";
 import styles from "./Catalog.module.scss";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export type Products = {
     id: number,
@@ -50,12 +51,14 @@ const Catalog = (props: CatalogProps) => {
     return (
         <div className={styles.catalog__wrapper}>
             <div className={styles.catalog}>
-                    <img role="img"
+            <Link to={`/pizza/${props.id}`}>
+                    <img
                         className={styles.catalog__image}
                         src={props.imagePizza}
                         alt="Pizza"
                     />
                     <h4 className={styles.catalog__title}>{props.title}</h4>
+                </Link>
                 <div className={styles.catalog__selector}>
                     <ul role="types">
                         {
