@@ -18,7 +18,7 @@ describe("Cart component", () => {
                 type="0" /> 
             </Provider>
         );
-        const titleElement = screen.getByText("home.title.Сырная");
+        const titleElement = screen.getByText("Сырная");
         expect(titleElement).toBeInTheDocument();
     });
     
@@ -47,11 +47,11 @@ describe("Cart component", () => {
                 price={245}
                 count={1}
                 size={26}
-                type="thin" /> 
+                type="тонкое" /> 
             </Provider>
         );
         const typeElement = screen.getByRole("p");
-        expect(typeElement).toHaveTextContent("home.thickness.thin, 26 home.abbreviations.sm");
+        expect(typeElement).toHaveTextContent("тонкое, 26 home.abbreviations.sm");
     });
     
     test("price display", () => {
