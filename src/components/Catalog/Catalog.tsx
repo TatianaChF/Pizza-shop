@@ -51,14 +51,12 @@ const Catalog = (props: CatalogProps) => {
     return (
         <div className={styles.catalog__wrapper}>
             <div className={styles.catalog}>
-            <Link to={`/pizza/${props.id}`}>
-                    <img
-                        className={styles.catalog__image}
-                        src={props.imagePizza}
-                        alt="Pizza"
-                    />
-                    <h4 className={styles.catalog__title}>{props.title}</h4>
-                </Link>
+                <img
+                    className={styles.catalog__image}
+                    src={props.imagePizza}
+                    alt="Pizza"
+                />
+                <h4 className={styles.catalog__title}>{props.title}</h4>
                 <div className={styles.catalog__selector}>
                     <ul role="types">
                         {
