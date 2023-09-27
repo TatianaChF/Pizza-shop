@@ -49,8 +49,8 @@ const CartProduct = (props: CartProductProps) => {
                 />
             </div>
             <div className={styles.cart__item_info}>
-                <h3>{`${t(`home.title.${props.title}`)}`}</h3>
-                <p role="p">{`${t(`home.thickness.${props.type}`)}`}, {props.size} {`${t('home.abbreviations.sm')}`}</p>
+                <h3>{props.title}</h3>
+                <p role="p">{props.type}, {props.size} {`${t('home.abbreviations.sm')}`}</p>
             </div>
             <div className={styles.cart__item_count}>
                 <button role="minus" disabled={props.count === 1} onClick={onClickMinus} 
